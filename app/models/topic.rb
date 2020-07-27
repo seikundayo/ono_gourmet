@@ -1,3 +1,3 @@
 class Topic < ApplicationRecord
-  belongs_to :shop, optional: true
+  belongs_to :shop
 end
