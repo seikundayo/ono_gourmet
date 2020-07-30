@@ -85,6 +85,7 @@ header img{
 }
 // トピックのページネーション
 .topic_page{
+  text-align: left;
   margin-left: 1050px;
 }
 
@@ -138,4 +139,25 @@ header img{
   position: absolute;
   left : 1em; /*左端からのアイコンまで*/
   color: #ffb03f; /*アイコン色*/
+}
+
+
+
+// インスタと投稿
+.bottom_content{
+  margin-top: 100px;
+}
+// 投稿関連
+.bottom_content #post{
+  margin-top: 20px;
+  width: 500px;
+}
+// 投稿ボタン
+.bottom_content .btn{
+  font-size: 30px;
+  color: white;
+  margin: -310px 0 0 75px;
+  border: solid 2px white;
+  background-color: #FFB432;
+  padding: 30px 50px;
 }
