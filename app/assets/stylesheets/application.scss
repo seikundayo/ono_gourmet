@@ -2,7 +2,8 @@
 
 main{
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 30px auto;
+
 }
 
 // headerのナビゲーションバーの設定
@@ -23,4 +24,118 @@ main{
 header img{
   width: 100%;
   height: 800px;
+}
+
+
+
+// トピック一覧
+// トピックのリンク
+.topic-list{
+  margin: 60px 0 30px 10px;
+  text-align: center;
+}
+//トピックの１つづつのリンク
+.topic-list .topic_tag{
+  margin: 0 20px;
+  padding: 10px 50px;
+  background-color: #ff8c19;
+  color: white;
+  text-decoration: none;
+}
+// トピックのaタグ
+.topic_content a{
+  text-decoration: none;
+  color: black;
+}
+// トピックのカード
+.topic_content .card{
+  margin: 30px;
+  width: 350px;
+  height: 400px;
+}
+// トピックの画像
+.topic_content #card_image{
+  width: auto;
+  height: 192px;
+}
+// トピックのジャンル
+.topic_content .topic_genre{
+  font-size: 15px;
+  margin: -10px 0 10px -10px;
+}
+// トピックのタイトル
+.topic_content .topic_title{
+  font-size: 20px;
+  font-weight: bold;
+}
+// トピックの店の名前
+.topic_content .topic_shop_name{
+  margin-top: 40px;
+  font-size: 13px;
+}
+// トピックの住所
+.topic_content .topic_address{
+  font-size: 13px;
+}
+// トピックの日付
+.topic_content .topic_day{
+  margin-right: 10px;
+  text-align: right;
+  font-size: 13px;
+}
+// トピックのページネーション
+.topic_page{
+  margin-left: 1050px;
+}
+
+
+
+// トピック詳細
+// トピック詳細の画像（親要素）
+.topic_show .show_image{
+  text-align: center;
+}
+// トピック詳細の画像（子要素）
+.topic_show #top_image{
+  width: 1200px;
+  height: 600px;
+}
+// トピック詳細のお店画像
+.topic_show #show_shop_image{
+  width: 200px;
+  height: 200px;
+}
+// トピック詳細のタイトル
+.topic_show h2 {
+  position: relative;
+  color: white;
+  background: #ff8c19;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  padding: 0.5em 0.5em 0.5em 1.8em;
+}
+.topic_show h2:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f14a";
+  font-weight: 900;
+  position: absolute;
+  left : 0.5em; /*左端からのアイコンまでの距離*/
+}
+// トピック詳細の店紹介
+.topic_show ul {
+  border: solid 2px #ffb03f;
+  padding: 0.5em 1em 0.5em 2.3em;
+  position: relative;
+}
+.topic_show ul li {
+  line-height: 1.5;
+  padding: 0.5em 0;
+  list-style-type: none!important;/*ポチ消す*/
+}
+.topic_show ul li:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  position: absolute;
+  left : 1em; /*左端からのアイコンまで*/
+  color: #ffb03f; /*アイコン色*/
 }

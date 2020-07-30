@@ -1,1 +1,36 @@
-<h1>HOME</h1>
+<div class="input-group justify-content-center">
+  <input type="text" placeholder="　グルメ探し" style="width:30%;">
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-warning">検索</button>
+  </span>
+</div>
+
+<div class="topic-list">
+  <%= link_to "新着記事" ,"root_path",class:"topic_tag" %>
+  <%= link_to "人気記事" ,"root_path",class:"topic_tag" %>
+  <%= link_to "オススメ" ,"root_path",class:"topic_tag" %>
+</div>
+
+<div class="topic_content">
+  <div class="row">
+    <% @topics.each do |topic| %>
+    <div class="col-md-4">
+      <a href="/homes/<%= topic.id %>">
+      <div class="card">
+      <%= image_tag "#{topic.image}",id:"card_image" %>
+      <div class="card-body">
+        <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
+        <p class="topic_title"><%= topic.title %></p>
+        <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
+        <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p></div>
+        <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
+      </div>
+      </a>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="topic_page">
+  <%= paginate @topics %>
+</div>
