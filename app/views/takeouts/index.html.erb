@@ -1,0 +1,28 @@
+<div class="link_list">
+  <h1>テイクアウト</h1>
+  <div class="topic_content">
+    <div class="row">
+      <% @takeouts.each do |takeout| %>
+      <div class="col-md-4">
+        <a href="/homes/<%= takeout.id %>">
+        <div class="card">
+        <%= image_tag "#{takeout.image}",id:"card_image" %>
+        <div class="card-body">
+          <p class="topic_genre"><i class="fas fa-hashtag"> <%= takeout.genre %></i></p>
+          <p class="topic_title"><%= takeout.title %></p>
+          <p class="topic_shop_name"><i class="fas fa-store"> <%= takeout.shop.name %></i></p>
+          <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= takeout.shop.address %></p>
+          <p class="topic_day"><%= takeout.created_at.to_s(:datetime_jp) %></p>
+        </div>
+        </div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="topic_page">
+  <%= paginate @takeouts %>
+</div>
