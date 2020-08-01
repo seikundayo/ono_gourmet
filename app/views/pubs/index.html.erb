@@ -1,0 +1,27 @@
+<div class="link_list">
+  <h1>居酒屋</h1>
+  <div class="topic_content">
+    <div class="row">
+      <% @pubs.each do |pub| %>
+      <div class="col-md-4">
+        <a href="/homes/<%= pub.id %>">
+        <div class="card">
+        <%= image_tag "#{pub.image}",id:"card_image" %>
+        <div class="card-body">
+          <p class="topic_genre"><i class="fas fa-hashtag"> <%= pub.genre %></i></p>
+          <p class="topic_title"><%= pub.title %></p>
+          <p class="topic_shop_name"><i class="fas fa-store"> <%= pub.shop.name %></i></p>
+          <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= pub.shop.address %></p>
+          <p class="topic_day"><%= pub.created_at.to_s(:datetime_jp) %></p>
+        </div>
+        </div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="topic_page">
+  <%= paginate @pubs %>
+</div>

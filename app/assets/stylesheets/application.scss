@@ -175,3 +175,52 @@ header img{
   margin: 0 20px;
   color: white;
 }
+
+
+
+// リンクの詳細
+.link_list h1{
+  text-align: center;
+}
+
+
+
+// 掲載店
+.shop_content h1{
+  text-align: center;
+}
+.shop_content a{
+  color: black;
+}
+.shop_content a:hover{
+  text-decoration: none;
+}
+.shop_content .card{
+  border: solid 1px black;
+  width: 380px;
+  height: 490px;
+  margin: 20px;
+}
+.shop_content .card h3{
+  text-align: center;
+}
+.shop_content .card p{
+  font-size: 10px;
+  margin: -10px 0 10px 0;
+}
+.shop_content #card_image{
+  width: 378px;
+  height: 200px;
+}
+.shop_content .card-body li{
+  margin: 7px 0;
+  list-style: none;
+  font-size: 15px;
+}
+//掲載店の詳細
+.listing_shop h1{
+  text-align: center;
+}
+.listing_shop p{
+  text-align: center;
+}
