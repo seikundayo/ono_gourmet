@@ -1,0 +1,8 @@
+<div class="input-group justify-content-center">
+<%= search_form_for @search, url: homes_path do |f| %>
+  <%= f.search_field :content_cont, placeholder:"(例)飲み放題" , type:"text", class:"topic_form"%>
+  <span class="input-group-btn">
+  <%= f.submit "検索" , class:"btn btn-warning" %>
+  </span>
+<% end %>
+</div>
