@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
   def index
-    @topics = Topic.all.page(params[:page]).per(9)
+    @search = Topic.ransack(params[:q])
+    @topics = @search.result(distinct: true).page(params[:page]).per(9)
   end
 
   def show

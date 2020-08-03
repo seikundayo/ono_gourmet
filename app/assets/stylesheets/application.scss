@@ -27,7 +27,6 @@ header img{
 }
 
 
-
 // トピック一覧
 // トピックのリンク
 .topic-list{
@@ -42,6 +41,16 @@ header img{
   color: white;
   text-decoration: none;
 }
+// トピックの検索機能のフォーム
+.topic_form{
+  padding: 5px 0;
+  width: 400px;
+}
+// トピックの検索機能のボタン
+.input-group .btn {
+  margin-bottom: 3px;
+}
+
 // トピックのaタグ
 .topic_content a{
   text-decoration: none;
