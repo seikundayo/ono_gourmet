@@ -1,5 +1,5 @@
  <%# トピック記事検索機能　%>
-<%= render "homes/search" %>
+<%= render "topics/search" %>
 
 
 <div class="topic-list">
@@ -8,11 +8,17 @@
   <%= link_to "オススメ" ,"root_path",class:"topic_tag" %>
 </div>
 
+<% if user_signed_in? %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% else %>
+  <%= link_to('Login', new_user_session_path) %>
+<% end %>
+
 <div class="topic_content">
   <div class="row">
     <% @topics.each do |topic| %>
     <div class="col-md-4">
-      <a href="/homes/<%= topic.id %>">
+      <a href="/topics/<%= topic.id %>">
       <div class="card">
       <%= image_tag "#{topic.image}",id:"card_image" %>
       <div class="card-body">
@@ -21,6 +27,9 @@
         <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
         <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p></div>
         <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
+      </div>
+      <div id="likes_<%= topic.id %>" class="like_button" >
+        <%= render partial: "topics/likes", locals: { topic: topic } %>
       </div>
       </a>
     </div>
@@ -32,4 +41,4 @@
   <%= paginate @topics %>
 </div>
 
-<%= render 'homes/bottom' %>
+<%= render 'topics/bottom' %>

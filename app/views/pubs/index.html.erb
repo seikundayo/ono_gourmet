@@ -15,6 +15,9 @@
           <p class="topic_day"><%= pub.created_at.to_s(:datetime_jp) %></p>
         </div>
         </div>
+        <div id="likes_<%= pub.id %>" class="like_button" >
+          <%= render partial: "topics/likes", locals: { topic: pub } %>
+        </div>
         </a>
       </div>
       <% end %>

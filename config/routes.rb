@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  root to: "homes#index"
-  resources :homes
+  devise_for :users
+  root to: "topics#index"
+  resources :topics do
+    resource :likes, only: [:create, :destroy, :show]
+  end
   resources :cafes, only: [:index]
   resources :lunches, only: [:index]
   resources :dinners, only: [:index]
@@ -8,4 +11,5 @@ Rails.application.routes.draw do
   resources :pubs, only: [:index]
   resources :takeouts, only: [:index]
   resources :shops, only: [:index,:show]
+  resources :like_lists, only: [:index]
 end

@@ -3,6 +3,15 @@ module ApplicationHelper
   require "redcarpet"
   require "coderay"
 
+  def bootstrap_class_for(key)
+  case key
+  when "alert"
+    "danger"
+  when "notice"
+    "info"
+  end
+end
+
   class HTMLwithCoderay < Redcarpet::Render::HTML
     def block_code(code, language)
         language = language.split(':')[0]

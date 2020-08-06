@@ -1,0 +1,5 @@
+<% if @liked_topic_ids.include?(topic.id) %>
+<%= render partial: "topics/liked", locals: { topic: topic } %>
+<% else %>
+<%= render partial: "topics/unliked", locals: { topic: topic } %>
+<% end %>
