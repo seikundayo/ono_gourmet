@@ -15,6 +15,9 @@
           <p class="topic_day"><%= lunch.created_at.to_s(:datetime_jp) %></p>
         </div>
         </div>
+        <div id="likes_<%= lunch.id %>" class="like_button" >
+          <%= render partial: "topics/likes", locals: { topic: lunch } %>
+        </div>
         </a>
       </div>
       <% end %>

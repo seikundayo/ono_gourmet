@@ -18,6 +18,12 @@ gem 'kaminari'
 gem 'redcarpet'
 gem 'coderay'
 gem 'ransack'
+gem 'devise'
+# 日本語化
+gem 'rails-i18n'
+gem 'devise-i18n'
+# Bootstrap
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,23 @@
+<h1>行ってみたいリスト</h1>
+<div class="topic_content">
+  <div class="row">
+    <% @like_lists.each do |list| %>
+    <div class="col-md-4">
+      <a href="/topics/<%= list.topic.id %>">
+      <div class="card">
+      <%= image_tag "#{list.topic.image}",id:"card_image" %>
+      <div class="card-body">
+        <p class="topic_genre"><i class="fas fa-hashtag"> <%= list.topic.genre %></i></p>
+        <p class="topic_title"><%= list.topic.title %></p>
+        <p class="topic_shop_name"><i class="fas fa-store"> <%= list.topic.shop.name %></i></p>
+        <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= list.topic.shop.address %></p></div>
+        <p class="topic_day"><%= list.topic.created_at.to_s(:datetime_jp) %></p>
+      </div>
+      <div id="likes_<%= list.topic.id %>" class="like_button" >
+        <%= render partial: "topics/likes", locals: { topic: list.topic } %>
+      </div>
+      </a>
+    </div>
+    <% end %>
+  </div>
+</div>

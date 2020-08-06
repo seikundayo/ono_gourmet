@@ -12,14 +12,15 @@
 
   <body>
   <header>
-    <%= render 'homes/header' %>
-    <%= render 'homes/header_image' %>
+    <%= render 'topics/header' %>
+    <%= render 'topics/header_image' %>
   </header>
   <main>
+    <%= render partial: "layouts/flash" %>
     <%= yield %>
   </main>
   <footer>
-    <%= render 'homes/footer' %>
+    <%= render 'topics/footer' %>
   </footer>
 </body>
 </html>

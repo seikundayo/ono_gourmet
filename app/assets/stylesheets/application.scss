@@ -1,5 +1,23 @@
 @import "bootstrap/scss/bootstrap";
 
+// ログイン画面
+
+.container-login {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 2rem;
+}
+
+// 「ログインしました」などのフラッシュ用スタイル
+
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
 main{
   max-width: 1200px;
   margin: 30px auto;
@@ -60,7 +78,7 @@ header img{
 .topic_content .card{
   margin: 30px;
   width: 350px;
-  height: 400px;
+  height: 430px;
 }
 // トピックの画像
 .topic_content #card_image{
@@ -70,7 +88,7 @@ header img{
 // トピックのジャンル
 .topic_content .topic_genre{
   font-size: 15px;
-  margin: -10px 0 10px -10px;
+  margin: 0px 0 10px -10px;
 }
 // トピックのタイトル
 .topic_content .topic_title{
@@ -88,16 +106,20 @@ header img{
 }
 // トピックの日付
 .topic_content .topic_day{
-  margin-right: 10px;
-  text-align: right;
+  margin-left: 10px;
   font-size: 13px;
+}
+// トピックのいいね
+.topic_content .like_button{
+  position: absolute;
+  font-size: 35px;
+  margin: -80px 0px 0 340px;
 }
 // トピックのページネーション
 .topic_page{
   text-align: left;
   margin-left: 1050px;
 }
-
 
 
 // トピック詳細
