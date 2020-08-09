@@ -91,6 +91,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.4)
       concurrent-ruby (~> 1.0)
+    impressionist (2.0.0)
+      nokogiri (~> 1)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     kaminari (1.2.1)
@@ -257,6 +259,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   devise-i18n
+  impressionist
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.2)

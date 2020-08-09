@@ -1,0 +1,27 @@
+<div class="topic_content">
+  <div class="row">
+    <% @topics.each do |topic| %>
+    <div class="col-md-4">
+      <a href="/topics/<%= topic.id %>">
+      <div class="card">
+      <%= image_tag "#{topic.image}",id:"card_image" %>
+      <div class="card-body">
+        <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
+        <p class="topic_title"><%= topic.title %></p>
+        <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
+        <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p></div>
+        <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
+        <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p>
+      </div>
+      <div id="likes_<%= topic.id %>" class="like_button" >
+        <%= render partial: "topics/likes", locals: { topic: topic } %>
+      </div>
+      </a>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="topic_page">
+  <%= paginate @topics %>
+</div>

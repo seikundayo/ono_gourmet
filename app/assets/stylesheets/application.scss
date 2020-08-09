@@ -109,6 +109,12 @@ header img{
   margin-left: 10px;
   font-size: 13px;
 }
+// トピックの表示回数
+.topic_content .topic_view{
+  text-align: right;
+  margin: -35px 50px 10px 0;
+  display: inline;
+}
 // トピックのいいね
 .topic_content .like_button{
   position: absolute;

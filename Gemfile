@@ -14,16 +14,21 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pry-byebug'
 gem 'pry-doc'
 gem 'pry-rails'
+# ページネーション
 gem 'kaminari'
 gem 'redcarpet'
+# 検索機能
 gem 'coderay'
 gem 'ransack'
+# ログイン機能
 gem 'devise'
 # 日本語化
 gem 'rails-i18n'
 gem 'devise-i18n'
 # Bootstrap
 gem 'devise-bootstrap-views'
+# インプレッション数
+gem 'impressionist'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
