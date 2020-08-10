@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :takeouts, only: [:index]
   resources :shops, only: [:index,:show]
   resources :like_lists, only: [:index]
+  resources :contacts, only: [:new, :create]
 end
