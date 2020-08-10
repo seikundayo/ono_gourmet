@@ -1,0 +1,28 @@
+<h2>ご依頼フォーム</h2>
+<%= form_for @contact do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+
+
+  <div class="form-group">
+    <%= f.label :name, 'お名前(必須)' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, 'メールアドレス(必須)' %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title, 'お問い合わせ項目(必須)' %>
+    <%= f.text_field :title, class: 'form-control', placeholder:"（例）投稿依頼" %>
+  </div>
+
+ <div class="form-group">
+   <%= f.label :message, 'お問い合わせ内容(必須)' %>
+   <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+ </div>
+
+  <%= f.submit '送信' %>
+
+<% end %>

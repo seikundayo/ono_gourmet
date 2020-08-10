@@ -6,3 +6,12 @@ ja:
       previous: <i class="fas fa-angle-left"></i>
       next: <i class="fas fa-angle-right"></i>
       truncate: "..."
+  activerecord:
+    models:
+      contact: ご依頼
+    attributes:
+      contact:
+        name: お名前
+        email: メールアドレス
+        title: お問い合わせ項目
+        message: お問い合わせ内容
