@@ -1,27 +1,29 @@
-<div class="shop_content">
-  <h1>掲載店</h1>
-  <div class="row">
-    <% @shops.each do |shop| %>
-    <div class="col-md-4">
-      <a href="/shops/<%= shop.id %>">
-      <div class="card">
-        <h3><%= shop.name %></h3>
-        <%= image_tag "#{shop.shop_image}",id:"card_image" %>
-      <div class="card-body">
-        <p><%= shop.introduce %></p>
-        <li>住所：<%= shop.address %></li>
-        <li>TEL：<a href="tel:<%= shop.number %>"><%= shop.number %></a></li>
-        <li>営業時間：<%= shop.time %></li>
-        <li>定休日：<%= shop.rest %></li>
-        <li>持ち帰り：<%= shop.takeout %></li>
+<div class="topic_center">
+  <div class="shop_content">
+    <h1>掲載店</h1>
+    <div class="row">
+      <% @shops.each do |shop| %>
+      <div class="col-md-4">
+        <a href="/shops/<%= shop.id %>">
+        <div class="card">
+          <h3><%= shop.name %></h3>
+          <%= image_tag "#{shop.shop_image}",id:"card_image" %>
+        <div class="card-body">
+          <p><%= shop.introduce %></p>
+          <li>住所：<%= shop.address %></li>
+          <li>TEL：<a href="tel:<%= shop.number %>"><%= shop.number %></a></li>
+          <li>営業時間：<%= shop.time %></li>
+          <li>定休日：<%= shop.rest %></li>
+          <li>持ち帰り：<%= shop.takeout %></li>
+        </div>
       </div>
+      </a>
+     </div>
+     <% end %>
     </div>
-    </a>
-   </div>
-   <% end %>
   </div>
-</div>
 
-<div class="topic_page">
-  <%= paginate @shops %>
+  <div class="topic_page">
+    <%= paginate @shops %>
+  </div>
 </div>
