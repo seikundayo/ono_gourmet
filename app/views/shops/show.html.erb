@@ -1,24 +1,26 @@
-<div class="listing_shop">
-  <h1><%= @shops_name.shop.name %></h1>
-  <p><%= @shops_name.shop.introduce %></p>
-</div>
+<div class="topic_center">
+  <div class="listing_shop">
+    <h1><%= @shops_name.shop.name %></h1>
+    <p><%= @shops_name.shop.introduce %></p>
+  </div>
 
-<div class="topic_content">
-  <div class="row">
-    <% @shops_contents.each do |topic| %>
-    <div class="col-md-4">
-      <a href="/homes/<%= topic.id %>">
-      <div class="card">
-      <%= image_tag "#{topic.image}",id:"card_image" %>
-      <div class="card-body">
-        <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
-        <p class="topic_title"><%= topic.title %></p>
-        <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
-        <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p></div>
-        <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
+  <div class="topic_content">
+    <div class="row">
+      <% @shops_contents.each do |topic| %>
+      <div class="col-md-4">
+        <a href="/homes/<%= topic.id %>">
+        <div class="card">
+        <%= image_tag "#{topic.image}",id:"card_image" %>
+        <div class="card-body">
+          <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
+          <p class="topic_title"><%= topic.title %></p>
+          <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
+          <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p></div>
+          <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
+        </div>
+        </a>
       </div>
-      </a>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
