@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   resources :shops, only: [:index,:show]
   resources :like_lists, only: [:index]
   resources :contacts, only: [:new, :create]
+  resources :abouts, only: [:index]
+  resources :administrators, only: [:index]
+  resources :policies, only: [:index]
 end
