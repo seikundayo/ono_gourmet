@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-   impressionist :actions => [:show,:index]
+   impressionist :actions => [:show], :unique => [:impressionable_id, :ip_address]
 
   def index
     @search = Topic.ransack(params[:q])
@@ -8,6 +8,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    impressionist(@topic, nil, unique: [:session_hash])
+    @topics = Topic.all.order(impressions_count: 'DESC').limit(5)
+    impressionist(@topic, nil, unique: [:impressionable_id, :ip_address])
   end
 end
