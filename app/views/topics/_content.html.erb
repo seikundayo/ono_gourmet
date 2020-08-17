@@ -9,7 +9,8 @@
         <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
         <p class="topic_title"><%= topic.title %></p>
         <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
-        <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p></div>
+        <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p>
+      </div>
         <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
         <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p>
       </div>
