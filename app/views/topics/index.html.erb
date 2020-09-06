@@ -7,13 +7,7 @@
   <%= render "topics/search" %>
 
   <%# トピックのリンク %>
-  <%= render 'topics/list' %>
-
-  <% if user_signed_in? %>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-  <% else %>
-    <%= link_to('Login', new_user_session_path) %>
-  <% end %>
+  <%# render 'topics/list' %>
 
   <%# トピックの記事一覧 %>
   <%= render 'topics/content' %>
