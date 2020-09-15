@@ -4,10 +4,7 @@
       <div class="col-md-9">
         <p><%= @topic.created_at.to_s(:datetime_jp) %></p>
         <h2><%= @topic.title %></h2>
-        <div class="show_image">
-          <%= image_tag "#{@topic.image}",id:"top_image"%>
-        </div>
-        <p><%= markdown(@topic.content).html_safe %></p>
+        <p><%= @topic.content %></p>
         <h2>お店情報</h2>
         <div class="row">
           <div class="col-md-6">

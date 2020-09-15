@@ -27,6 +27,10 @@ main {
   flex: 1;
 }
 
+// 管理者　記事の変更・削除
+.topic_center .article_editing{
+  margin-left: 40px;
+}
 
 // コンテンツの幅指定
 .topic_center{
@@ -165,6 +169,7 @@ main {
 }
 
 
+
 // トピック詳細
 // トピック詳細の画像（親要素）
 .topic_show .show_image{
@@ -175,6 +180,22 @@ main {
   width: 100%;
   height: 600px;
 }
+
+
+.topic_show h1 {
+  font-size:30px;
+  font-weight: bold;
+  color: #ff8c19;
+  border-bottom: double 5px #FFC778;
+}
+
+
+
+
+
+
+
+
 // トピックのカード
 .topic_show .card{
   margin: 40px 0 40px 50px;

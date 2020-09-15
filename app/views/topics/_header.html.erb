@@ -1,5 +1,8 @@
 <div class="header">
   <div class="button">
+    <% if user_signed_in? && current_user.id == 1 %>
+      <%= link_to "投稿",new_topic_path, class:"btn btn-primary" %>
+    <% end %>
 
     <% if user_signed_in? %>
       <%= link_to('ログアウト', destroy_user_session_path, :method => :delete, class:"btn registar") %>
@@ -21,7 +24,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <p>行ってみたいリストを利用するにはログインが必要です。</p>
+              <p>気になるリストを利用するにはログインが必要です。</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

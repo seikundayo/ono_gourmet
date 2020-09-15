@@ -1,0 +1,69 @@
+<div class="topic_center">
+  <h2 class="text-center">新規投稿</h2>
+  <%= form_with(model: @topic, local: true) do |form| %>
+    <% if @topic.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+          <% @topic.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label "タイトル" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :title, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "ジャンル" %>
+      <br>
+      <%= form.text_field :genre %>
+      <br>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "トップ画像" %>
+      <br>
+      <%= form.file_field :image %>
+      <br>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "内容" %>
+      <br>
+      <%= form.rich_text_area :content, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "店舗番号" %>
+      <br>
+      <%= form.number_field :shop_id %>
+      <br>
+    </div>
+
+    <div class="actions">
+      <br>
+      <%= form.submit "更新" , class: "btn btn-lg btn-primary btn-block"%>
+      <br>
+    </div>
+
+    <br>
+    <h4>店舗番号一覧</h4>
+    <% @shops.each do |shop| %>
+      <nobr>
+        <%= shop.id %>：<%= shop.name %>,
+      </nobr>
+    <% end %>
+
+
+  <% end %>
+</div>
