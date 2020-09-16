@@ -1,7 +1,7 @@
 <div class="header">
   <div class="button">
     <% if user_signed_in? && current_user.id == 1 %>
-      <%= link_to "投稿",new_topic_path, class:"btn btn-primary" %>
+      <%= link_to "記事投稿",new_topic_path, class:"btn btn-primary" %>
     <% end %>
 
     <% if user_signed_in? %>

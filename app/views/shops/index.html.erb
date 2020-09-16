@@ -1,6 +1,16 @@
 <div class="topic_center">
   <div class="shop_content">
     <h1>掲載店</h1>
+    
+    <div class="input-group justify-content-center">
+    <%= search_form_for @search, url: shops_path do |f| %>
+      <%= f.search_field :name_cont , type:"text", class:"topic_form"%>
+      <span class="input-group-btn">
+      <%= f.submit "検索" , class:"btn btn-warning" %>
+      </span>
+    <% end %>
+    </div>
+
     <div class="row">
       <% @shops.each do |shop| %>
       <div class="col-md-4">
