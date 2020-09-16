@@ -2,6 +2,14 @@
   <div class="row">
     <% @topics.each do |topic| %>
     <div class="col-md-4">
+      
+      <div class="article_editing">
+        <% if user_signed_in? && current_user.id == 1 %>
+          <%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
+          <%= link_to '編集', edit_topic_path(topic), class: "btn btn-warning" %>
+        <% end %>
+      </div>
+
       <a href="/topics/<%= topic.id %>">
       <div class="card">
       <%= image_tag "#{topic.image}",id:"card_image" %>
@@ -14,6 +22,7 @@
         <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
         <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p>
       </div>
+
 
       <% if user_signed_in? %>
         <div id="likes_<%= topic.id %>" class="like_button" >
@@ -41,7 +50,6 @@
           </div>
         </div>
       <% end %>
-
 
 
 

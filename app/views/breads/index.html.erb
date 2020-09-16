@@ -1,3 +1,7 @@
 <div class="topic_center">
-  <%= render 'topics/content' %>
+  <% if @topics.length > 0 %>
+    <%= render 'topics/content' %>
+  <% else %>
+    <p>関連する記事がありません。</p>
+  <% end %>
 </div>

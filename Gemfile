@@ -31,6 +31,11 @@ gem 'devise-bootstrap-views'
 gem 'impressionist'
 # 環境変数管理
 gem 'dotenv-rails'
+# ActionText
+gem 'coffee-rails', '~> 5.0'
+gem 'image_processing', '~> 1.9.3'
+#　画像投稿
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
