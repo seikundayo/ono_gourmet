@@ -29,6 +29,7 @@ main {
   flex: 1;
 }
 
+// ヘッダーのハンバーガーメニュー
 .navbar-toggler{
   border-color: white;
   background-color: #ff8c19;
@@ -187,6 +188,20 @@ main {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // トピック詳細
 //　トピック詳細の小見出し　ActionText
 .topic_show h1 {
@@ -228,14 +243,12 @@ main {
   box-shadow: 0px 0px 0px 10px #fffde8;/*線の外側*/
   border: dashed 2px #ffb03f;/*破線*/
   border-radius: 9px;
-  margin-left: 10px;/*はみ出ないように調整*/
-  margin-right: 10px;/*はみ出ないように調整*/
-  padding: 0.5em 0.5em 0.5em 2em;
+  padding: 10px 8px 10px 8px;
 }
 .topic_show ul li{
   border-bottom: dashed 1px silver;
   line-height: 1.5;
-  padding: 0.5em 0;
+  padding: 7px 0;
 }
 
 
@@ -408,6 +421,121 @@ main {
   margin: 30px 0;
   padding: 15px;
   border: solid 1px grey;
+}
+
+
+@media screen and (max-width: 400px){
+//トピック一覧画面
+// ヘッダーの画像の大きさ
+  #header_image{
+    height: 280px;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  // トピックの検索機能のフォーム
+  .topic_form{
+    padding: 3px 0;
+    width: 250px;
+  }
+
+  // トピックのカード
+  .topic_content .card{
+    margin: 30px;
+    width: 320px;
+    height: 430px;
+  }
+  // トピックの画像
+  .topic_content #card_image{
+    width: auto;
+    height: 192px;
+  }
+  // トピックのいいね
+  .topic_content .like_button{
+    position: absolute;
+    font-size: 35px;
+    margin: -80px 0 0 305px;
+  }
+
+//ご依頼チラシ
+  .bottom_content #post{
+    margin-top: 20px;
+    width: 100%;
+  }
+// ご依頼チラシ　投稿ボタン
+  .bottom_content .btn{
+    font-size: 20px;
+    color: white;
+    margin: -230px 0 0 75px;
+    border: solid 2px white;
+    background-color: #FFB432;
+    padding: 10px 20px;
+  }
+
+
+
+
+
+
+
+// トピック詳細
+// トピック詳細のお店画像
+  .topic_show #show_shop_image{
+    max-width: 320px;
+    max-height: 500px;
+    margin-bottom:20px;
+  }
+//トピック詳細の地図の大きさ
+  .topic_show iframe{
+    width: 320px;
+  }
+//トピック詳細の文字の全体の文字の大きさ
+  .topic_show{
+    font-size: 10px;
+  }
+//トピック詳細の見出し
+  .topic_show h2 {
+    font-size: 20px;
+  }
+//トピック詳細のactiontext投稿の小見出し
+  .topic_show h1 {
+    font-size: 16px;
+  }
+
+// フッター詳細ページ
+//　フッターの全体の文字のサイズ
+  .about{
+    font-size: 12px;
+  }
+  // H1見出し
+  .about h1 {
+    font-size: 20px;
+    position: relative;
+    padding: 0.6em;
+    background: -webkit-repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
+    background: repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
+    border-radius: 7px;
+  }
+  .about h1:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #ffebbe;
+    width: 0;
+    height: 0;
+  }
+  // 運営者の役職
+  .about h3{
+    font-size: 15px;
+  }
+  // 運営者の写真の大きさ
+  .about #introduction{
+    width: 100%;
+    height: 210px;
+  }
+
+
 }
 
 
