@@ -29,17 +29,6 @@ main {
   flex: 1;
 }
 
-.navbar-toggler{
-  border-color: white;
-  background-color: #ff8c19;
-  border: solid 2px white;
-}
-
-.navbar-dark .navbar-toggler-icon {
-  background-image:none; /* この行で背景画像を無効化 */
-  background-color: white;
-}
-
 
 
 // 管理者　記事の変更・削除
@@ -58,9 +47,10 @@ main {
   width: 100%;
   margin-bottom: 25px;
 }
-
 // headerのナビゲーションバーの設定
 .header{
+  width: 100%;
+  height: 140px;
   width: 100%;
   background-color: #ff8c19;
 
@@ -132,6 +122,7 @@ main {
 }
 // トピックのカード
 .topic_content .card{
+  border:solid 1px silver;
   margin: 30px;
   width: 350px;
   height: 430px;
@@ -184,9 +175,6 @@ main {
 }
 
 
-
-
-
 // トピック詳細
 //　トピック詳細の小見出し　ActionText
 .topic_show h1 {
@@ -197,7 +185,7 @@ main {
 }
 // トピック詳細のお店画像
 .topic_show #show_shop_image{
-  max-width: 820px;
+  max-width: 100%;
   max-height: 500px;
   margin-bottom:20px;
 }
@@ -223,19 +211,27 @@ main {
 }
 // トピック詳細のお店情報
 .topic_show ul {
+  margin: 0 auto;
   list-style: none;
   background: #fffde8;
   box-shadow: 0px 0px 0px 10px #fffde8;/*線の外側*/
   border: dashed 2px #ffb03f;/*破線*/
   border-radius: 9px;
-  margin-left: 10px;/*はみ出ないように調整*/
-  margin-right: 10px;/*はみ出ないように調整*/
-  padding: 0.5em 0.5em 0.5em 2em;
+  padding: 10px 8px 10px 8px;
+  width: 800px;
 }
 .topic_show ul li{
   border-bottom: dashed 1px silver;
   line-height: 1.5;
-  padding: 0.5em 0;
+  padding: 7px 0;
+}
+// トピック詳細のお店情報　テーブル化
+.topic_show span.row1 {
+  float: left;
+}
+.topic_show span.row2 {
+  display: block;
+  margin-left: 160px;
 }
 
 
@@ -284,10 +280,7 @@ main {
 }
 
 
-
-
-
-// インスタと投稿
+// 投稿と宣伝
 .bottom_content{
   margin-top: 100px;
 }
@@ -296,18 +289,6 @@ main {
   margin-top: 20px;
   width: 500px;
 }
-// 投稿ボタン
-.bottom_content .btn{
-  font-size: 30px;
-  color: white;
-  margin: -310px 0 0 75px;
-  border: solid 2px white;
-  background-color: #FFB432;
-  padding: 30px 50px;
-}
-
-
-
 
 
 // フッター
@@ -323,16 +304,10 @@ main {
 }
 
 
-
-
-
 // リンクの詳細
 .link_list h1{
   text-align: center;
 }
-
-
-
 
 
 // 掲載店
@@ -376,9 +351,6 @@ main {
 }
 
 
-
-
-
 // フッター詳細ページ
 // H1見出し
 .about h1 {
@@ -408,6 +380,504 @@ main {
   margin: 30px 0;
   padding: 15px;
   border: solid 1px grey;
+}
+
+
+
+
+@media screen and (min-width: 1081px) {
+  // 携帯用ヘッダー
+  .mobile_header{
+    display: none;
+  }
+  .mpobile_footer{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1080px) {
+  // スマホ用ヘッダー
+  // 通常のheaderをオフにする
+    .header{
+      display: none;
+    }
+  // スマホ用ヘッダー
+    .mobile_header{
+      background-color: #ff8c19;
+      padding-top: 15px;
+    }
+  //スマホ用ヘッダー　タイトル
+    .mobile_header #top_title{
+      margin-left: 20px;
+      font-size: 40px;
+      color: white;
+      }
+  //スマホ用ヘッダー　タイトルのマウスが当たった時
+    .mobile_header #top_title:hover{
+      text-decoration: none;
+    }
+  //スマホ用ヘッダー　ログイン（親）
+    .mobile_header .login{
+
+    }
+  //スマホ用ヘッダー　記事投稿ボタン
+    .mobile_header .login .btn{
+      font-size: 15px;
+      margin: 15px 0 -5px 0;
+      padding: 5px 15px;
+    }
+  //スマホ用ヘッダー　気になるリスト
+    .mobile_header .list{
+      font-size: 15px;
+      color: white;
+      border-radius: 10px;
+      padding: 8px 10px;
+      background-color: #ff6347;
+      margin: 0px 0px 5px 60%;
+      }
+  //スマホ用ヘッダー　ログイン・新規登録ボタン
+    .mobile_header .registar{
+      font-size: 8px;
+      color: white;
+      border-radius: 10px;
+      padding: 5px 11px;
+      background-color: #d2691e;
+      }
+  //スマホ用ヘッダー　インスタマーク
+    .mobile_header #instagram{
+      font-size: 26px;
+      color: black;
+      margin: 3px 0 0 -2px;
+      }
+  //スマホ用ヘッダー　リスト・インスタ（親）
+    .mobile_header .icon_log{
+
+    }
+  //スマホ用ヘッダー　スライドコンテンツ
+    .menu-container {
+      padding-top: 5px;
+      margin: 0;
+      overflow-x: auto;
+    }
+    .menu-container .menu {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .menu-container .menu::after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+    .menu-container .menu .menu-item {
+      flex: 1;
+      white-space: nowrap;
+    }
+    .menu-container .menu .menu-item a {
+      background: #ff8c19;
+      border: 1px solid white;
+      border-right: none;
+      color: white;
+      display: block;
+      min-width: 150px;
+      padding: 0.6em 0.4em;
+      text-align: center;
+      text-decoration: none;
+    }
+    .menu-container .menu .menu-item a:hover {
+      background: #c44806;
+    }
+    .menu-container .menu .menu-item:last-child a {
+      border-right: 1px solid #c44806;
+    }
+
+
+
+    .footer_contents{
+      display: none;
+    }
+
+    // フッター
+      .mpobile_footer{
+        width: 100%;
+        background-color:#ff8c19;
+        padding: 12px 0;
+      }
+      .mpobile_footer ul{
+        margin-bottom: 0;
+        display:block;
+        font-size: 14px;
+        text-align: center;
+        padding: 0;
+        color: white;
+        list-style: none;
+      }
+      .mpobile_footer ul li{
+        display: inline-block;
+      }
+      .mpobile_footer ul li a{
+        padding: 0 6px;
+        color: white;
+      }
+
+}
+
+
+@media screen and (max-width: 600px){
+// 全体の幅
+  .topic_center{
+    margin: 10px;
+  }
+  .footer_contents{
+    display: none;
+  }
+
+
+
+// スマホ用ヘッダー
+// 通常のheaderをオフにする
+  .header{
+    display: none;
+  }
+// スマホ用ヘッダー
+  .mobile_header{
+    background-color: #ff8c19;
+    padding-top: 15px;
+  }
+//スマホ用ヘッダー　タイトル
+  .mobile_header #top_title{
+    margin-left: 20px;
+    font-size: 40px;
+    color: white;
+    }
+//スマホ用ヘッダー　タイトルのマウスが当たった時
+  .mobile_header #top_title:hover{
+    text-decoration: none;
+  }
+//スマホ用ヘッダー　ログイン（親）
+  .mobile_header .login{
+    margin: -85px 0 55px 250px;
+  }
+//スマホ用ヘッダー　記事投稿ボタン
+  .mobile_header .login .btn{
+    font-size: 10px;
+    margin: 15px 0 -5px 0;
+    padding: 5px 5px;
+  }
+//スマホ用ヘッダー　気になるリスト
+  .mobile_header .list{
+    font-size: 12px;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 10px;
+    background-color: #ff6347;
+    margin: 0px 0px 5px 60%;
+    }
+//スマホ用ヘッダー　ログイン・新規登録ボタン
+  .mobile_header .registar{
+    font-size: 8px;
+    color: white;
+    border-radius: 10px;
+    padding: 5px 11px;
+    background-color: #d2691e;
+    }
+//スマホ用ヘッダー　インスタマーク
+  .mobile_header #instagram{
+    font-size: 26px;
+    color: black;
+    margin: 3px 0 0 -2px;
+    }
+//スマホ用ヘッダー　リスト・インスタ（親）
+  .mobile_header .icon_log{
+    margin: -55px 0 0 0;
+  }
+//スマホ用ヘッダー　スライドコンテンツ
+  .menu-container {
+    padding-top: 5px;
+    margin: 0;
+    overflow-x: auto;
+  }
+  .menu-container .menu {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .menu-container .menu::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+  .menu-container .menu .menu-item {
+    flex: 1;
+    white-space: nowrap;
+  }
+  .menu-container .menu .menu-item a {
+    background: #ff8c19;
+    border: 1px solid white;
+    border-right: none;
+    color: white;
+    display: block;
+    min-width: 150px;
+    padding: 0.6em 0.4em;
+    text-align: center;
+    text-decoration: none;
+  }
+  .menu-container .menu .menu-item a:hover {
+    background: #c44806;
+  }
+  .menu-container .menu .menu-item:last-child a {
+    border-right: 1px solid #c44806;
+  }
+
+
+
+//トピック一覧画面
+// ヘッダーの画像の大きさ
+  #header_image{
+    height: 280px;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  .header h3{
+    font-size: 20px;
+  }
+// トピックの検索機能のフォーム
+  .topic_form{
+    padding: 3px 0;
+    width: 60%;
+  }
+// トピックのカード
+  .topic_content .card{
+    margin: 20px auto;
+    padding: 0;
+    font-size: 10px;
+    width: 90%;
+    height: 350px;
+  }
+// トピックの画像
+  .topic_content #card_image{
+    width: 100%;
+    height: 172px;
+  }
+// トピックのジャンル
+  .topic_content .topic_genre{
+    font-size: 12px;
+    margin: -15px 0 5px -10px;
+  }
+// トピックのタイトル
+  .topic_content .topic_title{
+    margin-left:-10px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+// トピックの店の名前
+  .topic_content .topic_shop_name{
+    margin-left:-10px;
+    margin-top: 8px;
+    font-size: 10px;
+  }
+// トピックの住所
+  .topic_content .topic_address{
+    margin-left:-10px;
+    font-size: 10px;
+  }
+// トピックの日付
+  .topic_content .topic_day{
+    margin-left: 10px;
+    font-size: 13px;
+  }
+// トピックの表示回数
+  .topic_content .topic_view{
+    font-size: 15px;
+    text-align: right;
+    margin: -30px 45px 0 0;
+    display: inline;
+  }
+// トピックのいいね
+  .topic_content .like_button{
+    margin: 0 auto;
+    position: absolute;
+    font-size: 32px;
+    margin: -60px 0 0 77%;
+  }
+// トピックのページネーション
+  .topic_page{
+    text-align: left;
+    margin-left: 1050px;
+  }
+
+
+
+//ご依頼チラシ
+  .bottom_content #post{
+    margin-top: 20px;
+    width: 100%;
+  }
+
+
+
+// トピック詳細
+// トピック詳細のお店画像
+  .topic_show #show_shop_image{
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 500px;
+    margin-bottom:20px;
+  }
+//トピック詳細の地図の大きさ
+  .topic_show iframe{
+    width: 100%;
+    height: 290px;
+  }
+//トピック詳細の文字の全体の文字の大きさ
+  .topic_show{
+    font-size: 10px;
+  }
+  .topic_show ul{
+    margin: 0 auto;
+    width: 90%;
+  }
+//トピック詳細の見出し
+  .topic_show h2 {
+    font-size: 20px;
+  }
+//トピック詳細のactiontext投稿の小見出し
+  .topic_show h1 {
+    font-size: 16px;
+  }
+//トピック人気ランキング　カード
+  .topic_show .card{
+    margin: 0 auto;
+    width: 250px;
+  }
+  .topic_show h4{
+    text-align: center;
+    margin: 30px 0 15px 0;
+  }
+// トピックの順位
+  .topic_show h3{
+    width: 200px;
+    margin:20px auto;
+    border: solid 1px black;
+    border-radius: 20px;
+  }
+
+//トピック画像
+  .topic_show #card_image{
+    width: 100%;
+    height: 150px;
+  }
+
+
+
+// 掲載店
+  .shop_content h1{
+    font-size: 20px;
+    text-align: center;
+  }
+  .shop_content a{
+    color: black;
+  }
+  .shop_content a:hover{
+    text-decoration: none;
+  }
+  .shop_content .card{
+    border: solid 1px black;
+    width: 290px;
+    height: 380px;
+    margin: 20px;
+  }
+  .shop_content .card h3{
+    text-align: center;
+    font-size: 20px;
+  }
+  .shop_content .card p{
+    font-size: 5px;
+    margin: -10px 0 10px 0;
+  }
+  .shop_content #card_image{
+    width: 100%;
+    height: 150px;
+  }
+  .shop_content .card-body li{
+    margin: 7px 0;
+    list-style: none;
+    font-size: 10px;
+  }
+//掲載店の詳細
+  .listing_shop h1{
+    text-align: center;
+  }
+  .listing_shop p{
+    text-align: center;
+  }
+
+
+
+// フッター詳細ページ
+//　フッターの全体の文字のサイズ
+  .about{
+    font-size: 12px;
+  }
+// H1見出し
+  .about h1 {
+    font-size: 20px;
+    position: relative;
+    padding: 0.6em;
+    background: -webkit-repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
+    background: repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
+    border-radius: 7px;
+  }
+  .about h1:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #ffebbe;
+    width: 0;
+    height: 0;
+  }
+// 運営者の役職
+  .about h3{
+    font-size: 15px;
+  }
+// 運営者の写真の大きさ
+  .about #introduction{
+    width: 100%;
+    height: 210px;
+  }
+
+
+
+// フッター
+  .mpobile_footer{
+    width: 100%;
+    background-color:#ff8c19;
+    padding: 12px 0;
+  }
+  .mpobile_footer ul{
+    margin-bottom: 0;
+    display:block;
+    font-size: 10px;
+    transform: scale(0.4);
+    padding: 0;
+    color: white;
+    list-style: none;
+  }
+  .mpobile_footer ul li{
+    display: inline-block;
+  }
+  .mpobile_footer ul li a{
+    padding: 0 4px;
+    color: white;
+  }
+
+
 }
 
 

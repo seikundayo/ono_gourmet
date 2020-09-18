@@ -1,12 +1,11 @@
 <div class="topic_center">
   <div class="shop_content">
     <h1>掲載店</h1>
-    
     <div class="input-group justify-content-center">
     <%= search_form_for @search, url: shops_path do |f| %>
       <%= f.search_field :name_cont , type:"text", class:"topic_form"%>
       <span class="input-group-btn">
-      <%= f.submit "検索" , class:"btn btn-warning" %>
+        <button type="submit" class="btn btn-warning"><i class="fa fa-search" aria-hidden="true"></i></button>
       </span>
     <% end %>
     </div>
@@ -20,20 +19,24 @@
           <%= image_tag "#{shop.shop_image}",id:"card_image" %>
         <div class="card-body">
           <p><%= shop.introduce %></p>
-          <li>住所：<%= shop.address %></li>
-          <li>TEL：<a href="tel:<%= shop.number %>"><%= shop.number %></a></li>
-          <li>営業時間：<%= shop.time %></li>
-          <li>定休日：<%= shop.rest %></li>
-          <li>持ち帰り：<%= shop.takeout %></li>
+          <li><i class="fas fa-map-marker-alt"></i>　<%= shop.address %></li>
+          <li><i class="fas fa-phone-alt"></i>　<a href="tel:<%= shop.number %>"><%= shop.number %></a></li>
+          <li><i class="fas fa-clock"></i>　<%= shop.time %></li>
+          <li><i class="fas fa-store-alt-slash"></i>　<%= shop.rest %></li>
+          <li><i class="fas fa-sign-out-alt"></i>　<%= shop.takeout %></li>
         </div>
       </div>
       </a>
      </div>
      <% end %>
     </div>
-  </div>
 
-  <div class="topic_page">
-    <%= paginate @shops %>
   </div>
+</div>
+
+
+<div class="paginate-container">
+    <div class="mx-auto" style="width: 100px;">
+      <%= paginate @shops %>
+    </div>
 </div>
