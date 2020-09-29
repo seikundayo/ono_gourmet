@@ -4,6 +4,8 @@
       <div class="col-md-9">
         <p><%= @topic.created_at.to_s(:datetime_jp) %></p>
         <h2><%= @topic.title %></h2>
+
+
         <p><%= @topic.content %></p>
         <h2>お店情報</h2>
         <div class="row">
@@ -19,7 +21,21 @@
               <iframe src="<%= @topic.shop.map %>" <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3273.9637811979896!2d134.93509731566832!3d34.857137382330706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35552de92e9631f1%3A0x80fe880b602b0b19!2z5ZKM5rCRIOWwj-mHjuW6lw!5e0!3m2!1sja!2sjp!4v1595936972236!5m2!1sja!2sjp" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </ul>
         </div>
+        <div class="sns_button">
+          <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button", id: "facebook" do %>
+            <i class="fab fa-facebook-f"> シェア</i>
+          <% end %>
+          <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button", id: "twitter" do %>
+            <i class="fab fa-twitter"> ツイート</i>
+          <% end %>
+          <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button" , id: "line" do %>
+            <i class="fab fa-line"> 送る</i>
+          <% end %>
+        </div>
+
       </div>
+
+
 
       <div class="col-md-3">
         <h4>人気記事ランキンング</h4>

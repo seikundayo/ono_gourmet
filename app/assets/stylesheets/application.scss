@@ -183,6 +183,30 @@ main {
   color: #ff8c19;
   border-bottom: double 5px #FFC778;
 }
+//　トピック詳細のSNS拡散ボタン（親）
+.topic_show .sns_button{
+  margin-top: 30px;
+  font-size: 20px;
+}
+//　トピック詳細のSNS拡散ボタン（子）
+.topic_show .sns_button .button{
+  color: white;
+  border-radius: 5px;
+  padding: 10px 25px;
+  margin-left: 10px;
+}
+//　トピック詳細のSNS拡散ボタン　Facebook
+.topic_show .sns_button #facebook{
+  background-color: #3B5998;
+}
+//　トピック詳細のSNS拡散ボタン　Twitter
+.topic_show .sns_button #twitter{
+  background-color: #00acee;
+}
+//　トピック詳細のSNS拡散ボタン　LINE
+.topic_show .sns_button #line{
+  background-color: #00B900;
+}
 // トピック詳細のお店画像
 .topic_show #show_shop_image{
   max-width: 100%;
@@ -721,6 +745,18 @@ main {
 
 
 // トピック詳細
+//　トピック詳細のSNS拡散ボタン（親）
+.topic_show .sns_button{
+  margin-top: 30px;
+  font-size: 10px;
+}
+//　トピック詳細のSNS拡散ボタン（子）
+.topic_show .sns_button .button{
+  color: white;
+  border-radius: 5px;
+  padding: 10px 17px;
+  margin-left: 10px;
+}
 // トピック詳細のお店画像
   .topic_show #show_shop_image{
     margin: 0 auto;
