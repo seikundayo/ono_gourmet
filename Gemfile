@@ -22,6 +22,7 @@ gem 'coderay'
 gem 'ransack'
 # ログイン機能
 gem 'devise'
+gem 'omniauth-twitter'
 # 日本語化
 gem 'rails-i18n'
 gem 'devise-i18n'
@@ -36,6 +37,7 @@ gem 'coffee-rails', '~> 5.0'
 gem 'image_processing', '~> 1.9.3'
 #　画像投稿
 gem 'carrierwave'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

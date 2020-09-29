@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_114500) do
+ActiveRecord::Schema.define(version: 2020_09_28_080831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,22 @@ ActiveRecord::Schema.define(version: 2020_09_07_114500) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "manager_topics", force: :cascade do |t|
+    t.string "title"
+    t.text "comment"
+    t.bigint "manager_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["manager_id"], name: "index_manager_topics_on_manager_id"
+  end
+
+  create_table "managers", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "number"
@@ -125,10 +141,14 @@ ActiveRecord::Schema.define(version: 2020_09_07_114500) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "manager_topics", "managers"
   add_foreign_key "topics", "shops"
 end
