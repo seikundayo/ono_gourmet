@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :topics do
     resource :likes, only: [:create, :destroy, :show]
   end
+  resources :manager_topics
   resources :cafes, only: [:index]
   resources :lunches, only: [:index]
   resources :dinners, only: [:index]

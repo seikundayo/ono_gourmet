@@ -9,9 +9,39 @@ ja:
   activerecord:
     models:
       contact: ご依頼
+      topic: 記事
+      shop: 店舗情報
+      manager_topic: 店長オススメ店
+      manager: 店長
     attributes:
       contact:
         name: お名前
         email: メールアドレス
         title: お問い合わせ項目
         message: お問い合わせ内容
+      topic:
+        title: タイトル
+        genre: ジャンル
+        image: トップ画像
+        shop_id: 店舗番号
+        content: 内容
+      shop:
+        name: 店舗名
+        number: 電話番号
+        address: 住所
+        access: アクセス
+        time: 営業時間
+        rest: 定休日
+        takeout: テイクアウト
+        map: マップ
+        introduce: 一言紹介
+        shop_image: 店舗画像
+      manager_topic:
+        title: タイトル
+        content: 内容
+        word: 店長から一言
+        shop_id: 店舗番号
+        manager_id: 店長番号
+      manager:
+        manager_name: 名前
+        manager_image: 画像

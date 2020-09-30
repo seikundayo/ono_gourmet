@@ -20,6 +20,8 @@
   @extend .alert-danger;
 }
 
+
+
 body {
   display: flex;
   flex-flow: column;
@@ -28,6 +30,15 @@ body {
 main {
   flex: 1;
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,14 +134,15 @@ main {
 // トピックのカード
 .topic_content .card{
   border:solid 1px silver;
-  margin: 30px;
+  margin: 30px 0 20px 0;
   width: 350px;
   height: 430px;
 }
 // トピックの画像
 .topic_content #card_image{
+  border-radius: 2px 2px 0 0;
   width: auto;
-  height: 192px;
+  height: 200px;
 }
 // トピックのジャンル
 .topic_content .topic_genre{
@@ -166,7 +178,7 @@ main {
 .topic_content .like_button{
   position: absolute;
   font-size: 35px;
-  margin: -80px 0px 0 340px;
+  margin: -67px 0px 0 310px;
 }
 // トピックのページネーション
 .topic_page{
@@ -302,6 +314,102 @@ main {
   width: 200px;
   height: 150px;
 }
+
+
+//店長オススメ店一覧
+.manager_topic a{
+  text-decoration: none;
+  color: black;
+}
+.manager_topic .card{
+  border: solid 2px silver;
+  width: 312px;
+  height: 315px;
+  margin: 20px 0;
+}
+.manager_topic #card_image{
+  border-radius: 2px 2px 0 0;
+  width: 308px;
+  height: 200px;
+}
+.manager_topic h5{
+  font-size: 15px;
+}
+.manager_topic h4{
+  text-align: center;
+  font-size: 28px;
+  border-bottom: double 5px #FFC778;
+}
+
+//店長オススメ店詳細
+// 吹き出し
+.talk {
+margin: 50px 0 40px 0;
+
+}
+
+.talk figure #word {
+width: 100%;
+height: 100%;
+border: 2px solid #ff7f50;
+border-radius: 50%;
+margin: 0;
+}
+/* 画像の下のテキスト */
+.talk-imgname {
+padding: 5px 0 0;
+font-size: 10px;
+text-align: center;
+}
+p.talk-text {
+margin: 0 0 8px;
+}
+p.talk-text:last-child {
+margin-bottom: 0px;
+}
+/* 回り込み解除 */
+.talk:after,.talk:before {
+clear: both;
+content: "";
+display: block;
+}
+/* 左画像 */
+.talk-Limg {
+margin-left: 4px;
+margin-top: -1px;
+float: left;
+width: 60px;
+height: 60px;
+}
+/* 左からの吹き出しテキスト */
+.talk-Ltxt {
+color: #444;
+position: relative;
+margin-left: 100px;
+padding: 1.2em;
+border: 3px solid #ff7f50;
+background-color: #fff;
+border-radius: 5px;
+}
+/* 左の三角形を作る */
+.talk-Ltxt:before {
+position: absolute;
+content: '';
+border: 10px solid transparent;
+border-right: 10px solid #ff7f50;
+top: 15px;
+left: -20px;
+}
+.talk-Ltxt:after {
+position: absolute;
+content: '';
+border: 10px solid transparent;
+border-right: 10px solid #fff;
+top: 15px;
+left: -16px;
+}
+
+
 
 
 // 投稿と宣伝
@@ -552,7 +660,7 @@ main {
 @media screen and (max-width: 600px){
 // 全体の幅
   .topic_center{
-    margin: 10px;
+    margin: 0 10px;
   }
   .footer_contents{
     display: none;
