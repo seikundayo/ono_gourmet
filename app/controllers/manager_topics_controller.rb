@@ -1,44 +1,42 @@
-class TopicsController < ApplicationController
-   impressionist :actions => [:show], :unique => [:impressionable_id, :ip_address]
-
+class ManagerTopicsController < ApplicationController
   def index
-    @search = Topic.ransack(params[:q])
-    @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
+    @manager_topics = ManagerTopic.all.order(created_at: :desc).page(params[:page]).per(9)
   end
 
   def show
-    @topic = Topic.find(params[:id])
+    @manager_topic = ManagerTopic.find(params[:id])
     @topics = Topic.all.order(impressions_count: 'DESC').limit(5)
-    impressionist(@topic, nil, unique: [:impressionable_id, :ip_address])
   end
 
   def new
     if user_signed_in? && current_user.id == 1
-      @topic = Topic.new
+      @topic = ManagerTopic.new
+      @managers = Manager.all
       @shops = Shop.all
     else
-      @search = Topic.ransack(params[:q])
-      @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
+      @manager_topics = ManagerTopic.all.order(created_at: :desc).page(params[:page]).per(9)
       render action: :index
     end
   end
 
   def edit
-    @topic = Topic.find(params[:id])
+    @topic = ManagerTopic.find(params[:id])
+    @managers = Manager.all
     @shops = Shop.all
   end
 
   def destroy
-    @topic = Topic.find(params[:id])
+    @topic = ManagerTopic.find(params[:id])
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to manager_topics_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def update
-      @topic = Topic.find(params[:id])
+      @topic = ManagerTopic.find(params[:id])
+      @managers = Manager.all
       @shops = Shop.all
       respond_to do |format|
       if @topic.update(topic_params)
@@ -52,7 +50,8 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
+    @topic = ManagerTopic.new(topic_params)
+    @managers = Manager.all
     @shops = Shop.all
     respond_to do |format|
       if @topic.save
@@ -69,7 +68,8 @@ class TopicsController < ApplicationController
   private
 
     def topic_params
-      params.require(:topic).permit(:title, :genre, :content, :shop_id, :image)
+      params.require(:manager_topic).permit(:title, :content, :word, :shop_id, :manager_id)
     end
+
 
 end

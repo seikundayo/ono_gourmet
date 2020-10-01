@@ -1,0 +1,96 @@
+<div class="topic_center">
+  <h2 class="text-center">店長オススメ新規投稿</h2>
+  <%= form_with(model: @topic, local: true) do |form| %>
+  <%= render 'layouts/error_messages', model: form.object %>
+
+
+    <div class="field">
+      <%= form.label "タイトル" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :title, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "内容" %>
+      <br>
+      <%= form.rich_text_area :content %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "店長から一言",class: "text-center" %>
+      <br>
+      <%= form.text_area :word, class: "form-control" %>
+      <br>
+      <br>
+    </div>
+
+
+    <div class="field">
+      <%= form.label "店舗番号" %>
+      <br>
+      <%= form.number_field :shop_id %>
+      <br>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "店長番号" %>
+      <br>
+      <%= form.number_field :manager_id %>
+      <br>
+      <br>
+    </div>
+
+    <div class="actions">
+      <br>
+      <%= form.submit "投稿" , class: "btn btn-lg btn-primary btn-block"%>
+      <br>
+    </div>
+
+    <br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h4 style="text-align:center;">店舗番号一覧</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">店舗番号</th>
+                <th scope="col">店舗名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @shops.each do |shop| %>
+              <tr>
+                <th scope="row"><%= shop.id %></th>
+                <td><%= shop.name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-6">
+      <h4 style="text-align:center;">店長番号一覧</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">店長番号</th>
+                <th scope="col">店長名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @managers.each do |manager| %>
+              <tr>
+                <th scope="row"><%= manager.id %></th>
+                <td><%= manager.manager_name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+  <% end %>
+</div>
