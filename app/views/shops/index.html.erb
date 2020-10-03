@@ -13,6 +13,13 @@
     <div class="row">
       <% @shops.each do |shop| %>
       <div class="col-md-4">
+        <div class="article_editing">
+          <% if user_signed_in? && current_user.id == 1 %>
+            <%= link_to '削除', shop, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
+            <%= link_to '編集', edit_shop_path(shop), class: "btn btn-warning" %>
+          <% end %>
+        </div>
+
         <a href="/shops/<%= shop.id %>">
         <div class="card">
           <h3><%= shop.name %></h3>

@@ -34,8 +34,8 @@ ja:
         time: 営業時間
         rest: 定休日
         takeout: テイクアウト
-        map: マップ
-        introduce: 一言紹介
+        map: Googleマップ
+        introduce: 店舗紹介文
         shop_image: 店舗画像
       manager_topic:
         shop: 店舗番号
