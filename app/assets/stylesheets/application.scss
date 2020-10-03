@@ -483,6 +483,27 @@ left: -16px;
 }
 
 
+//　管理者画面
+//一覧
+.management{
+  padding: 10px;
+}
+.management h2{
+  margin: 20px 0;
+}
+.management ul{
+  margin-bottom: 40px;
+}
+.management li{
+  list-style: none;
+  display: inline;
+  margin: 0 10px;
+}
+.management tr{
+  font-size: 10px;
+}
+
+
 // フッター詳細ページ
 // H1見出し
 .about h1 {

@@ -1,0 +1,113 @@
+<div class="management">
+
+  <h2 class="text-center">管理者画面</h2>
+  <div class="text-center">
+    <ul>
+      <li><%= link_to "記事投稿",new_topic_path, class:"btn btn-info" %></li>
+      <li><%= link_to "店長オススメ投稿",new_manager_topic_path, class:"btn btn-info" %></li>
+      <li><%= link_to "店長情報登録",new_manager_path, class:"btn btn-info" %></li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <h4 style="text-align:center;">記事一覧</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">タイトル</th>
+            <th scope="col">店舗名</th>
+            <th scope="col">表示回数</th>
+            <th scope="col">詳細</th>
+            <th scope="col">編集</th>
+            <th scope="col">削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @topics.each do |topic| %>
+          <tr>
+              <th scope="row"><%= topic.id %></th>
+              <td><%= topic.title %></td>
+              <td><%= topic.shop.name %></td>
+              <td><%= topic.impressionist_count %></td>
+              <td><a href="/topics/<%= topic.id %>">詳細</a></td>
+              <td><%= link_to '編集', edit_topic_path(topic), class: "btn btn-warning" %></td>
+              <td><%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <h4 style="text-align:center;">店長オススメ店</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">タイトル</th>
+                <th scope="col">店長</th>
+                <th scope="col">オススメ店</th>
+                <th scope="col">詳細</th>
+                <th scope="col">編集</th>
+                <th scope="col">削除</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @manager_topics.each do |manager_topic| %>
+                <tr>
+                  <th scope="row"><%= manager_topic.id %></th>
+                  <td><%= manager_topic.title %></td>
+                  <td><%= manager_topic.manager.manager_name %></td>
+                  <td><%= manager_topic.shop.name %></td>
+                  <td><a href="/manager_topics/<%= manager_topic.id %>">詳細</a></td>
+                  <td><%= link_to '編集', edit_manager_topic_path(manager_topic), class: "btn btn-warning" %></td>
+                  <td><%= link_to '削除', manager_topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-3">
+      <h4 style="text-align:center;">店舗番号一覧</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">店舗番号</th>
+                <th scope="col">店舗名</th>
+                <th scope="col">詳細</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @shops.each do |shop| %>
+              <tr>
+                <th scope="row"><%= shop.id %></th>
+                <td><%= shop.name %></td>
+                <td><a href="/shops/<%= shop.id %>">詳細</a></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-3">
+      <h4 style="text-align:center;">店長番号一覧</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">店長番号</th>
+                <th scope="col">店長名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @managers.each do |manager| %>
+              <tr>
+                <th scope="row"><%= manager.id %></th>
+                <td><%= manager.manager_name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+    </div>
+  </div>
+
+</div>
