@@ -13,9 +13,13 @@ class TopicsController < ApplicationController
   end
 
   def new
-    if user_signed_in? && current_user.id == 1
-      @topic = Topic.new
-      @shops = Shop.all
+    if user_signed_in? && current_user.admin == true
+        @topic = Topic.new
+        @shops = Shop.all
+      if current_user.pro_id > 0
+        @user = current_user
+        @user_shop = @user.pro_id
+      end
     else
       @search = Topic.ransack(params[:q])
       @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
@@ -26,6 +30,10 @@ class TopicsController < ApplicationController
   def edit
     @topic = Topic.find(params[:id])
     @shops = Shop.all
+    if current_user.pro_id > 0
+      @user = current_user
+      @user_shop = @user.pro_id
+    end
   end
 
   def destroy
@@ -54,15 +62,20 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @shops = Shop.all
-    respond_to do |format|
-      if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-        format.json { render :show, status: :created, location: @topic}
-      else
-        format.html { render :new }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
-      end
+    if current_user.pro_id > 0
+      @user = current_user
+      @user_shop = @user.pro_id
+      @topic.shop_id == @user_shop
     end
+        respond_to do |format|
+        if @topic.save
+          format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+          format.json { render :show, status: :created, location: @topic}
+        else
+          format.html { render :new }
+          format.json { render json: @topic.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
 

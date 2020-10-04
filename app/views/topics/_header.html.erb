@@ -1,7 +1,10 @@
 <div class="header">
   <div class="button">
-    <% if user_signed_in? && current_user.id == 1 %>
+    <% if user_signed_in? && current_user.admin == true && current_user.id == 1 %>
       <%= link_to "管理者画面",managements_path, class:"btn btn-primary" %>
+    <% end %>
+    <% if user_signed_in? && current_user.pro_id > 0 %>
+      <%= link_to "USER PRO管理画面",pro_users_path, class:"btn btn-primary" %>
     <% end %>
 
     <% if user_signed_in? %>
@@ -81,7 +84,7 @@
 <div class="mobile_header">
   <a id="top_title" href="/">おのグルメ</a>
   <div class="login">
-    <% if user_signed_in? && current_user.id == 1 %>
+    <% if user_signed_in? && current_user.admin == true %>
       <%= link_to "管理者画面",managements_path, class:"btn btn-primary" %>
     <% end %>
     <% if user_signed_in? %>

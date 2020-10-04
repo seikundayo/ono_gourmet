@@ -1,11 +1,11 @@
 class ShopsController < ApplicationController
   def index
     @search = Shop.ransack(params[:q])
-    @shops = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
+    @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
   end
 
   def show
-    @shops_contents = Topic.where(shop_id: params[:id])
+    @shops_contents = Topic.where(shop_id: params[:id]).order(created_at: :desc)
     @shops_name = Topic.find_by(shop_id: params[:id])
   end
 
@@ -14,7 +14,7 @@ class ShopsController < ApplicationController
       @shop = Shop.new
     else
       @search = Shop.ransack(params[:q])
-      @shops = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
+      @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
       render action: :index
     end
   end
