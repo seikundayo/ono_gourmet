@@ -13,7 +13,7 @@
     <div class="field">
       <%= form.label "ジャンル" %>
       <br>
-      <%= form.text_field :genre %>
+      <%= form.select :genre, [["カフェ", "カフェ"], ["ランチ", "ランチ"], ["ディナー", "ディナー"], ["パン", "パン"], ["居酒屋", "居酒屋"], ["テイクアウト", "テイクアウト"]], include_blank: "選択して下さい" %>
       <br>
       <br>
     </div>
@@ -33,12 +33,21 @@
       <br>
     </div>
 
+    <% if current_user.pro_id > 0 %>
+      <div class="field">
+        <%= form.hidden_field :shop_id, :value => @user_shop %>
+        <br>
+      </div>
+    <% else %>
     <div class="field">
       <%= form.label "店舗番号" %>
       <br>
       <%= form.number_field :shop_id %>
       <br>
     </div>
+    <% end %>
+
+
 
     <div class="actions">
       <br>
@@ -46,25 +55,30 @@
       <br>
     </div>
 
-    <br>
-    <h4 style="text-align:center;">店舗番号一覧</h4>
+    <% if current_user.id == 1 %>
+      <br>
+      <h4 style="text-align:center;">店舗番号一覧</h4>
 
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">店舗番号</th>
-          <th scope="col">店舗名</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @shops.each do |shop| %>
-        <tr>
-          <th scope="row"><%= shop.id %></th>
-          <td><%= shop.name %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">店舗番号</th>
+            <th scope="col">店舗名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shops.each do |shop| %>
+          <tr>
+            <th scope="row"><%= shop.id %></th>
+            <td><%= shop.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
+
+
 
   <% end %>
 </div>

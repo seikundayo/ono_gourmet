@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :administrators, only: [:index]
   resources :policies, only: [:index]
   resources :managements, only: [:index]
+  resources :pro_users, only: [:index]
 end
