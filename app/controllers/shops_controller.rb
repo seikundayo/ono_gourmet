@@ -20,7 +20,17 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    @shop = Shop.find(params[:id])
+    if user_signed_in? && current_user.id == 1
+      @shop = Shop.find(params[:id])
+    elsif user_signed_in? && current_user.pro_id > 0
+      @user = current_user
+      @user_shop = @user.pro_id
+      @shop = Shop.find(@user_shop)
+    else
+      @search = Shop.ransack(params[:q])
+      @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+      render action: :index
+    end
   end
 
   def destroy
