@@ -1,0 +1,79 @@
+<div class="topic_center">
+  <h2 class="text-center">トピック新規投稿</h2>
+  <%= form_with(model: @shop, local: true) do |form| %>
+  <%= render 'layouts/error_messages', model: form.object %>
+
+    <div class="field">
+      <%= form.label "店舗名" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :name, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "電話番号" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :number, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "住所" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :address, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "アクセス" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :access, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "営業時間" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :time, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "定休日" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :rest, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "テイクアウト" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :takeout, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "マップ" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :map, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="field">
+      <%= form.label "紹介文" ,class: "text-center"%>
+      <br>
+      <%= form.text_field :introduce, class: "form-control" %>
+      <br>
+    </div>
+
+    <div class="actions">
+      <br>
+      <%= form.submit "更新" , class: "btn btn-lg btn-primary btn-block"%>
+      <br>
+    </div>
+
+
+
+
+  <% end %>
+</div>

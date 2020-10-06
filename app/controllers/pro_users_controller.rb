@@ -9,7 +9,7 @@ class ProUsersController < ApplicationController
   end
 
    def if_not_admin
-     redirect_to topics_path unless current_user.pro_id > 0
+     redirect_to topics_path unless user_signed_in? && current_user.pro_id > 0
    end
 
 end

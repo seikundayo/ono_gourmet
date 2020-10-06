@@ -4,11 +4,11 @@ namespace :import_csv do
       desc "shop_data.csvをインポートするタスク"
 
       task shop_data: :environment do
-        list = Import.csv_data(path: "db/csv_data/shop_data.csv")
+        list = Import.csv_data(path: "db/csv_data/shop_data1.csv")
 
         puts "インポート処理を開始"
         begin
-          Shop.create!(list)
+          Shop.first_or_create!(list)
           puts "インポート完了!!"
         rescue ActiveModel::UnknownAttributeError => invalid
           puts "インポートに失敗：UnknownAttributeError"
@@ -22,7 +22,7 @@ namespace :import_csv do
 
         puts "インポート処理を開始"
         begin
-          Topic.create!(list)
+          Topic.first_or_create!(list)
           puts "インポート完了!!"
         rescue ActiveModel::UnknownAttributeError => invalid
           puts "インポートに失敗：UnknownAttributeError"
@@ -36,7 +36,7 @@ namespace :import_csv do
 
         puts "インポート処理を開始"
         begin
-          Manager.create!(list)
+          Manager.first_or_create!(list)
           puts "インポート完了!!"
         rescue ActiveModel::UnknownAttributeError => invalid
           puts "インポートに失敗：UnknownAttributeError"
