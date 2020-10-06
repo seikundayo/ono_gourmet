@@ -22,15 +22,20 @@
 
         <a href="/shops/<%= shop.id %>">
         <div class="card">
-          <h3><%= shop.name %></h3>
+          <div class="card_header">
+            <h3><%= shop.name %></h3>
+          </div>
           <%= image_tag "#{shop.shop_image}",id:"card_image" %>
         <div class="card-body">
-          <p><%= shop.introduce %></p>
-          <li><i class="fas fa-map-marker-alt"></i>　<%= shop.address %></li>
-          <li><i class="fas fa-phone-alt"></i>　<a href="tel:<%= shop.number %>"><%= shop.number %></a></li>
-          <li><i class="fas fa-clock"></i>　<%= shop.time %></li>
-          <li><i class="fas fa-store-alt-slash"></i>　<%= shop.rest %></li>
-          <li><i class="fas fa-sign-out-alt"></i>　<%= shop.takeout %></li>
+          <div class="row">
+              <ul>
+                <li><span class="row1"><i class="fas fa-map-marker-alt"></i></span><span class="row2"><%= shop.address %></span></li>
+                <li><span class="row1"><i class="fas fa-phone-alt"></i></span><a href="tel:<%= shop.number %>"><span class="row2"><%= shop.number %></span></a></li>
+                <li><span class="row1"><i class="fas fa-clock"></i></span><span class="row2"><%= shop.time %></span></li>
+                <li><span class="row1"><i class="fas fa-store-alt-slash"></i></span><span class="row2"><%= shop.rest %></span></li>
+                <li><span class="row1"><i class="fas fa-sign-out-alt"></i></span><span class="row2"><%= shop.takeout %></span></li>
+              </ul>
+          </div>
         </div>
       </div>
       </a>
@@ -38,12 +43,17 @@
      <% end %>
     </div>
 
+
+
+
+
   </div>
-</div>
+
+  <div class="paginate-container">
+      <div class="page">
+        <%= paginate @shops %>
+      </div>
+  </div>
 
 
-<div class="paginate-container">
-    <div class="mx-auto" style="width: 100px;">
-      <%= paginate @shops %>
-    </div>
 </div>

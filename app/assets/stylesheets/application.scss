@@ -259,15 +259,16 @@ main {
 .topic_show ul li{
   border-bottom: dashed 1px silver;
   line-height: 1.5;
-  padding: 7px 0;
+  padding: 10px 0;
+  min-height: 40px;
 }
 // トピック詳細のお店情報　テーブル化
-.topic_show span.row1 {
-  float: left;
-}
+// .topic_show span.row1 {
+//   float: left;
+// }
 .topic_show span.row2 {
   display: block;
-  margin-left: 160px;
+  margin-left: 140px;
 }
 
 
@@ -324,7 +325,7 @@ main {
 .manager_topic .card{
   border: solid 2px silver;
   width: 312px;
-  height: 315px;
+  height: 325px;
   margin: 20px 0;
 }
 .manager_topic #card_image{
@@ -337,8 +338,9 @@ main {
 }
 .manager_topic h4{
   text-align: center;
-  font-size: 28px;
+  font-size: 21px;
   border-bottom: double 5px #FFC778;
+  word-break: keep-all;
 }
 
 //店長オススメ店詳細
@@ -453,14 +455,55 @@ left: -16px;
   text-decoration: none;
 }
 .shop_content .card{
+  background: #fffde8;
   border: solid 1px black;
   width: 360px;
-  height: 490px;
+  height: 565px;
   margin: 20px;
 }
-.shop_content .card h3{
-  text-align: center;
+.shop_content .card .card_header{
+  min-height: 75px;
+  max-height: 75px;
 }
+.shop_content .card h3{
+  padding-top: 14px;
+  word-break: keep-all;
+  text-align: center;
+  font-size: 25px;
+}
+.shop_content ul {
+  max-height: 260px;
+  min-height: 260px;
+  margin: 0 auto;
+  list-style: none;
+  padding-left: 10px;
+  width: 100%;
+}
+.shop_content ul li{
+  border-bottom: dotted 2px #cecccd;
+  line-height: 1.5;
+  min-height: 30px;
+}
+トピック詳細のお店情報　テーブル化
+.shop_content span.row1{
+  float: left;
+}
+.shop_content span.row2 {
+  display: block;
+  word-break: keep-all;
+  margin-left: 27px;
+  margin-top: -20px;
+}
+.shop_content .row2 a{
+  display: block;
+  margin-left: 27px;
+  margin-top: -20px;
+}
+
+
+
+
+
 .shop_content .card p{
   font-size: 10px;
   margin: -10px 0 10px 0;
@@ -470,6 +513,7 @@ left: -16px;
   height: 200px;
 }
 .shop_content .card-body li{
+  word-break: normal;
   margin: 7px 0;
   list-style: none;
   font-size: 15px;
@@ -556,6 +600,14 @@ left: -16px;
   margin: 30px 0;
   padding: 15px;
   border: solid 1px grey;
+}
+
+
+//ページネーション
+.pagination {
+  margin: 20px 0;
+  font-size: 20px;
+  justify-content: center;
 }
 
 
@@ -976,7 +1028,7 @@ left: -16px;
   .shop_content .card{
     border: solid 1px black;
     width: 290px;
-    height: 380px;
+    height: 340px;
     margin: 20px;
   }
   .shop_content .card h3{
