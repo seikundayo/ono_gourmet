@@ -37,6 +37,7 @@ gem 'coffee-rails', '~> 5.0'
 gem 'image_processing', '~> 1.9.3'
 #　画像投稿
 gem 'carrierwave'
+gem 'mini_magick'
 
 
 group :development, :test do

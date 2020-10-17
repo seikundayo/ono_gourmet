@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
 
   def index
     @search = Topic.ransack(params[:q])
-    @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
+    @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def show
@@ -15,14 +15,14 @@ class TopicsController < ApplicationController
   def new
     if user_signed_in? && current_user.admin == true
         @topic = Topic.new
-        @shops = Shop.all
+        @shops = Shop.all.order(id: "ASC")
       if current_user.pro_id > 0
         @user = current_user
         @user_shop = @user.pro_id
       end
     else
       @search = Topic.ransack(params[:q])
-      @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(9)
+      @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(12)
       render action: :index
     end
   end

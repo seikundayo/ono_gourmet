@@ -11,8 +11,8 @@ class ManagerTopicsController < ApplicationController
   def new
     if user_signed_in? && current_user.id == 1
       @topic = ManagerTopic.new
-      @managers = Manager.all
-      @shops = Shop.all
+      @managers = Manager.all.order(id: :asc)
+      @shops = Shop.all.order(id: :asc)
     else
       @manager_topics = ManagerTopic.all.order(created_at: :desc).page(params[:page]).per(9)
       render action: :index
@@ -21,8 +21,8 @@ class ManagerTopicsController < ApplicationController
 
   def edit
     @topic = ManagerTopic.find(params[:id])
-    @managers = Manager.all
-    @shops = Shop.all
+    @managers = Manager.all.order(id: :asc)
+    @shops = Shop.all.order(id: :asc)
   end
 
   def destroy

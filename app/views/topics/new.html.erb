@@ -1,4 +1,5 @@
 <div class="topic_center">
+  <div class="post">
   <h2 class="text-center">トピック新規投稿</h2>
   <%= form_with(model: @topic, local: true) do |form| %>
   <%= render 'layouts/error_messages', model: form.object %>
@@ -22,6 +23,7 @@
       <%= form.label "トップ画像" %>
       <br>
       <%= form.file_field :image %>
+      <p>横：200px,縦：350pxで表示させるように設定しています。</p>
       <br>
       <br>
     </div>
@@ -81,4 +83,5 @@
 
 
   <% end %>
+  </div>
 </div>

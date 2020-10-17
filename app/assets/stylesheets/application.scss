@@ -3,25 +3,22 @@
 @import "actiontext";
 
 // ログイン画面
-
 .container-login {
   @extend .container-fluid;
   max-width: 576px;
   padding: 2rem;
 }
 
-// 「ログインしました」などのフラッシュ用スタイル
-
+// フラッシュ
 .alert-notice {
   @extend .alert-info;
 }
-
 .alert-alert {
   @extend .alert-danger;
 }
 
 
-
+//全体設定
 body {
   display: flex;
   flex-flow: column;
@@ -32,6 +29,177 @@ main {
 }
 
 
+//ハンバーガーボタン
+.el_humburger {
+  position: fixed;
+  top: 30px;
+  right: 60px;
+  width: 46px;
+  height: 25px;
+  padding-top: 1px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 0px;
+  z-index: 20;
+  cursor: pointer;
+  pointer-events: auto;
+  color: #000;
+  text-align: center;
+}
+@media screen and (max-width: 840px) {
+  .el_humburger {
+    display: block;
+    right: 0;
+    top: 0;
+    padding-top: 30px;
+    width: 70px;
+    height: 70px;}
+    #factory .el_humburger {
+      display: none;
+      }
+     }
+.el_humburger_wrapper {
+  margin-bottom: 5px;
+  width: 42px;
+  display: inline-block;
+}
+@media screen and (max-width: 840px) {
+  .el_humburger_wrapper {
+    margin-bottom: 5px;
+    width: 30px;
+    }
+  }
+.el_humburger_text {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  font-family: "游ゴシック Medium", YuGothic, "Yu Gothic", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif; }
+.js_humburgerOpen .el_humburger_text.el_humburger_text__menu {
+  display: none;
+}
+.el_humburger_text.el_humburger_text__close {
+  display: none;
+}
+.js_humburgerOpen .el_humburger_text.el_humburger_text__close {
+  display: block;
+}
+@media screen and (max-width: 840px) {
+  .el_humburger_text {
+    font-size: 10px;
+    padding-top: 2px;
+  }
+}
+@media screen and (max-width: 840px) {
+  .el_humburger_text svg path {
+    -webkit-transition: all 200ms cubic-bezier(0.16, 0.52, 0.25, 1);
+    -o-transition: all 200ms cubic-bezier(0.16, 0.52, 0.25, 1);
+    transition: all 200ms cubic-bezier(0.16, 0.52, 0.25, 1);
+    fill: #000;
+    }
+  }
+@media screen and (max-width: 840px) {
+  .js_humburgerOpen .el_humburger_text svg path {
+    fill: #000;
+    }
+  }
+.el_humburger span.el_humburger_bar {
+  display: block;
+  width: 100%;
+  margin: 0 auto 9px;
+  height: 1px;
+  background: #000;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+.el_humburger span.el_humburger_bar:last-child {
+  margin-bottom: 0;
+  }
+.js_humburgerOpen .el_humburger span.el_humburger_bar {
+  background: #000;
+}
+@media screen and (max-width: 840px) {
+  .el_humburger span.el_humburger_bar {
+    left: 0;
+    top: 0;
+    background: #000;
+    }
+  }
+.js_humburgerOpen .el_humburger span.el_humburger_bar.top {
+  -webkit-transform: translateY(9px) rotate(-45deg);
+  -ms-transform: translateY(9px) rotate(-45deg);
+  transform: translateY(9px) rotate(-45deg); }
+.js_humburgerOpen .el_humburger span.el_humburger_bar.middle {
+  opacity: 0;
+}
+.js_humburgerOpen .el_humburger span.el_humburger_bar.bottom {
+  -webkit-transform: translateY(-11px) rotate(45deg);
+  -ms-transform: translateY(-11px) rotate(45deg);
+  transform: translateY(-11px) rotate(45deg);
+}
+.el_humburgerButton.el_humburgerButton__close {
+  top: 2%;
+  right: 2%;
+ }
+.el_humburgerButton__close span.el_humburger_bar {
+  display: block;
+  width: 35px;
+  margin: 0 auto;
+  height: 4px;
+  background: #000;
+}
+.el_humburgerButton__close span.el_humburger_bar.top {
+  -webkit-transform: translateY(5px) rotate(-45deg);
+  -ms-transform: translateY(5px) rotate(-45deg);
+  transform: translateY(5px) rotate(-45deg);
+}
+.el_humburgerButton__close span.el_humburger_bar.bottom {
+  -webkit-transform: translateY(-6px) rotate(45deg);
+  -ms-transform: translateY(-6px) rotate(45deg);
+  transform: translateY(-6px) rotate(45deg);
+}
+.navi {
+  position: fixed;
+  right: 0;
+  height: 100%;
+  background-color: #fff4db;
+  width: 0;
+  z-index: 3;
+  padding-top: 100px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 600ms ease-out;
+  -o-transition: all 600ms ease-out;
+  transition: all 600ms ease-out;
+  overflow: hidden;
+}
+  .js_humburgerOpen .navi {
+    width: 300px;
+  }
+    @media screen and (max-width: 840px) {
+      .js_humburgerOpen .navi {
+        width: 50%;
+        padding: 100px 5% 0;
+        }
+      }
+.navi_item {
+  margin-bottom: 28px;
+  font-size: 20px;
+  font-family: "Marcellus", serif !important;
+  white-space: nowrap;
+  margin-left: 90px;
+}
+.navi_item a:hover{
+  text-decoration: none;
+  color: orange;
+}
+  .navi_item.op_innerLink {
+    cursor: pointer;
+   }
+  @media screen and (max-width: 840px) {
+    .navi_item {
+      margin-left: 0;
+      font-size: 18px; }
+    }
 
 
 
@@ -39,6 +207,95 @@ main {
 
 
 
+*, *:before, *:after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+ol, ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+.cp_cont {
+	height: 65vh;
+}
+.cp_offcm01 {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	display: inline-block;
+}
+/* menu */
+.cp_offcm01 .cp_menu {
+	position: fixed;
+	top: 0;
+	right: -100vw;
+	width: 250px;
+	height: 100%;
+	cursor: pointer;
+	-webkit-transition: 0.53s transform;
+	        transition: 0.53s transform;
+	-webkit-transition-timing-function: cubic-bezier(.38,.52,.23,.99);
+	        transition-timing-function: cubic-bezier(.38,.52,.23,.99);
+	background-color: #607D8B;
+	opacity: 0.8;
+}
+.cp_offcm01 .cp_menu ul {
+	marginc: 0;
+	padding: 0;
+}
+.cp_offcm01 .cp_menu li {
+	list-style: none;
+}
+.cp_offcm01 .cp_menu li a {
+	display: block;
+	padding: 20px;
+	text-decoration: none;
+	color: #ffffff;
+	border-bottom: 1px solid #ffffff;
+}
+
+.cp_offcm01 #cp_toggle01 {
+	position: absolute;
+	display: none;
+	opacity: 0;
+}
+.cp_offcm01 #cp_toggle01:checked ~ .cp_menu {
+	-webkit-transform: translateX(-100vw);
+	        transform: translateX(-100vw);
+}
+/* menu toggle */
+.cp_offcm01 #cp_toggle01 ~ label {
+	display: block;
+	padding: 0.5em;
+	cursor: pointer;
+	-webkit-transition: 0.5s transform;
+	        transition: 0.5s transform;
+	-webkit-transition-timing-function: cubic-bezier(.61,-0.38,.37,1.27);
+	        transition-timing-function: cubic-bezier(.61,-0.38,.37,1.27);
+	text-align: center;
+	color: #333333;
+}
+.cp_offcm01 #cp_toggle01:checked ~ label {
+	-webkit-transform: translateX(-250px);
+	        transform: translateX(-250px);
+}
+.cp_offcm01 #cp_toggle01 ~ label::before {
+	font-family: 'FontAwesome';
+	content: '\f0c9';
+	font-size: 2em
+}
+.cp_offcm01 #cp_toggle01:checked ~ label::before {
+	content: '\f00d';
+}
+/* contents */
+.cp_contents {
+	color: #333333;
+	text-align: center;
+}
 
 
 
@@ -54,52 +311,30 @@ main {
 }
 // ヘッダーの画像の大きさ
 #header_image{
-  height: 690px;
+  height: auto;
+  max-height: 570px;
   width: 100%;
   margin-bottom: 25px;
 }
 // headerのナビゲーションバーの設定
 .header{
   width: 100%;
-  height: 140px;
-  width: 100%;
+  height: auto;
   background-color: #ff8c19;
-
 }
 .header nav #top_title{
-  font-size: 40px;
+  font-size: 2.3vw;
 }
 .header nav a{
   color: white;
-  font-size: 20px;
+  font-size: calc(13 * ((100vw - 320px) / 1600) + 10px);
   margin-left: 30px;
 }
-.header .button{
-  text-align: right;
-  font-size: 20px;
+.header nav a:hover{
+  text-decoration: none;
+  color: #c44806;
 }
-.header .button .modal-body{
-  text-align: left;
-}
-.header .button .list{
-  color: white;
-  border-radius: 10px;
-  padding: 8px 30px;
-  background-color: #ff6347;
-  margin-right: 20px;
-}
-.header .button .registar{
-  color: white;
-  border-radius: 10px;
-  padding: 8px 30px;
-  background-color: #d2691e;
-  margin-right: 20px;
-}
-.header .button #instagram{
-  font-size: 30px;
-  color: black;
-  margin-right: 20px;
-}
+
 
 
 // トピック一覧
@@ -118,8 +353,9 @@ main {
 }
 // トピックの検索機能のフォーム
 .topic_form{
+  margin: 10px 0;
   padding: 5px 0;
-  width: 400px;
+  width: 30vw;
 }
 // トピックの検索機能のボタン
 .input-group .btn {
@@ -133,79 +369,128 @@ main {
 }
 // トピックのカード
 .topic_content .card{
+  position:relative;
   border:solid 1px silver;
-  margin: 30px 0 20px 0;
-  width: 350px;
-  height: 430px;
+  margin: 20px auto;
+  max-width: 350px;
+  max-height: 465px;
+}
+//トピックのカードのマウスが当たった時
+.topic_content .card:hover{
+  position: relative;
+  top: -3px;
+  left: 0px;
+}
+.topic_content .card .card-body{
+  height: 15vw;
+  min-height: 199px;
+  min-width: 100px;
 }
 // トピックの画像
 .topic_content #card_image{
   border-radius: 2px 2px 0 0;
-  width: auto;
-  height: 200px;
+  width: 100%;
+  max-height: 200px;
+  max-width: 350px;
+
 }
 // トピックのジャンル
 .topic_content .topic_genre{
-  font-size: 15px;
-  margin: 0px 0 10px -10px;
+  position: relative;
+  font-weight: bold ;
+  // font-size: 0.8vw;
+  font-size: calc(3 * ((100vw - 320px) / 1600) + 12px);
+}
+.topic_content .topic_genre .cafe{
+  color: #f05579;
+}
+.topic_content .topic_genre .lunch{
+  color: #f7a01e;
+}
+.topic_content .topic_genre .dinner{
+  color: #0000ff;
+}
+.topic_content .topic_genre .bread{
+  color: #c1272d;
+}
+.topic_content .topic_genre .pub{
+  color: #B455A0;
+}
+.topic_content .topic_genre .takeout{
+  color: #ff4500;
 }
 // トピックのタイトル
 .topic_content .topic_title{
-  font-size: 20px;
+  // font-size: 1.1vw;
+  font-size: calc(3 * ((100vw - 320px) / 1600) + 13px);
   font-weight: bold;
 }
 // トピックの店の名前
 .topic_content .topic_shop_name{
-  margin-top: 40px;
-  font-size: 13px;
+  position: absolute;
+  // bottom: 54px;
+  bottom: calc(24 * ((100vw - 320px) / 1600) + 33px);
+  font-size: 0.7vw;
 }
 // トピックの住所
 .topic_content .topic_address{
-  font-size: 13px;
+  position: absolute;
+  // bottom: 13px;
+  bottom: calc(7 * ((100vw - 320px) / 1600) + 6px);
+  font-size: 0.7vw;
+  word-break: keep-all;
 }
 // トピックの日付
 .topic_content .topic_day{
-  margin-left: 10px;
-  font-size: 13px;
+  position: absolute;
+  bottom: -10px;
+  left: 8px;
+  font-size: 0.7vw;
 }
 // トピックの表示回数
 .topic_content .topic_view{
-  text-align: right;
-  margin: -35px 50px 10px 0;
-  display: inline;
+  position: absolute;
+  bottom: -10px;
+  right: 70px;
+  font-size: 0.7vw;
 }
+
 // トピックのいいね
 .topic_content .like_button{
   position: absolute;
-  font-size: 35px;
-  margin: -67px 0px 0 310px;
+  font-size: 170%;
+  bottom: -7px;
+  right: 6px;
 }
-// トピックのページネーション
-.topic_page{
-  text-align: left;
-  margin-left: 1050px;
-}
+
 
 
 // トピック詳細
 //　トピック詳細の小見出し　ActionText
 .topic_show h1 {
-  font-size:30px;
+  font-size: calc(11 * ((100vw - 320px) / 1600) + 17px);
   font-weight: bold;
   color: #ff8c19;
   border-bottom: double 5px #FFC778;
 }
+//　トピック詳細のcontentsの改行
+.topic_show {
+  word-break:break-all;
+  font-size: calc(6 * ((100vw - 320px) / 1600) + 13px);
+}
 //　トピック詳細のSNS拡散ボタン（親）
 .topic_show .sns_button{
-  margin-top: 30px;
-  font-size: 20px;
+  margin-top: 10%;
+  margin: 30px auto 0 auto;
+  font-size: 1vw;
 }
 //　トピック詳細のSNS拡散ボタン（子）
 .topic_show .sns_button .button{
   color: white;
   border-radius: 5px;
-  padding: 10px 25px;
+  padding: 1.3% 4%;
   margin-left: 10px;
+  width: 100%;
 }
 //　トピック詳細のSNS拡散ボタン　Facebook
 .topic_show .sns_button #facebook{
@@ -221,78 +506,101 @@ main {
 }
 // トピック詳細のお店画像
 .topic_show #show_shop_image{
-  max-width: 100%;
-  max-height: 500px;
+  width: 100%;
+  height: auto;
   margin-bottom:20px;
 }
 // トピック詳細の地図
 .topic_show iframe{
   padding-top: 20px;
+  width: 100%;
+  height:400px;
 }
 // トピック詳細のタイトル
 .topic_show h2 {
+  font-size: calc(13 * ((100vw - 320px) / 1600) + 19px);
   position: relative;
   color: white;
   background: #ff8c19;
   line-height: 1.4;
   margin-bottom: 30px;
-  padding: 0.5em 0.5em 0.5em 1.8em;
+  padding: 10px 0 10px calc(40 * ((100vw - 320px) / 1600) + 38px);
 }
 .topic_show h2:before {
   font-family: "Font Awesome 5 Free";
   content: "\f14a";
   font-weight: 900;
   position: absolute;
-  left : 0.5em; /*左端からのアイコンまでの距離*/
+  left : 0.5em;
 }
 // トピック詳細のお店情報
 .topic_show ul {
   margin: 0 auto;
   list-style: none;
   background: #fffde8;
-  box-shadow: 0px 0px 0px 10px #fffde8;/*線の外側*/
-  border: dashed 2px #ffb03f;/*破線*/
+  box-shadow: 0px 0px 0px 5px #fffde8;
+  border: dashed 2px #ffb03f;
   border-radius: 9px;
   padding: 10px 8px 10px 8px;
-  width: 800px;
+  margin: 0 auto;
+  width: 92%;
+  height: auto;
 }
 .topic_show ul li{
+  font-size: 0.9vw;
   border-bottom: dashed 1px silver;
   line-height: 1.5;
   padding: 10px 0;
   min-height: 40px;
 }
-// トピック詳細のお店情報　テーブル化
-// .topic_show span.row1 {
-//   float: left;
-// }
 .topic_show span.row2 {
+  font-size: 1vw;
   display: block;
   margin-left: 140px;
 }
 
 
+
 // トピック詳細　人気記事ランキング
 // トピック「人気ランキング」
+.topic_show .col-md-3 a:hover{
+  text-decoration: none;
+  color: black;
+  position: relative;
+  top: -3px;
+  left: 0px;
+}
 .topic_show h4{
+  text-align: center;
   font-weight: bold;
-  margin: 40px 0 30px 60px;
-  font-size: 19px;
+  margin: 60px auto 20px auto;
+  font-size: calc(7 * ((100vw - 320px) / 1600) + 12px);
+}
+.topic_show .card #card_image{
+  border-radius: 3px 3px 0 0;
+  max-width: calc(100 * ((100vw - 320px) / 1600) + 130px);
+  max-height: calc(80 * ((100vw - 320px) / 1600) + 50px);
 }
 //トピック人気ランキング　カード
 .topic_show .card{
-  margin: 40px 0 40px 50px;
+  max-width: calc(100 * ((100vw - 320px) / 1600) + 130px);
+  max-height: calc(100 * ((100vw - 320px) / 1600) + 190px);
+  margin: 20px auto;
+  border: solid 1px gray;
 }
 // トピックの順位
 .topic_show h3{
-  margin-left: 50px;
-  border: solid 1px black;
-  border-radius: 20px;
+  margin: 0 auto;
+  border-radius: 45%;
+  max-width: 15%;
+  font-size: 12px;
+  background-color: #d2691e;
+  padding: 10px 0;
+  color: white;
 }
 // トピックのAタグ
-.topic_show a{
-  text-decoration: none;
-  color: black;
+.topic_show a:hover{
+  color: blue;
 }
 // トピックのジャンル
 .topic_show .topic_genre{
@@ -301,7 +609,8 @@ main {
 }
 // トピックの人気記事タイトル
 .topic_show .topic_title{
-  font-size: 14px;
+  // font-size: 14px;
+  font-size: calc(1 * ((100vw - 320px) / 1600) + 10px);
   font-weight: bold;
 }
 // トピックの表示回数
@@ -309,12 +618,22 @@ main {
   text-align: right;
   margin: -35px 20px 10px 0;
   display: inline;
+  font-size: 0.5vw;
 }
 //トピック画像
 .topic_show #card_image{
-  width: 200px;
-  height: 150px;
+  max-width: 100%;
+  height: auto;
 }
+.topic_show hr{
+  text-align: center;
+  margin: 30px auto;
+}
+.trix-content img{
+  width: 100%;
+  max-height: 500px;
+}
+
 
 
 //店長オススメ店一覧
@@ -324,32 +643,30 @@ main {
 }
 .manager_topic .card{
   border: solid 2px silver;
-  width: 312px;
-  height: 325px;
-  margin: 20px 0;
+  max-width: 312px;
+  max-height: 325px;
+  margin: 20px auto;
 }
 .manager_topic #card_image{
   border-radius: 2px 2px 0 0;
-  width: 308px;
-  height: 200px;
+  max-width: 308px;
+  max-height: 200px;
 }
 .manager_topic h5{
-  font-size: 15px;
+  font-size: 0.7vw;
 }
 .manager_topic h4{
   text-align: center;
-  font-size: 21px;
+  font-size: 1.2vw;
   border-bottom: double 5px #FFC778;
   word-break: keep-all;
 }
-
 //店長オススメ店詳細
 // 吹き出し
 .talk {
 margin: 50px 0 40px 0;
 
 }
-
 .talk figure #word {
 width: 100%;
 height: 100%;
@@ -413,16 +730,17 @@ left: -16px;
 
 
 
-
 // 投稿と宣伝
 .bottom_content{
-  margin-top: 100px;
+  margin: 30px auto 0 auto;
 }
 // 投稿関連
-.bottom_content #post{
-  margin-top: 20px;
-  width: 500px;
+.bottom_content .post{
+  margin: 20px 0 0 0;
+  max-width: 100%;
+  height: auto;
 }
+
 
 
 // フッター
@@ -436,14 +754,10 @@ left: -16px;
   margin: 0 20px;
   color: white;
 }
-
-
 // リンクの詳細
 .link_list h1{
   text-align: center;
 }
-
-
 // 掲載店
 .shop_content h1{
   text-align: center;
@@ -457,19 +771,23 @@ left: -16px;
 .shop_content .card{
   background: #fffde8;
   border: solid 1px black;
-  width: 360px;
-  height: 565px;
-  margin: 20px;
+  max-width: 360px;
+  max-height: 570px;
+  margin: 20px auto;
+}
+.shop_content .card #card_image{
+  width: 100%;
+  height: auto;
 }
 .shop_content .card .card_header{
-  min-height: 75px;
-  max-height: 75px;
+  min-height: calc(4 * ((100vw - 320px) / 500) + 70px);
 }
 .shop_content .card h3{
-  padding-top: 14px;
+  padding-top: 0.8vw;
   word-break: keep-all;
   text-align: center;
-  font-size: 25px;
+  // font-size: 1.3vw;
+  font-size: calc(4 * ((100vw - 320px) / 500) + 14px);
 }
 .shop_content ul {
   max-height: 260px;
@@ -487,23 +805,21 @@ left: -16px;
 トピック詳細のお店情報　テーブル化
 .shop_content span.row1{
   float: left;
+  font-size: 0.8vw;
 }
 .shop_content span.row2 {
   display: block;
+  font-size: 0.8vw;
   word-break: keep-all;
   margin-left: 27px;
   margin-top: -20px;
 }
 .shop_content .row2 a{
   display: block;
+  font-size: 1vw;
   margin-left: 27px;
   margin-top: -20px;
 }
-
-
-
-
-
 .shop_content .card p{
   font-size: 10px;
   margin: -10px 0 10px 0;
@@ -518,6 +834,9 @@ left: -16px;
   list-style: none;
   font-size: 15px;
 }
+
+
+
 //掲載店の詳細
 .listing_shop h1{
   text-align: center;
@@ -525,6 +844,32 @@ left: -16px;
 .listing_shop p{
   text-align: center;
 }
+
+
+
+//投稿画面
+.post h2{
+  font-size: 2vw;
+}
+.post select{
+  font-size: 0.8vw;
+}
+.post .field label{
+  font-size: 1vw;
+}
+.post .field input{
+  font-size: 0.8vw;
+}
+.post .field button{
+  font-size: 1vw;
+}
+.post h4{
+  font-size: 1.5vw;
+}
+.post table{
+  font-size: 0.5vw;
+}
+
 
 
 //　管理者画面
@@ -536,16 +881,37 @@ left: -16px;
   margin: 20px 0;
 }
 .management ul{
-  margin-bottom: 40px;
+  margin: 0 auto 4vw auto;
+  font-size: 1vw;
 }
 .management li{
   list-style: none;
   display: inline;
-  margin: 0 10px;
+}
+.management li a{
+  min-width: 170px;
+  margin: 0.6vw auto;
 }
 .management tr{
-  font-size: 10px;
+  font-size: 0.6vw;
 }
+
+
+
+//PROUSR画面
+.pro_user h1{
+  font-size: 3vw;
+}
+.pro_user h5{
+  font-size: 1vw;
+}
+.pro_user h4{
+  font-size: 1vw;
+}
+.pro_user table{
+  font-size: 0.8vw;
+}
+
 
 
 //　PROユーザー
@@ -571,14 +937,18 @@ left: -16px;
 }
 
 
+
 // フッター詳細ページ
 // H1見出し
 .about h1 {
   position: relative;
-  padding: 0.6em;
+  // padding: 0.6em;
+  padding: 20px 10px;
+  width: 100%;
   background: -webkit-repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
   background: repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
   border-radius: 7px;
+  font-size: calc(5 * ((100vw - 320px) / 500) + 19px);
 }
 .about h1:after {
   position: absolute;
@@ -590,10 +960,17 @@ left: -16px;
   width: 0;
   height: 0;
 }
+.about h3{
+  font-size: calc(4 * ((100vw - 320px) / 500) + 17px);
+  font-weight: bold;
+  margin-top: 10px;
+}
 // 運営者の写真の大きさ
 .about #introduction{
-  width: 500px;
-  height: 350px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 5px auto;
+  padding: 0 auto;
 }
 // プライバシーポリシーの内容を四角で囲む
 .about .content{
@@ -603,172 +980,66 @@ left: -16px;
 }
 
 
+
 //ページネーション
 .pagination {
-  margin: 20px 0;
-  font-size: 20px;
+  margin: 20px auto;
+  max-width: 100%;
+  font-size: 0.5vw;
   justify-content: center;
 }
-
-
-
-
-@media screen and (min-width: 1081px) {
-  // 携帯用ヘッダー
-  .mobile_header{
-    display: none;
-  }
-  .mpobile_footer{
-    display: none;
-  }
+.pagination li{
+  font-size: calc(4 * ((100vw - 320px) / 500) + 10px);
 }
-
-@media screen and (min-width: 601px) and (max-width: 1080px) {
-  // スマホ用ヘッダー
-  // 通常のheaderをオフにする
-    .header{
-      display: none;
-    }
-  // スマホ用ヘッダー
-    .mobile_header{
-      background-color: #ff8c19;
-      padding-top: 15px;
-    }
-  //スマホ用ヘッダー　タイトル
-    .mobile_header #top_title{
-      margin-left: 20px;
-      font-size: 40px;
-      color: white;
-      }
-  //スマホ用ヘッダー　タイトルのマウスが当たった時
-    .mobile_header #top_title:hover{
-      text-decoration: none;
-    }
-  //スマホ用ヘッダー　ログイン（親）
-    .mobile_header .login{
-
-    }
-  //スマホ用ヘッダー　記事投稿ボタン
-    .mobile_header .login .btn{
-      font-size: 15px;
-      margin: 15px 0 -5px 0;
-      padding: 5px 15px;
-    }
-  //スマホ用ヘッダー　気になるリスト
-    .mobile_header .list{
-      font-size: 15px;
-      color: white;
-      border-radius: 10px;
-      padding: 8px 10px;
-      background-color: #ff6347;
-      margin: 0px 0px 5px 60%;
-      }
-  //スマホ用ヘッダー　ログイン・新規登録ボタン
-    .mobile_header .registar{
-      font-size: 8px;
-      color: white;
-      border-radius: 10px;
-      padding: 5px 11px;
-      background-color: #d2691e;
-      }
-  //スマホ用ヘッダー　インスタマーク
-    .mobile_header #instagram{
-      font-size: 26px;
-      color: black;
-      margin: 3px 0 0 -2px;
-      }
-  //スマホ用ヘッダー　リスト・インスタ（親）
-    .mobile_header .icon_log{
-
-    }
-  //スマホ用ヘッダー　スライドコンテンツ
-    .menu-container {
-      padding-top: 5px;
-      margin: 0;
-      overflow-x: auto;
-    }
-    .menu-container .menu {
-      display: flex;
-      justify-content: space-between;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .menu-container .menu::after {
-      clear: both;
-      content: "";
-      display: block;
-    }
-    .menu-container .menu .menu-item {
-      flex: 1;
-      white-space: nowrap;
-    }
-    .menu-container .menu .menu-item a {
-      background: #ff8c19;
-      border: 1px solid white;
-      border-right: none;
-      color: white;
-      display: block;
-      min-width: 150px;
-      padding: 0.6em 0.4em;
-      text-align: center;
-      text-decoration: none;
-    }
-    .menu-container .menu .menu-item a:hover {
-      background: #c44806;
-    }
-    .menu-container .menu .menu-item:last-child a {
-      border-right: 1px solid #c44806;
-    }
-
-
-
-    .footer_contents{
-      display: none;
-    }
-
-    // フッター
-      .mpobile_footer{
-        width: 100%;
-        background-color:#ff8c19;
-        padding: 12px 0;
-      }
-      .mpobile_footer ul{
-        margin-bottom: 0;
-        display:block;
-        font-size: 14px;
-        text-align: center;
-        padding: 0;
-        color: white;
-        list-style: none;
-      }
-      .mpobile_footer ul li{
-        display: inline-block;
-      }
-      .mpobile_footer ul li a{
-        padding: 0 6px;
-        color: white;
-      }
-
+//ページネーション自体のデザイン
+.pagination li a {
+  border: none;
+  color: #696969;
+}
+//表示しているページ番号のデザイン
+.pagination .active a {
+  background-color: #ff8c19;
+}
+//表示しているページ番号のデザイン
+.pagination .active .page-link {
+  background-color: #ff8c19;
+}
+//ホバー時のデザイン
+.pagination li a:hover {
+  background-color: #c44806;
+  color: white;
+}
+//ページネーションの個々のpadding
+.pagination .page-link{
+  padding: 8px 7px;
 }
 
 
-@media screen and (max-width: 600px){
-// 全体の幅
-  .topic_center{
-    margin: 0 10px;
-  }
-  .footer_contents{
-    display: none;
-  }
+
+//フッター
+.footer-container {
+  background-color: #ff8c19;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+.mobile-footer {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-items: center;
+}
+.footer-container .footer-item{
+  font-size: calc(4 * ((100vw - 320px) / 500) + 10px);
+  color: white;
+}
+.footer-container .footer-item a:hover{
+  text-decoration: none;
+  color: #c44806;
+}
 
 
 
-// スマホ用ヘッダー
-// 通常のheaderをオフにする
-  .header{
-    display: none;
-  }
 // スマホ用ヘッダー
   .mobile_header{
     background-color: #ff8c19;
@@ -783,43 +1054,6 @@ left: -16px;
 //スマホ用ヘッダー　タイトルのマウスが当たった時
   .mobile_header #top_title:hover{
     text-decoration: none;
-  }
-//スマホ用ヘッダー　ログイン（親）
-  .mobile_header .login{
-    margin: -85px 0 55px 250px;
-  }
-//スマホ用ヘッダー　記事投稿ボタン
-  .mobile_header .login .btn{
-    font-size: 10px;
-    margin: 15px 0 -5px 0;
-    padding: 5px 5px;
-  }
-//スマホ用ヘッダー　気になるリスト
-  .mobile_header .list{
-    font-size: 12px;
-    color: white;
-    border-radius: 10px;
-    padding: 8px 10px;
-    background-color: #ff6347;
-    margin: 0px 0px 5px 60%;
-    }
-//スマホ用ヘッダー　ログイン・新規登録ボタン
-  .mobile_header .registar{
-    font-size: 8px;
-    color: white;
-    border-radius: 10px;
-    padding: 5px 11px;
-    background-color: #d2691e;
-    }
-//スマホ用ヘッダー　インスタマーク
-  .mobile_header #instagram{
-    font-size: 26px;
-    color: black;
-    margin: 3px 0 0 -2px;
-    }
-//スマホ用ヘッダー　リスト・インスタ（親）
-  .mobile_header .icon_log{
-    margin: -55px 0 0 0;
   }
 //スマホ用ヘッダー　スライドコンテンツ
   .menu-container {
@@ -845,12 +1079,13 @@ left: -16px;
   }
   .menu-container .menu .menu-item a {
     background: #ff8c19;
+    font-size: 1.5vw;
     border: 1px solid white;
     border-right: none;
     color: white;
     display: block;
     min-width: 150px;
-    padding: 0.6em 0.4em;
+    padding: 0.8em 0.4em;
     text-align: center;
     text-decoration: none;
   }
@@ -863,131 +1098,62 @@ left: -16px;
 
 
 
-//トピック一覧画面
-// ヘッダーの画像の大きさ
-  #header_image{
-    height: 280px;
-    width: 100%;
-    margin-bottom: 25px;
+@media screen and (min-width: 1110px) {
+  // 携帯用ヘッダー
+  .mobile_header{
+    display: none;
   }
-  .header h3{
-    font-size: 20px;
-  }
-// トピックの検索機能のフォーム
-  .topic_form{
-    padding: 3px 0;
-    width: 60%;
-  }
-// トピックのカード
-  .topic_content .card{
-    margin: 20px auto;
-    padding: 0;
-    font-size: 10px;
-    width: 90%;
-    height: 350px;
-  }
-// トピックの画像
-  .topic_content #card_image{
-    width: 100%;
-    height: 172px;
-  }
-// トピックのジャンル
-  .topic_content .topic_genre{
-    font-size: 12px;
-    margin: -15px 0 5px -10px;
-  }
-// トピックのタイトル
-  .topic_content .topic_title{
-    margin-left:-10px;
-    font-size: 15px;
-    font-weight: bold;
-  }
-// トピックの店の名前
-  .topic_content .topic_shop_name{
-    margin-left:-10px;
-    margin-top: 8px;
-    font-size: 10px;
-  }
-// トピックの住所
-  .topic_content .topic_address{
-    margin-left:-10px;
-    font-size: 10px;
-  }
-// トピックの日付
-  .topic_content .topic_day{
-    margin-left: 10px;
-    font-size: 13px;
-  }
-// トピックの表示回数
-  .topic_content .topic_view{
-    font-size: 15px;
-    text-align: right;
-    margin: -30px 45px 0 0;
-    display: inline;
-  }
-// トピックのいいね
-  .topic_content .like_button{
-    margin: 0 auto;
-    position: absolute;
-    font-size: 32px;
-    margin: -60px 0 0 77%;
-  }
-// トピックのページネーション
-  .topic_page{
-    text-align: left;
-    margin-left: 1050px;
+  .footer-container .footer-item a br{
+    display: none;
   }
 
-
-
-//ご依頼チラシ
-  .bottom_content #post{
-    margin-top: 20px;
-    width: 100%;
-  }
-
-
-
-// トピック詳細
-//　トピック詳細のSNS拡散ボタン（親）
-.topic_show .sns_button{
-  margin-top: 30px;
-  font-size: 10px;
 }
-//　トピック詳細のSNS拡散ボタン（子）
-.topic_show .sns_button .button{
-  color: white;
-  border-radius: 5px;
-  padding: 10px 17px;
-  margin-left: 10px;
+
+@media screen and (min-width: 600px) and (max-width: 1110px) {
+  // スマホ用ヘッダー
+  // 通常のheaderをオフにする
+    .header{
+      display: none;
+    }
+
+    //PROUSER画面
+     .pro_user{
+       padding: 0 20px;
+     }
+     .pro_user .overflow{
+       display: block;
+       overflow-x: scroll;
+       white-space: nowrap;
+       -webkit-overflow-scrolling: touch;
+     }
+     .footer-container .footer-item a br{
+       display: none;
+     }
+     .topic_center .about{
+       padding: 0 15px;
+     }
 }
-// トピック詳細のお店画像
-  .topic_show #show_shop_image{
-    margin: 0 auto;
-    max-width: 100%;
-    max-height: 500px;
-    margin-bottom:20px;
+
+
+@media screen and (max-width: 600px){
+  .shop_content .card .card_header{
+    min-height: 35px;
+    max-height: 75px;
+  }
+
+// スマホ用ヘッダー
+// 通常のheaderをオフにする
+  .header{
+    display: none;
+  }
+
+  .topic_center {
+    padding: 2px 5px;
   }
 //トピック詳細の地図の大きさ
   .topic_show iframe{
     width: 100%;
-    height: 290px;
-  }
-//トピック詳細の文字の全体の文字の大きさ
-  .topic_show{
-    font-size: 10px;
-  }
-  .topic_show ul{
-    margin: 0 auto;
-    width: 90%;
-  }
-//トピック詳細の見出し
-  .topic_show h2 {
-    font-size: 20px;
-  }
-//トピック詳細のactiontext投稿の小見出し
-  .topic_show h1 {
-    font-size: 16px;
+    height: 200px;
   }
 //トピック人気ランキング　カード
   .topic_show .card{
@@ -1006,134 +1172,32 @@ left: -16px;
     border-radius: 20px;
   }
 
-//トピック画像
-  .topic_show #card_image{
-    width: 100%;
-    height: 150px;
-  }
+//管理者画面
+ .management {
+   padding: 0 20px;
+ }
+ .management .overflow{
+   display: block;
+   overflow-x: scroll;
+   white-space: nowrap;
+   -webkit-overflow-scrolling: touch;
+ }
 
-
-
-// 掲載店
-  .shop_content h1{
-    font-size: 20px;
-    text-align: center;
+//PROUSER画面
+ .pro_user{
+   padding: 0 20px;
+ }
+ .pro_user .overflow{
+   display: block;
+   overflow-x: scroll;
+   white-space: nowrap;
+   -webkit-overflow-scrolling: touch;
+ }
+ .topic_center .about{
+   padding: 0 15px;
+ }
+  .footer-container {
+    padding: 1rem 0;
   }
-  .shop_content a{
-    color: black;
-  }
-  .shop_content a:hover{
-    text-decoration: none;
-  }
-  .shop_content .card{
-    border: solid 1px black;
-    width: 290px;
-    height: 340px;
-    margin: 20px;
-  }
-  .shop_content .card h3{
-    text-align: center;
-    font-size: 20px;
-  }
-  .shop_content .card p{
-    font-size: 5px;
-    margin: -10px 0 10px 0;
-  }
-  .shop_content #card_image{
-    width: 100%;
-    height: 150px;
-  }
-  .shop_content .card-body li{
-    margin: 7px 0;
-    list-style: none;
-    font-size: 10px;
-  }
-//掲載店の詳細
-  .listing_shop h1{
-    text-align: center;
-  }
-  .listing_shop p{
-    text-align: center;
-  }
-
-
-
-// フッター詳細ページ
-//　フッターの全体の文字のサイズ
-  .about{
-    font-size: 12px;
-  }
-// H1見出し
-  .about h1 {
-    font-size: 20px;
-    position: relative;
-    padding: 0.6em;
-    background: -webkit-repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
-    background: repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
-    border-radius: 7px;
-  }
-  .about h1:after {
-    position: absolute;
-    content: '';
-    top: 100%;
-    left: 30px;
-    border: 15px solid transparent;
-    border-top: 15px solid #ffebbe;
-    width: 0;
-    height: 0;
-  }
-// 運営者の役職
-  .about h3{
-    font-size: 15px;
-  }
-// 運営者の写真の大きさ
-  .about #introduction{
-    width: 100%;
-    height: 210px;
-  }
-
-
-
-// フッター
-  .mpobile_footer{
-    width: 100%;
-    background-color:#ff8c19;
-    padding: 12px 0;
-  }
-  .mpobile_footer ul{
-    margin-bottom: 0;
-    display:block;
-    font-size: 10px;
-    transform: scale(0.4);
-    padding: 0;
-    color: white;
-    list-style: none;
-  }
-  .mpobile_footer ul li{
-    display: inline-block;
-  }
-  .mpobile_footer ul li a{
-    padding: 0 4px;
-    color: white;
-  }
-
 
 }
-
-
-
-
-
-
-
-
-
-// // トピック詳細の画像（親要素）
-// .topic_show .show_image{
-//   text-align: center;
-// }
-// // トピック詳細の画像（子要素）
-// .topic_show #top_image{
-//   width: 100%;
-//   height: 600px;
-// }

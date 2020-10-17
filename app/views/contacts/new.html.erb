@@ -1,4 +1,5 @@
 <div class="topic_center">
+  <div class="about">
   <h2>ご依頼フォーム</h2>
   <%= form_for @contact do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
@@ -24,7 +25,8 @@
      <%= f.text_area :message, size: '10x10', class: 'form-control' %>
    </div>
 
-    <%= f.submit '送信',class:"btn btn-warning btn-lg w-25" %>
+    <%= f.submit '送信',class:"btn btn-warning btn-lg" %>
 
   <% end %>
+  </div>
 </div>

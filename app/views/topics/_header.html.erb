@@ -1,45 +1,64 @@
 <div class="header">
-  <div class="button">
-    <% if user_signed_in? && current_user.admin == true && current_user.id == 1 %>
-      <%= link_to "管理者画面",managements_path, class:"btn btn-primary" %>
-    <% end %>
-    <% if user_signed_in? && current_user.pro_id > 0 %>
-      <%= link_to "USER PRO管理画面",pro_users_path, class:"btn btn-primary" %>
-    <% end %>
 
-    <% if user_signed_in? %>
-      <%= link_to('ログアウト', destroy_user_session_path, :method => :delete, class:"btn registar") %>
-    <% else %>
-      <%= link_to('新規登録', new_user_registration_path, class:"btn registar") %>
-      <%= link_to('ログイン', new_user_session_path, class:"btn registar") %>
-    <% end %>
-    <% if user_signed_in? %>
-      <a href="/like_lists" class="list"><i class="fas fa-heart">気になるリスト</i></a>
-    <% else %>
-      <a type="button" data-toggle="modal" data-target="#exampleModalCenter" class="list"><i id="list" class="fas fa-heart">気になるリスト</i></a>
-      <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalCenterTitle">ようこそ、おのグルメへ！</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>「いいね」「気になるリスト」を利用するにはログインが必要です。</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-              <%= link_to('ログイン', new_user_session_path, class:"btn btn-warning") %>
+  <div class="el_humburger"><!--ハンバーガーボタン-->
+    <div class="el_humburger_wrapper">
+      <span class="el_humburger_bar top"></span>
+      <span class="el_humburger_bar middle"></span>
+      <span class="el_humburger_bar bottom"></span>
+    </div>
+  </div>
+
+  <header class="navi"><!--ナビゲーション-->
+    <div class="navi_inner">
+      <% if user_signed_in? %>
+        <div class="navi_item"><%= link_to('ログアウト', destroy_user_session_path, :method => :delete) %></div>
+      <% else %>
+        <div class="navi_item"><%= link_to('新規登録', new_user_registration_path) %></div>
+        <div class="navi_item"><%= link_to('ログイン', new_user_session_path) %></div>
+      <% end %>
+      <% if user_signed_in? && current_user.admin == true && current_user.id == 1 %>
+        <div class="navi_item"><%= link_to "管理者画面",managements_path %></div>
+      <% end %>
+      <% if user_signed_in? && current_user.pro_id > 0 %>
+        <div class="navi_item"><%= link_to "USER PRO管理画面",pro_users_path %></div>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="navi_item"><%= link_to("気になるリスト", like_lists_path) %></div>
+      <% else %>
+        <div class="navi_item">
+          <a data-toggle="modal" data-target="#exampleModalCenter">気になるリスト</a>
+          <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalCenterTitle">ようこそ、おのグルメへ！</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>「いいね」「気になるリスト」を利用するにはログインが必要です。</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                  <%= link_to('ログイン', new_user_session_path, class:"btn btn-warning") %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+      <div class="navi_item"><a href="https://www.instagram.com/ono_gourmet_gram/?hl=ja" id="instagram" target="_blank">Instagram</a></div>
+    </div>
+  </header>
 
-    <a href="https://www.instagram.com/ono_gourmet_gram/?hl=ja" id="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-  </div>
+<div class="mainView">
+</div>
+
+
+
+
+
 
 <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="/" id="top_title">おのグルメ</a>
@@ -83,45 +102,65 @@
 
 <div class="mobile_header">
   <a id="top_title" href="/">おのグルメ</a>
-  <div class="login">
-    <% if user_signed_in? && current_user.admin == true %>
-      <%= link_to "管理者画面",managements_path, class:"btn btn-primary" %>
-    <% end %>
-    <% if user_signed_in? %>
-      <%= link_to('ログアウト', destroy_user_session_path, :method => :delete, class:"btn registar") %>
-    <% else %>
-      <%= link_to('新規登録', new_user_registration_path, class:"btn registar") %>
-      <%= link_to('ログイン', new_user_session_path, class:"btn registar") %>
-    <% end %>
+
+  <div class="el_humburger"><!--ハンバーガーボタン-->
+    <div class="el_humburger_wrapper">
+      <span class="el_humburger_bar top"></span>
+      <span class="el_humburger_bar middle"></span>
+      <span class="el_humburger_bar bottom"></span>
+    </div>
   </div>
 
-  <div class="icon_log">
-    <% if user_signed_in? %>
-      <a href="/like_lists" class="list"><i class="fas fa-heart">気になるリスト</i></a>
-    <% else %>
-      <a type="button" data-toggle="modal" data-target="#exampleModalCenter" class="list"><i id="list" class="fas fa-heart">気になるリスト</i></a>
-      <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalCenterTitle">ようこそ、おのグルメへ！</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>「いいね」「気になるリスト」を利用するにはログインが必要です。</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-              <%= link_to('ログイン', new_user_session_path, class:"btn btn-warning") %>
+  <header class="navi"><!--ナビゲーション-->
+    <div class="navi_inner">
+      <% if user_signed_in? %>
+        <div class="navi_item"><%= link_to('ログアウト', destroy_user_session_path, :method => :delete) %></div>
+      <% else %>
+        <div class="navi_item"><%= link_to('新規登録', new_user_registration_path) %></div>
+        <div class="navi_item"><%= link_to('ログイン', new_user_session_path) %></div>
+      <% end %>
+      <% if user_signed_in? && current_user.admin == true && current_user.id == 1 %>
+        <div class="navi_item"><%= link_to "管理者画面",managements_path %></div>
+      <% end %>
+      <% if user_signed_in? && current_user.pro_id > 0 %>
+        <div class="navi_item"><%= link_to "USER PRO管理画面",pro_users_path %></div>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="navi_item"><%= link_to("気になるリスト", like_lists_path) %></div>
+      <% else %>
+        <div class="navi_item">
+          <a data-toggle="modal" data-target="#exampleModalCenter">気になるリスト</a>
+          <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalCenterTitle">ようこそ、おのグルメへ！</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>「いいね」「気になるリスト」を利用するにはログインが必要です。</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                  <%= link_to('ログイン', new_user_session_path, class:"btn btn-warning") %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-    <a href="https://www.instagram.com/ono_gourmet_gram/?hl=ja" id="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-  </div>
+      <% end %>
+      <div class="navi_item"><a href="https://www.instagram.com/ono_gourmet_gram/?hl=ja" id="instagram" target="_blank">Instagram</a></div>
+    </div>
+  </header>
+
+<div class="mainView">
+<!--ページコンテンツ-->
+</div>
+
+
+
 
   <nav class="menu-container">
     <ul class="menu">

@@ -3,16 +3,17 @@
   <h2 class="text-center">管理者画面</h2>
   <div class="text-center">
     <ul>
-      <li><%= link_to "記事投稿",new_topic_path, class:"btn btn-info" %></li>
-      <li><%= link_to "店長オススメ投稿",new_manager_topic_path, class:"btn btn-info" %></li>
-      <li><%= link_to "店長情報登録",new_manager_path, class:"btn btn-info" %></li>
+      <li><%= link_to "記事投稿",new_topic_path, class:"btn btn-secondary btn-info" %></li>
+      <li><%= link_to "店長オススメ投稿",new_manager_topic_path, class:"btn btn-secondary btn-info" %></li>
+      <li><%= link_to "店長情報登録",new_manager_path, class:"btn btn-secondary btn-info" %></li>
     </ul>
   </div>
 
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-xl-3">
       <h4 style="text-align:center;">記事一覧</h4>
-      <table class="table table-bordered">
+      <table class="table table-bordered overflow">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -32,16 +33,25 @@
               <td><%= topic.shop.name %></td>
               <td><%= topic.impressionist_count %></td>
               <td><a href="/topics/<%= topic.id %>">詳細</a></td>
-              <td><%= link_to '編集', edit_topic_path(topic), class: "btn btn-warning" %></td>
-              <td><%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %></td>
+              <td>
+                <%= link_to edit_topic_path(topic), class: "edit" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "delete" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </td>
+
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="col-md-3">
+    <div class="col-xl-3">
       <h4 style="text-align:center;">店長オススメ店</h4>
-          <table class="table table-bordered">
+          <table class="table table-bordered overflow">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -61,14 +71,22 @@
                   <td><%= manager_topic.manager.manager_name %></td>
                   <td><%= manager_topic.shop.name %></td>
                   <td><a href="/manager_topics/<%= manager_topic.id %>">詳細</a></td>
-                  <td><%= link_to '編集', edit_manager_topic_path(manager_topic), class: "btn btn-warning" %></td>
-                  <td><%= link_to '削除', manager_topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %></td>
+                  <td>
+                    <%= link_to edit_manager_topic_path(manager_topic), class: "edit" do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to manager_topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "delete" do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
           </table>
     </div>
-    <div class="col-md-3">
+    <div class="col-xl-3">
       <h4 style="text-align:center;">店舗番号一覧</h4>
           <table class="table table-bordered">
             <thead>
@@ -89,7 +107,7 @@
             </tbody>
           </table>
     </div>
-    <div class="col-md-3">
+    <div class="col-xl-3">
       <h4 style="text-align:center;">店長番号一覧</h4>
           <table class="table table-bordered">
             <thead>
@@ -109,5 +127,9 @@
           </table>
     </div>
   </div>
+ </div>
+
+
+
 
 </div>
