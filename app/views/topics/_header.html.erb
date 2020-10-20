@@ -10,6 +10,11 @@
 
   <header class="navi"><!--ナビゲーション-->
     <div class="navi_inner">
+      <div class="navi_item"><a href="/">HOME</a></div>
+      <div class="navi_item"><a href="/abouts">おのグルメとは？</a></div>
+      <div class="navi_item"><a href="/administrators">運営者情報</a></div>
+      <div class="navi_item"><a href="/policies">プライバシー</a></div>
+      <div class="navi_item"><a href="/contacts/new">お問い合わせ</a></div>
       <% if user_signed_in? %>
         <div class="navi_item"><%= link_to('ログアウト', destroy_user_session_path, :method => :delete) %></div>
       <% else %>
@@ -21,13 +26,6 @@
       <% end %>
       <% if user_signed_in? && current_user.pro_id > 0 %>
         <div class="navi_item"><%= link_to "USER PRO管理画面",pro_users_path %></div>
-      <% end %>
-      <% if user_signed_in? %>
-        <div class="navi_item"><%= link_to("気になるリスト", like_lists_path) %></div>
-      <% else %>
-        <div class="navi_item">
-          <a href="" data-toggle="modal" data-target=".exampleModalCenter">気になるリスト</a>
-        </div>
       <% end %>
       <div class="navi_item"><a href="https://www.instagram.com/ono_gourmet_gram/?hl=ja" target="_blank">Instagram</a></div>
     </div>
@@ -42,99 +40,13 @@
 
 
 
-<nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand top_title" href="/">おのグルメ</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link recommendation" href="/manager_topics">店長オススメ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link cafe" href="/cafes">カフェ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link lunch" href="/lunches">ランチ</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link dinner" href="/dinners">ディナー</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link bread" href="/breads">パン</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link pub" href="/pubs">居酒屋</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link takeout" href="/takeouts">テイクアウト</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link shop" href="/shops">掲載店</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-</div>
 
 
 
 
 
-<div class="mobile_header">
-  <a class="top_title" href="/">おのグルメ</a>
-
-  <div class="el_humburger"><!--ハンバーガーボタン-->
-    <div class="el_humburger_wrapper">
-      <span class="el_humburger_bar top"></span>
-      <span class="el_humburger_bar middle"></span>
-      <span class="el_humburger_bar bottom"></span>
-    </div>
-  </div>
-
-  <header class="navi"><!--ナビゲーション-->
-    <div class="navi_inner">
-      <% if user_signed_in? %>
-        <div class="navi_item"><%= link_to('ログアウト', destroy_user_session_path, :method => :delete) %></div>
-      <% else %>
-        <div class="navi_item"><%= link_to('新規登録', new_user_registration_path) %></div>
-        <div class="navi_item"><%= link_to('ログイン', new_user_session_path) %></div>
-      <% end %>
-      <% if user_signed_in? && current_user.admin == true && current_user.id == 1 %>
-        <div class="navi_item"><%= link_to "管理者画面",managements_path %></div>
-      <% end %>
-      <% if user_signed_in? && current_user.pro_id > 0 %>
-        <div class="navi_item"><%= link_to "USER PRO管理画面",pro_users_path %></div>
-      <% end %>
-      <% if user_signed_in? %>
-        <div class="navi_item"><%= link_to("気になるリスト", like_lists_path) %></div>
-      <% else %>
-        <div class="navi_item">
-          <a href="" data-toggle="modal" data-target=".exampleModalCenter">気になるリスト</a>
-        </div>
-      <% end %>
-      <div class="navi_item"><a href="https://www.instagram.com/ono_gourmet_gram/?hl=ja" target="_blank">Instagram</a></div>
-    </div>
-  </header>
-
-<div class="mainView">
-<!--ページコンテンツ-->
-</div>
-
-
-
-
-  <nav class="menu-container">
-    <ul class="menu">
-      <li class="menu-item"><a class="nav-link recommendation" href="/manager_topics">店長オススメ</a></li>
-      <li class="menu-item"><a class="nav-link cafe" href="/cafes">カフェ</a></li>
-      <li class="menu-item"><a class="nav-link lunch" href="/lunches">ランチ</a></li>
-      <li class="menu-item"><a class="nav-link  dinner" href="/dinners">ディナー</a></li>
-      <li class="menu-item"><a class="nav-link  bread" href="/breads">パン</a></li>
-      <li class="menu-item"><a class="nav-link  pub" href="/pubs">居酒屋</a></li>
-      <li class="menu-item"><a class="nav-link  takeout" href="/takeouts">テイクアウト</a></li>
-      <li class="menu-item"><a class="nav-link  shop" href="/shops">掲載店</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand top_title" href="/">おのグルメ</a>
   </nav>
+
 </div>
