@@ -177,7 +177,7 @@ main {
   }
     @media screen and (max-width: 840px) {
       .js_humburgerOpen .navi {
-        width: 50%;
+        width: 35%;
         padding: 100px 5% 0;
         }
       }
@@ -198,7 +198,8 @@ main {
   @media screen and (max-width: 840px) {
     .navi_item {
       margin-left: 0;
-      font-size: 18px; }
+      font-size: calc(4 * ((100vw - 320px) / 1600) + 12px);
+}
     }
 
 
@@ -322,7 +323,7 @@ a {
   height: auto;
   background-color: #ff8c19;
 }
-.header nav #top_title{
+.header nav .top_title{
   font-size: 2.3vw;
 }
 .header nav a{
@@ -330,9 +331,57 @@ a {
   font-size: calc(13 * ((100vw - 320px) / 1600) + 10px);
   margin-left: 30px;
 }
-.header nav a:hover{
-  text-decoration: none;
-  color: #c44806;
+// .header nav .recommendation:hover{
+//   text-decoration: none;
+//   color: #1fb6e2;
+// }
+// .header nav .cafe:hover{
+//   text-decoration: none;
+//   color: #f05579;
+// }
+// .header nav .lunch:hover{
+//   text-decoration: none;
+//   color: #f7a01e;
+// }
+// .header nav .dinner:hover{
+//   text-decoration: none;
+//   color: #0000ff;
+// }
+// .header nav .bread:hover{
+//   text-decoration: none;
+//   color: #c1272d;
+// }
+// .header nav .pub:hover{
+//   text-decoration: none;
+//   color: #B455A0;
+// }
+// .header nav .takeout:hover{
+//   text-decoration: none;
+//   color: #ff4500;
+// }
+// .header nav .shop:hover{
+//   text-decoration: none;
+//   color: #22b573;
+// }
+
+
+.topic_content .topic_genre .cafe{
+  color: #f05579;
+}
+.topic_content .topic_genre .lunch{
+  color: #f7a01e;
+}
+.topic_content .topic_genre .dinner{
+  color: #0000ff;
+}
+.topic_content .topic_genre .bread{
+  color: #c1272d;
+}
+.topic_content .topic_genre .pub{
+  color: #B455A0;
+}
+.topic_content .topic_genre .takeout{
+  color: #ff4500;
 }
 
 
@@ -375,16 +424,11 @@ a {
   max-width: 350px;
   max-height: 465px;
 }
-//トピックのカードのマウスが当たった時
-.topic_content .card:hover{
-  position: relative;
-  top: -3px;
-  left: 0px;
-}
 .topic_content .card .card-body{
   height: 15vw;
   min-height: 199px;
   min-width: 100px;
+  padding: 10px 10px;
 }
 // トピックの画像
 .topic_content #card_image{
@@ -429,14 +473,13 @@ a {
 .topic_content .topic_shop_name{
   position: absolute;
   // bottom: 54px;
-  bottom: calc(24 * ((100vw - 320px) / 1600) + 33px);
+  bottom: calc(24 * ((100vw - 320px) / 1600) + 29px);
   font-size: 0.7vw;
 }
 // トピックの住所
 .topic_content .topic_address{
   position: absolute;
-  // bottom: 13px;
-  bottom: calc(7 * ((100vw - 320px) / 1600) + 6px);
+  bottom: calc(7 * ((100vw - 320px) / 1600) + 5px);
   font-size: 0.7vw;
   word-break: keep-all;
 }
@@ -444,7 +487,8 @@ a {
 .topic_content .topic_day{
   position: absolute;
   bottom: -10px;
-  left: 8px;
+  // left: 8px;
+  left: 10px;
   font-size: 0.7vw;
 }
 // トピックの表示回数
@@ -461,6 +505,12 @@ a {
   font-size: 170%;
   bottom: -7px;
   right: 6px;
+}
+
+//Modal window
+.modal h3{
+  font-size: calc(12 * ((100vw - 320px) / 1600) + 16px);
+  font-weight: bold;
 }
 
 
@@ -1046,13 +1096,13 @@ left: -16px;
     padding-top: 15px;
   }
 //スマホ用ヘッダー　タイトル
-  .mobile_header #top_title{
+  .mobile_header .top_title{
     margin-left: 20px;
     font-size: 40px;
     color: white;
     }
 //スマホ用ヘッダー　タイトルのマウスが当たった時
-  .mobile_header #top_title:hover{
+  .mobile_header .top_title:hover{
     text-decoration: none;
   }
 //スマホ用ヘッダー　スライドコンテンツ
@@ -1089,12 +1139,34 @@ left: -16px;
     text-align: center;
     text-decoration: none;
   }
-  .menu-container .menu .menu-item a:hover {
-    background: #c44806;
-  }
-  .menu-container .menu .menu-item:last-child a {
-    border-right: 1px solid #c44806;
-  }
+
+  // .menu-container .menu .menu-item .recommendation:hover{
+  //   background-color: #1fb6e2;
+  // }
+  // .menu-container .menu .menu-item .cafe:hover{
+  //   background: #f05579;
+  // }
+  // .menu-container .menu .menu-item .lunch:hover{
+  //   background: #f7a01e;
+  // }
+  // .menu-container .menu .menu-item .dinner:hover{
+  //   background: #0000ff;
+  // }
+  // .menu-container .menu .menu-item .bread:hover{
+  //   background: #c1272d;
+  // }
+  // .menu-container .menu .menu-item .pub:hover{
+  //   background: #B455A0;
+  // }
+  // .menu-container .menu .menu-item .takeout:hover{
+  //   background: #ff4500;
+  // }
+  // .menu-container .menu .menu-item .shop:hover{
+  //   background: #22b573;
+  // }
+  // .menu-container .menu .menu-item:last-child a {
+  //   border-right: 1px solid #c44806;
+  // }
 
 
 
