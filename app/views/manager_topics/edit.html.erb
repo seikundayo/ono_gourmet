@@ -1,17 +1,9 @@
 <div class="topic_center">
-  <h2 class="text-center">新規投稿</h2>
+  <div class="post">
+  <h2 class="text-center">店長オススメ新規投稿</h2>
   <%= form_with(model: @topic, local: true) do |form| %>
-    <% if @topic.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+  <%= render 'layouts/error_messages', model: form.object %>
 
-        <ul>
-          <% @topic.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
 
     <div class="field">
       <%= form.label "タイトル" ,class: "text-center"%>
@@ -60,20 +52,47 @@
 
     <br>
 
-    <h4>店舗番号一覧</h4>
-    <% @shops.each do |shop| %>
-      <nobr>
-        <%= shop.id %>：<%= shop.name %>,
-      </nobr>
-    <% end %>
-
-    <h4>店長番号一覧</h4>
-    <% @managers.each do |manager| %>
-      <nobr>
-        <%= manager.id %>：<%= manager.manager_name %>,
-      </nobr>
-    <% end %>
-
+  <div class="row">
+    <div class="col-md-6">
+      <h4 style="text-align:center;">店舗番号一覧</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">店舗番号</th>
+                <th scope="col">店舗名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @shops.each do |shop| %>
+              <tr>
+                <th scope="row"><%= shop.id %></th>
+                <td><%= shop.name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-6">
+      <h4 style="text-align:center;">店長番号一覧</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">店長番号</th>
+                <th scope="col">店長名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @managers.each do |manager| %>
+              <tr>
+                <th scope="row"><%= manager.id %></th>
+                <td><%= manager.manager_name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+    </div>
+  </div>
 
   <% end %>
+  </div>
 </div>

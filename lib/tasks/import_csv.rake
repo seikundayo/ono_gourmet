@@ -4,7 +4,7 @@ namespace :import_csv do
       desc "shop_data.csvをインポートするタスク"
 
       task shop_data: :environment do
-        list = Import.csv_data(path: "db/csv_data/shop_data1.csv")
+        list = Import.csv_data(path: "db/csv_data/shop_data2.csv")
 
         puts "インポート処理を開始"
         begin

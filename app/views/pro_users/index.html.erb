@@ -4,7 +4,7 @@
   <p class="text-center"><%= link_to "記事投稿",new_topic_path, class:"btn btn-info" %></p>
 
       <h4 style="text-align:center;">店舗情報</h4>
-      <table class="table table-bordered">
+      <table class="table table-bordered overflow">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -34,13 +34,17 @@
               <td><iframe src="<%= @shop.map %>" width="150" height="100" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></td>
               <td><%= @shop.introduce%></td>
               <td><%= image_tag "#{@shop.shop_image}",id:"pro_user_image" %></td>
-              <td><%= link_to '編集', edit_shop_path(@shop), class: "btn btn-warning" %></td>
+              <td>
+                <%= link_to edit_shop_path(@shop), class: "edit" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </td>
           </tr>
         </tbody>
       </table>
 
       <h4 style="text-align:center;">記事一覧</h4>
-      <table class="table table-bordered">
+      <table class="table table-bordered overflow">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -64,8 +68,16 @@
               <td><%= topic.genre %></td>
               <td><%= image_tag "#{topic.image}",id:"pro_user_image" %></td>
               <td><a href="/topics/<%= topic.id %>">詳細</a></td>
-              <td><%= link_to '編集', edit_topic_path(topic), class: "btn btn-warning" %></td>
-              <td><%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %></td>
+              <td>
+                <%= link_to edit_topic_path(topic), class: "edit" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "delete" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </td>
           </tr>
           <% end %>
         </tbody>

@@ -1,67 +1,69 @@
 <div class="topic_center">
-  <div class="topic_center">
     <div class="topic_show">
-      <div class="row">
-        <div class="col-md-9">
-          <p><%= @manager_topic.created_at.to_s(:datetime_jp) %></p>
-          <h2><%= @manager_topic.title %></h2>
-          <%= @manager_topic.content %>
-          <div class="talk">
-            <figure class="talk-Limg">
-              <%= image_tag "#{@manager_topic.manager.manager_image}" ,id: "word"%>
-            <figcaption class="talk-imgname"><%= @manager_topic.manager.manager_name %></figcaption>
-            </figure>
-              <div class="talk-Ltxt">
-              <p class="talk-text"><%= @manager_topic.word %></p>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-9">
+            <p><%= @manager_topic.created_at.to_s(:datetime_jp) %></p>
+            <h2><%= @manager_topic.title %></h2>
+            <%= @manager_topic.content %>
+            <div class="talk">
+              <figure class="talk-Limg">
+                <%= image_tag "#{@manager_topic.manager.manager_image}" ,id: "word"%>
+              <figcaption class="talk-imgname"><%= @manager_topic.manager.manager_name %></figcaption>
+              </figure>
+                <div class="talk-Ltxt">
+                <p class="talk-text"><%= @manager_topic.word %></p>
+              </div>
+            </div>
+
+            <h2>お店情報</h2>
+            <div class="row">
+                <ul>
+                  <li><%= image_tag "#{@manager_topic.shop.shop_image}", id:"show_shop_image" %></li>
+                  <li><span class="row1"><i class="fas fa-store"> 店名</i></span><span class="row2"><%= @manager_topic.shop.name %></span></li>
+                  <li><span class="row1"><i class="fas fa-map-marker-alt"> 住所</i></span><span class="row2"><%= @manager_topic.shop.address %></span></li>
+                  <li><span class="row1"><i class="fas fa-location-arrow"> アクセス</i></span><span class="row2"><%= @manager_topic.shop.access %></span></li>
+                  <li><span class="row1"><i class="fas fa-phone-alt"> 電話番号</i></span><span class="row2"><a href="tel:<%= @manager_topic.shop.number %>"><%= @manager_topic.shop.number %></a></span></li>
+                  <li><span class="row1"><i class="fas fa-clock"> 営業時間</i></span><span class="row2"><%= @manager_topic.shop.time %></span></li>
+                  <li><span class="row1"><i class="fas fa-store-alt-slash"> 定休日</i></span><span class="row2"><%= @manager_topic.shop.rest %></span></li>
+                  <li><span class="row1"><i class="fas fa-sign-out-alt"> テイクアウト</i></span><span class="row2"><%= @manager_topic.shop.takeout %></span></li>
+                  <iframe src="<%= @manager_topic.shop.map %>" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </ul>
+            </div>
+            <div class="sns_button">
+              <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button", id: "facebook" do %>
+                <i class="fab fa-facebook-f"> シェア</i>
+              <% end %>
+              <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button", id: "twitter" do %>
+                <i class="fab fa-twitter"> ツイート</i>
+              <% end %>
+              <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button" , id: "line" do %>
+                <i class="fab fa-line"> 送る</i>
+              <% end %>
             </div>
           </div>
 
-          <h2>お店情報</h2>
-          <div class="row">
-              <ul>
-                <li><%= image_tag "#{@manager_topic.shop.shop_image}", id:"show_shop_image" %></li>
-                <li><span class="row1"><i class="fas fa-store"> 店名</i></span><span class="row2"><%= @manager_topic.shop.name %></span></li>
-                <li><span class="row1"><i class="fas fa-map-marker-alt"> 住所</i></span><span class="row2"><%= @manager_topic.shop.address %></span></li>
-                <li><span class="row1"><i class="fas fa-location-arrow"> アクセス</i></span><span class="row2"><%= @manager_topic.shop.access %></span></li>
-                <li><span class="row1"><i class="fas fa-phone-alt"> 電話番号</i></span><span class="row2"><a href="tel:<%= @manager_topic.shop.number %>"><%= @manager_topic.shop.number %></a></span></li>
-                <li><span class="row1"><i class="fas fa-clock"> 営業時間</i></span><span class="row2"><%= @manager_topic.shop.time %></span></li>
-                <li><span class="row1"><i class="fas fa-store-alt-slash"> 定休日</i></span><span class="row2"><%= @manager_topic.shop.rest %></span></li>
-                <li><span class="row1"><i class="fas fa-sign-out-alt"> テイクアウト</i></span><span class="row2"><%= @manager_topic.shop.takeout %></span></li>
-                <iframe src="<%= @manager_topic.shop.map %>" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-              </ul>
+
+          <div class="col-md-3 d-none d-md-block">
+            <h4>人気記事ランキンング</h4>
+              <% @topics.each.with_index(1) do |topic, i| %>
+              <h3  style="text-align:center";><%= i %></h3>
+                <a href="/topics/<%= topic.id %>">
+                <div class="card">
+                <%= image_tag "#{topic.image}",id:"card_image" %>
+                <div class="card-body">
+                  <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
+                  <p class="topic_title"><%= topic.title %></p>
+                </div>
+                  <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p>
+                </div>
+                </a>
+              <% end %>
           </div>
-          <div class="sns_button">
-            <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button", id: "facebook" do %>
-              <i class="fab fa-facebook-f"> シェア</i>
-            <% end %>
-            <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button", id: "twitter" do %>
-              <i class="fab fa-twitter"> ツイート</i>
-            <% end %>
-            <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button" , id: "line" do %>
-              <i class="fab fa-line"> 送る</i>
-            <% end %>
-          </div>
+
         </div>
-
-
-        <div class="col-md-3">
-          <h4>人気記事ランキンング</h4>
-            <% @topics.each.with_index(1) do |topic, i| %>
-            <h3  style="text-align:center";><%= i %></h3>
-              <a href="/topics/<%= topic.id %>">
-              <div class="card">
-              <%= image_tag "#{topic.image}",id:"card_image" %>
-              <div class="card-body">
-                <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
-                <p class="topic_title"><%= topic.title %></p>
-              </div>
-                <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p>
-              </div>
-              </a>
-            <% end %>
-        </div>
-
       </div>
+
     </div>
-  </div>
 </div>

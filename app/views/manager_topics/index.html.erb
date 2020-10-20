@@ -2,28 +2,30 @@
  <div class="manager_topic">
   <% if @manager_topics.length > 0 %>
 
-  <div class="row">
-    <% @manager_topics.each do |topic| %>
-    <div class="col-md-4">
+  <div class="container-fluid">
+    <div class="row">
+      <% @manager_topics.each do |topic| %>
+      <div class="col-xl-4">
 
-      <div class="article_editing">
-        <% if user_signed_in? && current_user.id == 1 %>
-          <%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
-          <%= link_to '編集', edit_manager_topic_path(topic), class: "btn btn-warning" %>
-        <% end %>
-      </div>
+        <div class="article_editing">
+          <% if user_signed_in? && current_user.id == 1 %>
+            <%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
+            <%= link_to '編集', edit_manager_topic_path(topic), class: "btn btn-warning" %>
+          <% end %>
+        </div>
 
-      <a href="/manager_topics/<%= topic.id %>">
-      <div class="card">
-        <%= image_tag "#{topic.manager.manager_image}",id:"card_image" %>
-      <div class="card-body">
-        <h5><%= topic.manager.manager_name %>　が絶賛するお店</h5>
-        <h4><%= topic.shop.name %></h4>
+        <a href="/manager_topics/<%= topic.id %>">
+        <div class="card">
+          <%= image_tag "#{topic.manager.manager_image}",id:"card_image" %>
+        <div class="card-body">
+          <h5><%= topic.manager.manager_name %>　が絶賛するお店</h5>
+          <h4><%= topic.shop.name %></h4>
+        </div>
       </div>
+      </a>
+     </div>
+     <% end %>
     </div>
-    </a>
-   </div>
-   <% end %>
   </div>
 
   <% else %>
