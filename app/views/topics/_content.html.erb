@@ -14,28 +14,30 @@
         <a href="/topics/<%= topic.id %>">
         <div class="card">
         <%= image_tag "#{topic.image}",id:"card_image" %>
+        <p class="topic_genre">
+          <% if topic.genre == "カフェ" %>
+            <span class="cafe"><%= topic.genre %></span>
+          <% elsif topic.genre == "ランチ" %>
+            <span class="lunch"><%= topic.genre %></span>
+            <% elsif topic.genre == "ディナー" %>
+            <span class="dinner"><%= topic.genre %></span>
+          <% elsif topic.genre == "パン" %>
+            <span class="bread"><%= topic.genre %></span>
+          <% elsif topic.genre == "居酒屋" %>
+            <span class="pub"><%= topic.genre %></span>
+          <% elsif topic.genre == "テイクアウト" %>
+            <span class="takeout"><%= topic.genre %></span>
+          <% end %>
+        </p>
         <div class="card-body">
-          <p class="topic_genre">
-            <% if topic.genre == "カフェ" %>
-              <span class="cafe"><%= topic.genre %></span>
-            <% elsif topic.genre == "ランチ" %>
-              <span class="lunch"><%= topic.genre %></span>
-              <% elsif topic.genre == "ディナー" %>
-              <span class="dinner"><%= topic.genre %></span>
-            <% elsif topic.genre == "パン" %>
-              <span class="bread"><%= topic.genre %></span>
-            <% elsif topic.genre == "居酒屋" %>
-              <span class="pub"><%= topic.genre %></span>
-            <% elsif topic.genre == "テイクアウト" %>
-              <span class="takeout"><%= topic.genre %></span>
-            <% end %>
-          </p>
+          <p class="shop_title"><%= topic.shop.name %></p>
+          <%= image_tag "#{topic.shop.shop_image}",id:"shop_image" %>
           <p class="topic_title"><%= topic.title %></p>
-          <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
+          <!-- <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p> -->
           <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p>
         </div>
           <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
-          <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p>
+          <!-- <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p> -->
           <% if user_signed_in? %>
             <div id="likes_<%= topic.id %>" class="like_button" >
               <%= render partial: "topics/likes", locals: { topic: topic } %>
