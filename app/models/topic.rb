@@ -5,7 +5,7 @@ class Topic < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   is_impressionable counter_cache: true
   validates :title, presence: true
-  validates :title, presence: true, length: { maximum: 45 }
+  validates :title, presence: true, length: { maximum: 50 }
   validates :genre, presence: true
   validates :image, presence: true
   validates :content, presence: true
