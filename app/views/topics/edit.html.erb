@@ -1,6 +1,6 @@
 <div class="topic_center">
   <div class="post">
-  <h2 class="text-center">トピック新規投稿</h2>
+  <h2 class="text-center">トピック変更</h2>
   <%= form_with(model: @topic, local: true) do |form| %>
   <%= render 'layouts/error_messages', model: form.object %>
 
@@ -35,7 +35,7 @@
       <br>
     </div>
 
-    <% if current_user.pro_id > 0 %>
+    <% if admin_signed_in? %>
       <div class="field">
         <%= form.hidden_field :shop_id, :value => @user_shop %>
         <br>
@@ -57,28 +57,7 @@
       <br>
     </div>
 
-    <% if current_user.id == 1 %>
-      <br>
-      <h4 style="text-align:center;">店舗番号一覧</h4>
-
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">店舗番号</th>
-            <th scope="col">店舗名</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @shops.each do |shop| %>
-          <tr>
-            <th scope="row"><%= shop.id %></th>
-            <td><%= shop.name %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
-
+    
 
 
 

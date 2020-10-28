@@ -1,16 +1,20 @@
-<h2>Resend unlock instructions</h2>
+<div class="container-login">
+<h2 align="center">Resend unlock instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <br>
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" class:"form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+    <br>
+    <%= f.submit "Resend unlock instructions",class: "btn btn-primary btn-block" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+</div>

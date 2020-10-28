@@ -1,15 +1,39 @@
 class ApplicationController < ActionController::Base
-  before_action :set_instance
+  before_action :set_instance_user
+  before_action :set_instance_admin
+  before_action :set_instance_follow_user
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(resource)
-    topics_path
-  end
+protected
 
-  def set_instance
+def configure_permitted_parameters
+  # sign_upのときに、nameをストロングパラメータに追加する
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :user_image, :birthday, :sex, :shop_id, :admin_name, :admin_image])
+  # account_updateのときに、nameをストロングパラメータに追加する
+  devise_parameter_sanitizer.permit(:account_update, keys: [:username, :user_image, :birthday, :sex, :shop_id, :admin_name, :admin_image])
+end
+
+  def set_instance_user
     if user_signed_in?
       @liked_topic_ids = current_user.likes.pluck(:topic_id)
     else
       @liked_topic_ids = Like.where(user_id: 0)
+    end
+  end
+
+  def set_instance_admin
+    if admin_signed_in?
+      @admin_liked_topic_ids = current_admin.admin_likes.pluck(:topic_id)
+    else
+      @admin_liked_topic_ids = Like.where(user_id: 0)
+    end
+  end
+
+  def set_instance_follow_user
+    if user_signed_in?
+      @user_follow_relationships_admin_ids = current_user.follow_relationships.pluck(:admin_id)
+    else
+      @user_follow_relationships_admin_ids = FollowRelationship.where(admin_id: 0)
     end
   end
 

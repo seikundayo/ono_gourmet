@@ -9,8 +9,8 @@
             <%= @manager_topic.content %>
             <div class="talk">
               <figure class="talk-Limg">
-                <%= image_tag "#{@manager_topic.manager.manager_image}" ,id: "word"%>
-              <figcaption class="talk-imgname"><%= @manager_topic.manager.manager_name %></figcaption>
+                <%= image_tag "#{@manager_topic.admin.admin_image}" ,id: "word"%>
+              <figcaption class="talk-imgname"><%= @manager_topic.admin.shop.name %></figcaption>
               </figure>
                 <div class="talk-Ltxt">
                 <p class="talk-text"><%= @manager_topic.word %></p>

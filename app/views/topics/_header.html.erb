@@ -15,17 +15,20 @@
       <div class="navi_item"><a href="/administrators">運営者情報</a></div>
       <div class="navi_item"><a href="/policies">プライバシー</a></div>
       <div class="navi_item"><a href="/contacts/new">お問い合わせ</a></div>
-      <% if user_signed_in? %>
+      <% if user_signed_in? == true && admin_signed_in? == false %>
         <div class="navi_item"><%= link_to('ログアウト', destroy_user_session_path, :method => :delete) %></div>
-      <% else %>
+      <% elsif  user_signed_in? == false && admin_signed_in? == false %>
         <div class="navi_item"><%= link_to('新規登録', new_user_registration_path) %></div>
         <div class="navi_item"><%= link_to('ログイン', new_user_session_path) %></div>
+      <% else %>
       <% end %>
-      <% if user_signed_in? && current_user.admin == true && current_user.id == 1 %>
-        <div class="navi_item"><%= link_to "管理者画面",managements_path %></div>
+      <% if admin_signed_in? == true && user_signed_in? == false  %>
+        <div class="navi_item"><%= link_to('ログアウト', destroy_admin_session_path, :method => :delete) %></div>
+      <% else %>
       <% end %>
-      <% if user_signed_in? && current_user.pro_id > 0 %>
-        <div class="navi_item"><%= link_to "USER PRO管理画面",pro_users_path %></div>
+      <% if user_signed_in? && current_user.admin == true %>
+        <div class="navi_item"><a href="/managements">管理者画面</a></div>
+      <% else %>
       <% end %>
       <div class="navi_item"><a href="https://www.instagram.com/ono_gourmet_gram/?hl=ja" target="_blank">Instagram</a></div>
     </div>

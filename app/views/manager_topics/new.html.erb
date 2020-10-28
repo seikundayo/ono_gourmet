@@ -29,7 +29,7 @@
 
 
     <div class="field">
-      <%= form.label "店舗番号" %>
+      <%= form.label "絶賛する店舗番号" %>
       <br>
       <%= form.number_field :shop_id %>
       <br>
@@ -39,7 +39,7 @@
     <div class="field">
       <%= form.label "店長番号" %>
       <br>
-      <%= form.number_field :manager_id %>
+      <%= form.number_field :admin_id %>
       <br>
       <br>
     </div>
@@ -82,10 +82,10 @@
               </tr>
             </thead>
             <tbody>
-              <% @managers.each do |manager| %>
+              <% @admins.each do |admin| %>
               <tr>
-                <th scope="row"><%= manager.id %></th>
-                <td><%= manager.manager_name %></td>
+                <th scope="row"><%= admin.id %></th>
+                <td><%= admin.admin_name %></td>
               </tr>
               <% end %>
             </tbody>

@@ -4,5 +4,5 @@ class ManagerTopic < ApplicationRecord
   validates :content, presence: true
   validates :word, presence: true
   belongs_to :shop
-  belongs_to :manager
+  belongs_to :admin
 end

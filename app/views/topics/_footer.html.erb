@@ -14,6 +14,13 @@
          <p>いいね</p>
       </a>
     </div>
+    <% elsif admin_signed_in? %>
+    <div class="footer-item">
+      <a href="like_lists">
+         <i class="fas fa-heart"></i>
+         <p>いいね</p>
+      </a>
+    </div>
     <% else %>
     <div class="footer-item">
       <a type="button" data-toggle="modal" data-target=".exampleModalCenter">
@@ -21,34 +28,26 @@
          <p>いいね</p>
       </a>
     </div>
-
-    <div class="modal fade bd-example-modal-lg exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title exampleModalCenterTitle">ようこそ、おのグルメへ！</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>「いいね」「気になるリスト」を利用するにはログインが必要です。</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-            <%= link_to('ログイン', new_user_session_path, class:"btn btn-warning") %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'topics/modal' %>
   <% end %>
 
-    <div class="footer-item">
-      <a href="/">
-        <i class="fas fa-thumbtack"></i>
-        <p>フォロー</p>
-      </a>
-    </div>
+  <% if admin_signed_in? %>
+  <% elsif user_signed_in? %>
+  <div class="footer-item">
+    <a href="/follow_lists">
+      <i class="fas fa-thumbtack"></i>
+      <p>フォロー</p>
+    </a>
+  </div>
+  <% else %>
+  <div class="footer-item">
+    <a type="button" data-toggle="modal" data-target=".exampleModalCenter">
+       <i class="fas fa-thumbtack"></i>
+       <p>フォロー</p>
+    </a>
+  </div>
+      <%= render 'topics/modal' %>
+  <% end %>
 
     <div class="footer-item">
       <a href="/shops">
@@ -64,12 +63,25 @@
       </a>
     </div>
 
+
+
+    <% if admin_signed_in? %>
     <div class="footer-item">
-      <a href="/">
+      <a href="/users">
+        <i class="fas fa-user"></i>
+        <p>店舗</p>
+      </a>
+    </div>
+    <% elsif user_signed_in? %>
+    <div class="footer-item">
+      <a href="/users">
         <i class="fas fa-user"></i>
         <p>ユーザー</p>
       </a>
     </div>
+    <% else %>
+    <% end %>
+
 
   </div>
 </footer>

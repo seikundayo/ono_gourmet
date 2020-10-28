@@ -1,0 +1,23 @@
+<div class="modal fade bd-example-modal-lg exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title exampleModalCenterTitle">ようこそ、おのグルメへ！</h3>
+        <object>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        　</button>
+      </object>
+      </div>
+      <div class="modal-body">
+        <p>「いいね」「フォロー」を利用するにはログインが必要です。</p>
+      </div>
+      <div class="modal-footer">
+        <object>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        </object>
+        <object><%= link_to('ログイン', new_user_session_path, class:"btn btn-warning") %></object>
+      </div>
+    </div>
+  </div>
+</div>

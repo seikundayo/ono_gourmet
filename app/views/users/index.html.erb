@@ -1,0 +1,127 @@
+<div class="topic_content">
+  <div class="topic_center">
+    <%= render partial: "layouts/flash" %>
+
+  <div class="user_show">
+    <div class="container text-center">
+    <% if user_signed_in? %>
+
+    <div class="row">
+        <ul>
+          <% if @user.user_image? %>
+            <li align="center"><%= image_tag "#{@user.user_image}", id:"show_shop_image" %></li>
+          <% else %>
+            <li align="center"><img src="/assets/default_user.jpeg" alt="ユーザアイコン" class="user_image"></li>
+          <% end %>
+          <li><span class="row1">お名前</span><span class="row2"><%= @user.username %></span></li>
+          <li><span class="row1">メールアドレス</span><span class="row2"><%= @user.email %></span></li>
+          <span class="row2"><%= link_to "編集" , edit_user_registration_path, class: "btn btn-info button" %></span>
+        </ul>
+    </div>
+
+
+    <% elsif admin_signed_in? %>
+    <div class="row">
+      <ul>
+      <% if @admin.admin_image? %>
+          <li align="center"><%= image_tag "#{@admin.admin_image}", id:"show_shop_image" %></li>
+      <% else %>
+        <p align="center"><img src="/assets/default_user.jpeg" alt="ユーザアイコン" class="user_image"></p>
+      <% end %>
+      <li><span class="row1">お名前</span><span class="row2"><%= @admin.admin_name %></span></li>
+      <li><span class="row1">メールアドレス</span><span class="row2"><%= @admin.email %></span></li>
+      <li><span class="row2"><%= link_to "編集" , edit_admin_registration_path, class: "btn btn-info button" %><%= link_to "記事投稿",new_topic_path, class:"btn btn-info button" %><%= link_to "店舗情報" ,edit_shop_path(@shop), class: "edit btn btn-info button" %></span></li>
+      <li><span class="row1">フォロワー</span><span class="row2"><%= @follow_count %></span></li>
+      </ul>
+   </div>
+
+   <div class="pro_user">
+     <br>
+         <h4 style="text-align:center;">店舗情報</h4>
+         <table class="table table-bordered overflow">
+           <thead>
+             <tr>
+               <th scope="col">店舗名</th>
+               <th scope="col">電話番号</th>
+               <th scope="col">住所</th>
+               <th scope="col">アクセス</th>
+               <th scope="col">営業時間</th>
+               <th scope="col">定休日</th>
+               <th scope="col">テイクアウト</th>
+               <th scope="col">マップ</th>
+               <th scope="col">紹介文</th>
+               <th scope="col">店舗画像</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+                 <td><%= @shop.name %></td>
+                 <td><%= @shop.number %></td>
+                 <td><%= @shop.address %></td>
+                 <td><%= @shop.access %></td>
+                 <td><%= @shop.time %></td>
+                 <td><%= @shop.rest %></td>
+                 <td><%= @shop.takeout %></td>
+                 <td><iframe src="<%= @shop.map %>" width="150" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></td>
+                 <td><%= @shop.introduce%></td>
+                 <td><%= image_tag "#{@shop.shop_image}", class: "admin_manage" %></td>
+             </tr>
+           </tbody>
+         </table>
+
+         <h4 style="text-align:center;">記事一覧</h4>
+         <table class="table table-bordered overflow">
+           <thead>
+             <tr>
+               <th scope="col">PV数</th>
+               <th scope="col">いいね数</th>
+               <th scope="col">UP日</th>
+               <th scope="col">タイトル</th>
+               <th scope="col">ジャンル</th>
+               <th scope="col">トップ画像</th>
+               <th scope="col">詳細</th>
+               <th scope="col">編集</th>
+               <th scope="col">削除</th>
+             </tr>
+           </thead>
+           <tbody>
+             <% @topic.each do |topic| %>
+             <tr>
+                 <td><%= topic.impressionist_count %></td>
+                 <td><%= topic.liked_users.count %></td>
+                 <td><%= topic.created_at.to_s(:datetime_jp) %></td>
+                 <td><%= topic.title %></td>
+                 <td><%= topic.genre %></td>
+                 <td><%= image_tag "#{topic.image}", class: "admin_manage"%></td>
+                 <td><a href="/topics/<%= topic.id %>">詳細</a></td>
+                 <td>
+                   <%= link_to edit_topic_path(topic), class: "edit" do %>
+                     <i class="fas fa-edit"></i>
+                   <% end %>
+                 </td>
+                 <td>
+                   <%= link_to topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "delete" do %>
+                     <i class="fas fa-trash-alt"></i>
+                   <% end %>
+                 </td>
+             </tr>
+             <% end %>
+           </tbody>
+         </table>
+   </div>
+
+    <% else %>
+      <p>ログインが必要です</p>
+    <% end %>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+ </div>
+</div>

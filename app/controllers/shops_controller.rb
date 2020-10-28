@@ -1,34 +1,37 @@
 class ShopsController < ApplicationController
   def index
-    @search = Shop.ransack(params[:q])
-    @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+    # @search = Shop.ransack(params[:q])
+    # @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+    @admins = Admin.all.page(params[:page]).per(12)
   end
 
   def show
-    @shops_contents = Topic.where(shop_id: params[:id]).order(created_at: :desc)
-    @shops_name = Topic.find_by(shop_id: params[:id])
+    @topics = Topic.where(shop_id: params[:id]).order(created_at: :desc).page(params[:page]).per(12)
+    @shops_name = Shop.find(params[:id])
   end
 
   def new
     if user_signed_in? && current_user.id == 1
       @shop = Shop.new
     else
-      @search = Shop.ransack(params[:q])
-      @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+      # @search = Shop.ransack(params[:q])
+      # @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+      @admins = Admin.all.page(params[:page]).per(12)
       render action: :index
     end
   end
 
   def edit
-    if user_signed_in? && current_user.id == 1
+    if user_signed_in? && current_user.admin == true
       @shop = Shop.find(params[:id])
-    elsif user_signed_in? && current_user.pro_id > 0
-      @user = current_user
-      @user_shop = @user.pro_id
+    elsif admin_signed_in?
+      @user = current_admin
+      @user_shop = @user.shop_id
       @shop = Shop.find(@user_shop)
     else
-      @search = Shop.ransack(params[:q])
-      @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+      # @search = Shop.ransack(params[:q])
+      # @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+      @admins = Admin.all.page(params[:page]).per(12)
       render action: :index
     end
   end

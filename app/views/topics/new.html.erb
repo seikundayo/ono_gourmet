@@ -35,7 +35,7 @@
       <br>
     </div>
 
-    <% if current_user.pro_id > 0 %>
+    <% if admin_signed_in? %>
       <div class="field">
         <%= form.hidden_field :shop_id, :value => @user_shop %>
         <br>
@@ -57,7 +57,7 @@
       <br>
     </div>
 
-    <% if current_user.id == 1 %>
+    <% if user_signed_in? && current_user.admin = true %>
       <br>
       <h4 style="text-align:center;">店舗番号一覧</h4>
 
@@ -77,6 +77,8 @@
           <% end %>
         </tbody>
       </table>
+    <% else %>
+
     <% end %>
 
 

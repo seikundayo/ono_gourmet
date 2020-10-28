@@ -1,38 +1,14 @@
 <div class="topic_center">
-  <% if @shops_contents.length > 0 %>
+  <div class="shop_show">
     <div class="listing_shop">
-      <h1><%= @shops_name.shop.name %></h1>
-      <p><%= @shops_name.shop.introduce %></p>
+      <h1><%= @shops_name.name %></h1>
+      <!-- <p><%= @shops_name.introduce %></p> -->
     </div>
 
-    <div class="topic_content">
-      <div class="row">
-        <% @shops_contents.each do |topic| %>
-        <div class="col-md-4">
-
-          <div class="article_editing">
-            <% if user_signed_in? && current_user.id == 1 %>
-              <%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
-              <%= link_to '編集', edit_topic_path(topic), class: "btn btn-warning" %>
-            <% end %>
-          </div>
-
-          <a href="/topics/<%= topic.id %>">
-          <div class="card">
-          <%= image_tag "#{topic.image}",id:"card_image" %>
-          <div class="card-body">
-            <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
-            <p class="topic_title"><%= topic.title %></p>
-            <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p>
-            <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p></div>
-            <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
-          </div>
-          </a>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  <% else %>
-    <p align="center">関連する記事がありません。</p>
-  <% end %>
+    <% if @topics.length > 0 %>
+      <%= render 'topics/content' %>
+    <% else %>
+      <p >関連する記事がありません。</p>
+    <% end %>
+  </div>
 </div>

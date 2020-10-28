@@ -13,12 +13,12 @@ class TopicsController < ApplicationController
   end
 
   def new
-    if user_signed_in? && current_user.admin == true
+    if admin_signed_in? || user_signed_in?
         @topic = Topic.new
-        @shops = Shop.all.order(id: "ASC")
-      if current_user.pro_id > 0
-        @user = current_user
-        @user_shop = @user.pro_id
+        @shops = Shop.all.order(id: :asc)
+      if admin_signed_in?
+        @user = current_admin
+        @user_shop = @user.shop_id
       end
     else
       @search = Topic.ransack(params[:q])
@@ -30,9 +30,9 @@ class TopicsController < ApplicationController
   def edit
     @topic = Topic.find(params[:id])
     @shops = Shop.all
-    if current_user.pro_id > 0
-      @user = current_user
-      @user_shop = @user.pro_id
+    if admin_signed_in?
+      @user = current_admin
+      @user_shop = @user.shop_id
     end
   end
 
@@ -62,9 +62,9 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @shops = Shop.all
-    if current_user.pro_id > 0
-      @user = current_user
-      @user_shop = @user.pro_id
+    if admin_signed_in?
+      @user = current_admin
+      @user_shop = @user.shop_id
       @topic.shop_id == @user_shop
     end
         respond_to do |format|
@@ -86,3 +86,24 @@ class TopicsController < ApplicationController
     end
 
 end
+
+
+
+
+
+
+
+# def new
+#   if user_signed_in? && current_user.admin == true
+#       @topic = Topic.new
+#       @shops = Shop.all.order(id: "ASC")
+#     if current_user.pro_id > 0
+#       @user = current_user
+#       @user_shop = @user.pro_id
+#     end
+#   else
+#     @search = Topic.ransack(params[:q])
+#     @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(12)
+#     render action: :index
+#   end
+# end

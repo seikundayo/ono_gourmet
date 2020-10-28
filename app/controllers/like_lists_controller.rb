@@ -2,8 +2,10 @@ class LikeListsController < ApplicationController
   def index
     if user_signed_in?
       @like_lists = current_user.likes
+    elsif admin_signed_in?
+      @like_lists = current_admin.admin_likes
     else
-      redirect_to topics_path
+  
     end
   end
 end

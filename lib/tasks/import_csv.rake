@@ -15,28 +15,14 @@ namespace :import_csv do
         end
       end
 
-      desc "topic_data.csvをインポートするタスク"
+      desc "admin_data.csvをインポートするタスク"
 
-      task topic_data: :environment do
-        list = Import.csv_data(path: "db/csv_data/topic_data.csv")
-
-        puts "インポート処理を開始"
-        begin
-          Topic.first_or_create!(list)
-          puts "インポート完了!!"
-        rescue ActiveModel::UnknownAttributeError => invalid
-          puts "インポートに失敗：UnknownAttributeError"
-        end
-      end
-
-      desc "manager_data.csvをインポートするタスク"
-
-      task manager_data: :environment do
-        list = Import.csv_data(path: "db/csv_data/manager_data.csv")
+      task admin_data: :environment do
+        list = Import.csv_data(path: "db/csv_data/admin_data.csv")
 
         puts "インポート処理を開始"
         begin
-          Manager.first_or_create!(list)
+          Admin.first_or_create!(list)
           puts "インポート完了!!"
         rescue ActiveModel::UnknownAttributeError => invalid
           puts "インポートに失敗：UnknownAttributeError"
