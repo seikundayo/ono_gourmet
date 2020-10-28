@@ -1,0 +1,20 @@
+<div class="container-login">
+<h2 align="center">パスワードを忘れましたか？</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= bootstrap_devise_error_messages! %>
+
+  <div class="field">
+    <br>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+  </div>
+
+  <div class="actions">
+    <br>
+    <%= f.submit "パスワードを送る",class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>
+<hr>
+<%= link_to "戻る", :back, class:"btn btn-info btn-block" %>
+</div>

@@ -8,7 +8,7 @@
       <div class="col-xl-4">
 
         <div class="article_editing">
-          <% if user_signed_in? && current_user.id == 1 %>
+          <% if user_signed_in? && current_user.admin == true %>
             <%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
             <%= link_to '編集', edit_manager_topic_path(topic), class: "btn btn-warning" %>
           <% end %>
@@ -16,9 +16,9 @@
 
         <a href="/manager_topics/<%= topic.id %>">
         <div class="card">
-          <%= image_tag "#{topic.manager.manager_image}",id:"card_image" %>
+          <%= image_tag "#{topic.admin.admin_image}",id:"card_image" %>
         <div class="card-body">
-          <h5><%= topic.manager.manager_name %>　が絶賛するお店</h5>
+          <h5><%= topic.admin.shop.name %>　が絶賛するお店</h5>
           <h4><%= topic.shop.name %></h4>
         </div>
       </div>

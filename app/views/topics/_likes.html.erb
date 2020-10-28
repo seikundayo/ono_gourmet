@@ -1,5 +1,14 @@
-<% if @liked_topic_ids.include?(topic.id) %>
-<%= render partial: "topics/liked", locals: { topic: topic } %>
+<% if user_signed_in? %>
+  <% if @liked_topic_ids.include?(topic.id) %>
+  <%= render partial: "topics/liked", locals: { topic: topic } %>
+  <% else %>
+  <%= render partial: "topics/unliked", locals: { topic: topic } %>
+  <% end %>
+<% elsif admin_signed_in? %>
+  <% if @admin_liked_topic_ids.include?(topic.id) %>
+  <%= render partial: "topics/liked", locals: { topic: topic } %>
+  <% else %>
+  <%= render partial: "topics/unliked", locals: { topic: topic } %>
+  <% end %>
 <% else %>
-<%= render partial: "topics/unliked", locals: { topic: topic } %>
 <% end %>

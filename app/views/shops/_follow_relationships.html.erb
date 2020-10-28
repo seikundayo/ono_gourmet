@@ -1,0 +1,5 @@
+<% if @user_follow_relationships_admin_ids.include?(admin.id) %>
+  <%= render partial: "shops/follow", locals: { admin: admin } %>
+<% else %>
+  <%= render partial: "shops/unfollow", locals: { admin: admin } %>
+<% end %>

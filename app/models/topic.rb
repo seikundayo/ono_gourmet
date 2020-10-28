@@ -3,6 +3,8 @@ class Topic < ApplicationRecord
   has_rich_text :content
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  has_many :admin_likes, dependent: :destroy
+  has_many :liked_admins, through: :admin_likes, source: :admin
   is_impressionable counter_cache: true
   validates :title, presence: true
   validates :title, presence: true, length: { maximum: 50 }

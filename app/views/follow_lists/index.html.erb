@@ -1,0 +1,67 @@
+<div class="topic_center">
+  <div class="shop_content">
+  <% if @follow_lists.length > 0 %>
+  <p align="center">現在<%= @follow_lists.length %>件フォローしています。</p>
+  <div class="container-fluid">
+    <div class="row">
+      <% @follow_lists.each do |admin| %>
+      <div class="col-md-4">
+        <div class="article_editing">
+          <% if user_signed_in? && current_user.id == 1 %>
+            <%= link_to '削除', admin.shop, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
+            <%= link_to '編集', edit_shop_path(admin.shop), class: "btn btn-warning" %>
+          <% end %>
+        </div>
+
+        <a href="/shops/<%= admin.shop.id %>">
+        <div class="card">
+          <%= image_tag "#{admin.shop.shop_image}",id:"card_image" %>
+          <% if user_signed_in? %>
+            <div id="follow_relationships_<%= admin.id %>" class="shop_follow" >
+              <%= render partial: "shops/follow_relationships", locals: { admin: admin } %>
+            </div>
+          <% else %>
+          <a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="like_button" >♡</a>
+          <div class="modal fade bd-example-modal-lg exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title exampleModalCenterTitle">ようこそ、おのグルメへ！</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>「いいね」「気になるリスト」を利用するにはログインが必要です。</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                  <%= link_to('ログイン', new_user_session_path, class:"btn btn-warning") %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <div class="card-body">
+          <div class="row">
+              <ul>
+                <li><h3><%= admin.shop.name %></h3></li>
+                <li><span class="row1"><i class="fas fa-map-marker-alt"></i></span><span class="row2"><%= admin.shop.address %></span></li>
+                <li><span class="row1"><i class="fas fa-phone-alt"></i></span><a href="tel:<%= admin.shop.number %>"><span class="row2"><%= admin.shop.number %></span></a></li>
+                <li><span class="row1"><i class="fas fa-clock"></i></span><span class="row2"><%= admin.shop.time %></span></li>
+                <li><span class="row1"><i class="fas fa-store-alt-slash"></i></span><span class="row2"><%= admin.shop.rest %></span></li>
+                <li><span class="row1"><i class="fas fa-sign-out-alt"></i></span><span class="row2"><%= admin.shop.takeout %></span></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      </a>
+     </div>
+     <% end %>
+    </div>
+  </div>
+  <% else %>
+    <p align="center">フォローしていません。</p>
+  <% end %>
+  </div>
+</div>

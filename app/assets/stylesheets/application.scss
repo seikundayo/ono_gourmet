@@ -28,6 +28,16 @@ main {
   flex: 1;
   padding-bottom: 20px;
 }
+.container-login{
+  margin-bottom: 60px;
+}
+.container-login h2{
+  font-size: calc(15 * ((100vw - 320px) / 1600) + 18px);
+}
+.container-login #user_user_image{
+  font-size: calc(6 * ((100vw - 320px) / 1600) + 10px);
+}
+
 
 
 
@@ -393,7 +403,7 @@ a {
 .topic_content .card{
   position:relative;
   border:solid 1px silver;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 0 0;
   margin: 20px auto;
   max-width: 350px;
   max-height: 465px;
@@ -485,7 +495,7 @@ a {
 .topic_content .topic_shop_name{
   position: absolute;
   // bottom: 54px;
-  bottom: calc(24 * ((100vw - 320px) / 1600) + 29px);
+  bottom: calc(17 * ((100vw - 320px) / 1600) + 33px);
   font-size: 0.7vw;
 }
 // トピックの住所
@@ -523,6 +533,9 @@ a {
 .modal h3{
   font-size: calc(12 * ((100vw - 320px) / 1600) + 16px);
   font-weight: bold;
+}
+.modal .modal-body p{
+  font-size: calc(12 * ((100vw - 320px) / 1600) + 12px);
 }
 
 
@@ -812,35 +825,52 @@ left: -16px;
 .shop_content h1{
   text-align: center;
 }
-.shop_content a{
-  color: black;
-}
+// .shop_content a{
+//   color: black;
+// }
 .shop_content a:hover{
   text-decoration: none;
+  color: black;
 }
 .shop_content .card{
   position: relative;
   background: #fffde8;
   border: solid 1px black;
   max-width: 360px;
-  min-height: calc(75 * ((100vw - 320px) / 1600) + 440px);
+  min-height: calc(115 * ((100vw - 320px) / 1600) + 440px);
   margin: 20px auto;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 0 0;
 }
 .shop_content .card #card_image{
   width: 100%;
   height: auto;
 }
-.shop_content .card .shop_follow{
+.shop_content .unfollow{
   position: absolute;
-  top: 10px;
-  right: 0;
-  font-size: 18px;
-  color: white;
-  padding: 2px 10px;
+  top: 0px;
+  right: 0px;
+  padding: 5px 10px;
+  background-color: white;
+  border: solid 1px #00ccff;
+  color: #00ccff;
+}
+.shop_content .unfollow:hover{
+  color: #00ccff;
+}
+.shop_content .followed{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 5px 10px;
   background-color: #00ccff;
+  border: solid 1px #00ccff;
+  color: white;
+}
+.shop_content .followed:hover{
+  color: white;
 }
 .shop_content .card h3{
+  height: calc(12 * ((100vw - 320px) / 500) + 25px);
   word-break: keep-all;
   text-align: center;
   font-size: calc(4 * ((100vw - 320px) / 500) + 14px);
@@ -876,10 +906,6 @@ left: -16px;
   margin-left: 27px;
   margin-top: -20px;
 }
-.shop_content .card p{
-  font-size: 10px;
-  margin: -10px 0 10px 0;
-}
 .shop_content #card_image{
   width: 358px;
   height: 200px;
@@ -892,13 +918,15 @@ left: -16px;
 }
 
 
-
 //掲載店の詳細
 .listing_shop h1{
   text-align: center;
 }
 .listing_shop p{
   text-align: center;
+}
+.shop_show h1{
+  font-size: calc(5 * ((100vw - 320px) / 500) + 18px);
 }
 
 
@@ -932,6 +960,7 @@ left: -16px;
 //一覧
 .management{
   padding: 10px;
+  margin-bottom: 100px;
 }
 .management h2{
   margin: 20px 0;
@@ -954,43 +983,11 @@ left: -16px;
 
 
 
-//PROUSR画面
-.pro_user h1{
-  font-size: 3vw;
-}
-.pro_user h5{
-  font-size: 1vw;
-}
-.pro_user h4{
-  font-size: 1vw;
-}
-.pro_user table{
-  font-size: 0.8vw;
-}
 
 
 
-//　PROユーザー
-//　店舗画像
-.pro_user{
-  padding: 10px;
-}
-.pro_user h1{
-  margin: 20px 0;
-}
-.pro_user h5{
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-.pro_user p{
-  margin-bottom: 40px;
-}
-.pro_user table{
-  margin-bottom: 50px;
-}
-#pro_user_image{
-  width: 150px;
-}
+
+
 
 
 
@@ -1034,6 +1031,66 @@ left: -16px;
   padding: 15px;
   border: solid 1px grey;
 }
+
+//ユーザー画面
+.user_show{
+  margin-bottom: 20px;
+}
+.user_show #user_image{
+  border: solid 1px black;
+  border-radius: 10px;
+  width: calc(70 * ((100vw - 320px) / 500) + 200px);
+  height: calc(60 * ((100vw - 320px) / 500) + 150px);
+}
+.user_show .user_image{
+  border: solid 1px black;
+  border-radius: 10px;
+  width: calc(70 * ((100vw - 320px) / 500) + 200px);
+  height: calc(60 * ((100vw - 320px) / 500) + 150px);
+}
+.user_show .admin_manage{
+  width: 100px;
+  height: auto;
+}
+.user_show .btn{
+  color: white;
+}
+
+
+// トピック詳細のお店情報
+.user_show ul {
+  margin: 0 auto;
+  list-style: none;
+  background: #fffde8;
+  box-shadow: 0px 0px 0px 5px #fffde8;
+  border: dashed 2px #ffb03f;
+  border-radius: 9px;
+  padding: 10px 8px 10px 8px;
+  margin: 0 auto;
+  // width: 92%;
+  width: calc(160 * ((100vw - 320px) / 500) + 250px);
+  // height: calc(60 * ((100vw - 320px) / 500) + 400px);
+  height: auto;
+}
+.user_show ul li{
+  font-size: 0.9vw;
+  border-bottom: dashed 1px silver;
+  line-height: 1.5;
+  padding: 10px 0;
+  min-height: 40px;
+}
+.user_show span.row2 {
+  font-size: 1vw;
+  display: block;
+}
+.user_show span .button{
+
+  width: 30%;
+  font-size: calc(3 * ((100vw - 320px) / 500) + 10px);
+  margin: 10px 2px 0 2px;
+}
+
+
 
 
 

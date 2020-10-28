@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_113600) do
+ActiveRecord::Schema.define(version: 2020_10_28_084620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,32 @@ ActiveRecord::Schema.define(version: 2020_10_03_113600) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "admin_likes", force: :cascade do |t|
+    t.integer "admin_id", null: false
+    t.integer "topic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id", "topic_id"], name: "index_admin_likes_on_admin_id_and_topic_id", unique: true
+    t.index ["admin_id"], name: "index_admin_likes_on_admin_id"
+    t.index ["topic_id"], name: "index_admin_likes_on_topic_id"
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "shop_id"
+    t.string "admin_name"
+    t.string "admin_image"
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["shop_id"], name: "index_admins_on_shop_id"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -53,6 +79,16 @@ ActiveRecord::Schema.define(version: 2020_10_03_113600) do
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "follow_relationships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "admin_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_follow_relationships_on_admin_id"
+    t.index ["user_id", "admin_id"], name: "index_follow_relationships_on_user_id_and_admin_id", unique: true
+    t.index ["user_id"], name: "index_follow_relationships_on_user_id"
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -94,19 +130,12 @@ ActiveRecord::Schema.define(version: 2020_10_03_113600) do
   create_table "manager_topics", force: :cascade do |t|
     t.string "title"
     t.text "word"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "admin_id"
     t.bigint "shop_id"
-    t.bigint "manager_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["manager_id"], name: "index_manager_topics_on_manager_id"
+    t.index ["admin_id"], name: "index_manager_topics_on_admin_id"
     t.index ["shop_id"], name: "index_manager_topics_on_shop_id"
-  end
-
-  create_table "managers", force: :cascade do |t|
-    t.string "manager_name"
-    t.string "manager_image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shops", force: :cascade do |t|
@@ -147,13 +176,16 @@ ActiveRecord::Schema.define(version: 2020_10_03_113600) do
     t.string "uid"
     t.string "username"
     t.boolean "admin", default: false
-    t.integer "pro_id", default: 0
+    t.date "birthday"
+    t.string "user_image"
+    t.integer "sex"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "manager_topics", "managers"
+  add_foreign_key "admins", "shops"
+  add_foreign_key "manager_topics", "admins"
   add_foreign_key "manager_topics", "shops"
   add_foreign_key "topics", "shops"
 end

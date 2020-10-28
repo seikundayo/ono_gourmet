@@ -1,1 +1,6 @@
-<%= link_to '♡', topic_likes_path(topic), method: :post, remote: true %>
+<% if user_signed_in? %>
+  <%= link_to '♡', topic_likes_path(topic), method: :post, remote: true %>
+<% elsif admin_signed_in? %>
+  <%= link_to '♡', topic_admin_likes_path(topic), method: :post, remote: true %>
+<% else %>
+<% end %>

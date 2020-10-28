@@ -2,10 +2,10 @@
 
   <h2 class="text-center">管理者画面</h2>
   <div class="text-center">
+      <p>ユーザー数:<%= @users.count %></p>
     <ul>
       <li><%= link_to "記事投稿",new_topic_path, class:"btn btn-secondary btn-info" %></li>
       <li><%= link_to "店長オススメ投稿",new_manager_topic_path, class:"btn btn-secondary btn-info" %></li>
-      <li><%= link_to "店長情報登録",new_manager_path, class:"btn btn-secondary btn-info" %></li>
     </ul>
   </div>
 
@@ -68,7 +68,7 @@
                 <tr>
                   <th scope="row"><%= manager_topic.id %></th>
                   <td><%= manager_topic.title %></td>
-                  <td><%= manager_topic.manager.manager_name %></td>
+                  <td><%= manager_topic.admin.admin_name %></td>
                   <td><%= manager_topic.shop.name %></td>
                   <td><a href="/manager_topics/<%= manager_topic.id %>">詳細</a></td>
                   <td>
@@ -117,10 +117,10 @@
               </tr>
             </thead>
             <tbody>
-              <% @managers.each do |manager| %>
+              <% @admins.each do |admin| %>
               <tr>
-                <th scope="row"><%= manager.id %></th>
-                <td><%= manager.manager_name %></td>
+                <th scope="row"><%= admin.id %></th>
+                <td><%= admin.admin_name %></td>
               </tr>
               <% end %>
             </tbody>
@@ -128,7 +128,6 @@
     </div>
   </div>
  </div>
-
 
 
 

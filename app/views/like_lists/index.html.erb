@@ -31,9 +31,12 @@
           </div>
             <p class="topic_day"><%= list.topic.created_at.to_s(:datetime_jp) %></p>
             <p class="topic_view"><%= list.topic.impressionist_count %> <%= list.topic.impressionist_count <= 1 ? "view" : "views" %></p>
-            <div id="likes_<%= list.topic.id %>" class="like_button" >
-              <%= render partial: "topics/likes", locals: { topic: list.topic } %>
-            </div>
+            <% if admin_signed_in? || user_signed_in? %>
+              <div id="likes_<%= list.topic.id %>" class="like_button" >
+                <%= render partial: "topics/likes", locals: { topic: list.topic } %>
+              </div>
+            <% else %>
+            <% end %>
           </div>
           </a>
         </div>

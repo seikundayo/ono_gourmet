@@ -9,9 +9,9 @@ class ManagerTopicsController < ApplicationController
   end
 
   def new
-    if user_signed_in? && current_user.id == 1
+    if user_signed_in? && current_user.admin == true
       @topic = ManagerTopic.new
-      @managers = Manager.all.order(id: :asc)
+      @admins = Admin.all.order(id: :asc)
       @shops = Shop.all.order(id: :asc)
     else
       @manager_topics = ManagerTopic.all.order(created_at: :desc).page(params[:page]).per(9)
@@ -21,7 +21,7 @@ class ManagerTopicsController < ApplicationController
 
   def edit
     @topic = ManagerTopic.find(params[:id])
-    @managers = Manager.all.order(id: :asc)
+    @admins = Admin.all.order(id: :asc)
     @shops = Shop.all.order(id: :asc)
   end
 
@@ -36,7 +36,7 @@ class ManagerTopicsController < ApplicationController
 
   def update
       @topic = ManagerTopic.find(params[:id])
-      @managers = Manager.all
+      @admins = Admin.all
       @shops = Shop.all
       respond_to do |format|
       if @topic.update(topic_params)
@@ -51,7 +51,7 @@ class ManagerTopicsController < ApplicationController
 
   def create
     @topic = ManagerTopic.new(topic_params)
-    @managers = Manager.all
+    @admins = Admin.all
     @shops = Shop.all
     respond_to do |format|
       if @topic.save
@@ -68,7 +68,7 @@ class ManagerTopicsController < ApplicationController
   private
 
     def topic_params
-      params.require(:manager_topic).permit(:title, :content, :word, :shop_id, :manager_id)
+      params.require(:manager_topic).permit(:title, :content, :word, :shop_id, :admin_id)
     end
 
 
