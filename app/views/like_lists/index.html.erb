@@ -1,7 +1,7 @@
 <div class="topic_center">
+ <div class="topic_content">
   <% if @like_lists.length > 0 %>
   <p align="center">現在<%= @like_lists.length %>件いいねしています。</p>
-    <div class="topic_content">
     <div class="container-fluid">
       <div class="row">
         <% @like_lists.each do |list| %>
@@ -9,33 +9,37 @@
           <a href="/topics/<%= list.topic.id %>">
           <div class="card">
           <%= image_tag "#{list.topic.image}",id:"card_image" %>
-          <div class="card-body">
-            <p class="topic_genre">
-              <% if list.topic.genre == "カフェ" %>
-                <span class="cafe"><%= list.topic.genre %></span>
-              <% elsif list.topic.genre == "ランチ" %>
-                <span class="lunch"><%= list.topic.genre %></span>
-                <% elsif list.topic.genre == "ディナー" %>
-                <span class="dinner"><%= list.topic.genre %></span>
-              <% elsif list.topic.genre == "パン" %>
-                <span class="bread"><%= list.topic.genre %></span>
-              <% elsif list.topic.genre == "居酒屋" %>
-                <span class="pub"><%= list.topic.genre %></span>
-              <% elsif list.topic.genre == "テイクアウト" %>
-                <span class="takeout"><%= list.topic.genre %></span>
-              <% end %>
-            </p>
-            <p class="topic_title"><%= list.topic.title %></p>
-            <p class="topic_shop_name"><i class="fas fa-store"> <%= list.topic.shop.name %></i></p>
-            <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= list.topic.shop.address %></p>
-          </div>
-            <p class="topic_day"><%= list.topic.created_at.to_s(:datetime_jp) %></p>
-            <p class="topic_view"><%= list.topic.impressionist_count %> <%= list.topic.impressionist_count <= 1 ? "view" : "views" %></p>
-            <% if admin_signed_in? || user_signed_in? %>
-              <div id="likes_<%= list.topic.id %>" class="like_button" >
-                <%= render partial: "topics/likes", locals: { topic: list.topic } %>
-              </div>
-            <% else %>
+          <p class="topic_genre">
+            <% if list.topic.genre == "カフェ" %>
+              <span class="cafe"><%= list.topic.genre %></span>
+            <% elsif list.topic.genre == "ランチ" %>
+              <span class="lunch"><%= list.topic.genre %></span>
+              <% elsif list.topic.genre == "ディナー" %>
+              <span class="dinner"><%= list.topic.genre %></span>
+            <% elsif list.topic.genre == "パン" %>
+              <span class="bread"><%= list.topic.genre %></span>
+            <% elsif list.topic.genre == "居酒屋" %>
+              <span class="pub"><%= list.topic.genre %></span>
+            <% elsif list.topic.genre == "テイクアウト" %>
+              <span class="takeout"><%= list.topic.genre %></span>
+            <% elsif list.topic.genre == "クーポン" %>
+              <span class="coupon"><%= list.topic.genre %></span>
+            <% end %>
+          </p>
+            <div class="card-body">
+              <p class="shop_title"><%= list.topic.shop.name %></p>
+              <%= image_tag "#{list.topic.shop.shop_image}",id:"shop_image" %>
+              <p class="topic_title"><%= list.topic.title.truncate(40) %></p>
+              <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= list.topic.shop.address %></p>
+            </div>
+              <p class="topic_day"><%= list.topic.created_at.to_s(:datetime_jp) %></p>
+              <% if user_signed_in? || admin_signed_in? %>
+                <div id="likes_<%= list.topic.id %>" class="like_button" >
+                  <%= render partial: "topics/likes", locals: { topic: list.topic } %>
+                </div>
+              <% else %>
+              <a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="like_button" >♡</a>
+              <%= render 'topics/modal' %>
             <% end %>
           </div>
           </a>
@@ -43,8 +47,8 @@
         <% end %>
       </div>
     </div>
-    </div>
   <% else %>
     <p align="center">いいねはありません。</p>
   <% end %>
+  </div>
 </div>

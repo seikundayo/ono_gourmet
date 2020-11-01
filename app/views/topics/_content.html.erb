@@ -1,13 +1,24 @@
 <div class="topic_content">
-  <% if @topics.length > 0 %>
+  <div class="tab">
+    <ul>
+      <li class=<%= @tab %>><%= link_to "一覧", topics_path %></li>
+      <li class=<%= @tab_cafe %>><%= link_to "カフェ", topics_path(genre: "カフェ") %></li>
+      <li class=<%= @tab_lunch %>><%= link_to "ランチ", topics_path(genre: "ランチ") %></li>
+      <li class=<%= @tab_dinner %>><%= link_to "ディナー", topics_path(genre: "ディナー") %></li>
+      <li class=<%= @tab_bread %>><%= link_to "パン", topics_path(genre: "パン") %></li>
+      <li class=<%= @tab_pub %>><%= link_to "居酒屋", topics_path(genre: "居酒屋") %></li>
+      <li class=<%= @tab_takeout %>><%= link_to "テイクアウト", topics_path(genre: "テイクアウト") %></li>
+    </ul>
+  </div>
 
+  <% if @topics.length > 0 %>
   <div class="container-fluid">
     <div class="row">
       <% @topics.each do |topic| %>
       <div class="col-md-4">
 
         <div class="article_editing">
-          <% if user_signed_in? && current_user.id == 1 %>
+          <% if user_signed_in? && current_user.admin == true %>
             <%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
             <%= link_to '編集', edit_topic_path(topic), class: "btn btn-warning" %>
           <% end %>
@@ -29,12 +40,14 @@
             <span class="pub"><%= topic.genre %></span>
           <% elsif topic.genre == "テイクアウト" %>
             <span class="takeout"><%= topic.genre %></span>
+          <% elsif topic.genre == "クーポン" %>
+            <span class="coupon"><%= topic.genre %></span>
           <% end %>
         </p>
         <div class="card-body">
           <p class="shop_title"><%= topic.shop.name %></p>
           <%= image_tag "#{topic.shop.shop_image}",id:"shop_image" %>
-          <p class="topic_title"><%= topic.title %></p>
+          <p class="topic_title"><%= topic.title.truncate(40) %></p>
           <!-- <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p> -->
           <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p>
         </div>
@@ -62,7 +75,8 @@
   </div>
 
   <% else %>
-    <p>記事はまだありません。</p>
+    <br>
+    <p align="center">記事はまだありません。</p>
   <% end %>
 
 </div>

@@ -29,7 +29,7 @@ class ManagerTopicsController < ApplicationController
     @topic = ManagerTopic.find(params[:id])
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to manager_topics_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to manager_topics_url, notice: '記事を削除しました。' }
       format.json { head :no_content }
     end
   end
@@ -40,7 +40,7 @@ class ManagerTopicsController < ApplicationController
       @shops = Shop.all
       respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @topic, notice: '記事を更新しました。' }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class ManagerTopicsController < ApplicationController
     @shops = Shop.all
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to @topic, notice: '記事を投稿しました。' }
         format.json { render :show, status: :created, location: @topic}
       else
         format.html { render :new }

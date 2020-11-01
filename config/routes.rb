@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   resources :administrators, only: [:index]
   resources :policies, only: [:index]
   resources :managements, only: [:index]
+  resources :coupons, only: [:index]
 end

@@ -49,7 +49,7 @@ class ShopsController < ApplicationController
       @shop = Shop.find(params[:id])
       respond_to do |format|
       if@shop.update(shop_params)
-        format.html { redirect_to @shop, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @shop, notice: '店舗情報を更新しました。' }
         format.json { render :show, status: :ok, location: @shop }
       else
         format.html { render :edit }
