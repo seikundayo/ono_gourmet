@@ -71,3 +71,8 @@ var spNavInOut = {
     }
   }
 };
+
+//アラートを2秒後に削除
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 3000);
+});

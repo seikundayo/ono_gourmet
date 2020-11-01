@@ -38,6 +38,195 @@ main {
   font-size: calc(6 * ((100vw - 320px) / 1600) + 10px);
 }
 
+//トピックのタブ切り替え
+.topic_content .tab{
+  overflow-x: scroll;
+  overflow-y: visible;
+  white-space: nowrap;
+  margin: 0 5px;
+  height: 90px;
+}
+.topic_content .tab ul{
+  width: 100%;
+  font-size: calc(6 * ((100vw - 320px) / 1600) + 13px);
+  display:table;
+  table-layout:fixed;
+  margin: 10px auto;
+  text-align: center;
+}
+.topic_content .tab li{
+  width: calc(55 * ((100vw - 320px) / 1600) + 100px);
+  font-weight: bold;
+  display:inline-block;
+  border-radius: 5px 5px 0 0;
+  background-color: white;
+  border: solid 2px orange;
+  text-align: center;
+}
+.topic_content .tab li:not(:last-of-type){
+  margin-right: 5px;
+}
+.topic_content .tab li a{
+  color: orange;
+  display: block;
+  padding: 10px 5px;
+}
+
+
+
+// タブがトップの時
+.topic_content .tab li.top{
+  position: relative;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+}
+.topic_content .tab li.top:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 13px solid orange;
+}
+.topic_content .tab .top a{
+  color: white;
+}
+// タブがカフェの時
+.topic_content .tab li.cafe{
+  position: relative;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  background-color: orange;
+  color: white;
+}
+.topic_content .tab li.cafe:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 13px solid orange;
+}
+.topic_content .tab .cafe a{
+  color: white;
+}
+// タブがランチの時
+.topic_content .tab li.lunch{
+  position: relative;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  background-color: orange;
+  color: white;
+}
+.topic_content .tab li.lunch:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 13px solid orange;
+}
+.topic_content .tab .lunch a{
+  color: white;
+}
+// タブがディナーの時
+.topic_content .tab li.dinner{
+  position: relative;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  background-color: orange;
+  color: white;
+}
+.topic_content .tab li.dinner:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 13px solid orange;
+}
+.topic_content .tab .dinner a{
+  color: white;
+}
+// タブがパンの時
+.topic_content .tab li.bread{
+  position: relative;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  background-color: orange;
+  color: white;
+}
+.topic_content .tab li.bread:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 13px solid orange;
+}
+.topic_content .tab .bread a{
+  color: white;
+}
+// タブが居酒屋の時
+.topic_content .tab li.pub{
+  position: relative;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  background-color: orange;
+  color: white;
+}
+.topic_content .tab li.pub:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 13px solid orange;
+}
+.topic_content .tab .pub a{
+  color: white;
+}
+// タブがテイクアウトの時
+.topic_content .tab li.takeout{
+  position: relative;
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  background-color: orange;
+  color: white;
+}
+.topic_content .tab li.takeout:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 13px solid orange;
+}
+.topic_content .tab .takeout a{
+  color: white;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -485,6 +674,11 @@ a {
   padding: 5px 10px;
   color: white;
 }
+.topic_content .topic_genre .coupon{
+  background-color: #f7a01e;
+  padding: 5px 10px;
+  color: white;
+}
 // トピックのタイトル
 .topic_content .topic_title{
   // font-size: 1.1vw;
@@ -924,6 +1118,8 @@ left: -16px;
 }
 .listing_shop p{
   text-align: center;
+  font-size: calc(3 * ((100vw - 320px) / 500) + 10px);
+  word-break: keep-all;
 }
 .shop_show h1{
   font-size: calc(5 * ((100vw - 320px) / 500) + 18px);
@@ -1160,10 +1356,20 @@ left: -16px;
   font-size: calc(3 * ((100vw - 320px) / 500) + 10px);
   text-align: center;
 }
-.footer-container .footer-item a:hover{
+.footer-container .footer-item a{
+  text-decoration: none;
+  color: white;
+}
+.footer-container .footer-item a.footer_button{
+  text-decoration: none;
+  color: white;
+}
+.footer-container .footer-item a.topics{
   text-decoration: none;
   color: #c44806;
 }
+
+
 
 
 
@@ -1285,9 +1491,6 @@ left: -16px;
     min-height: 35px;
     max-height: 75px;
   }
-
-// スマホ用ヘッダー
-// 通常のheaderをオフにする
 
 
   .topic_center {

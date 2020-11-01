@@ -2,8 +2,30 @@ class TopicsController < ApplicationController
    impressionist :actions => [:show], :unique => [:impressionable_id, :ip_address]
 
   def index
-    @search = Topic.ransack(params[:q])
-    @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(12)
+    # @search = Topic.ransack(params[:q])
+    # @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(12)
+    if params[:genre] === "カフェ"
+      @topics = Topic.where(genre: "カフェ").order(created_at: :desc).page(params[:page]).per(12)
+      @tab_cafe = "cafe"
+    elsif params[:genre] === "ランチ"
+      @topics = Topic.where(genre: "ランチ").order(created_at: :desc).page(params[:page]).per(12)
+      @tab_lunch = "lunch"
+    elsif params[:genre] === "ディナー"
+      @topics = Topic.where(genre: "ディナー").order(created_at: :desc).page(params[:page]).per(12)
+      @tab_dinner = "dinner"
+    elsif params[:genre] === "パン"
+      @topics = Topic.where(genre: "パン").order(created_at: :desc).page(params[:page]).per(12)
+      @tab_bread = "bread"
+    elsif params[:genre] === "居酒屋"
+      @topics = Topic.where(genre: "居酒屋").order(created_at: :desc).page(params[:page]).per(12)
+      @tab_pub = "pub"
+    elsif params[:genre] === "テイクアウト"
+      @topics = Topic.where(genre: "テイクアウト").order(created_at: :desc).page(params[:page]).per(12)
+      @tab_takeout = "takeout"
+    else
+      @topics = Topic.where.not(genre: "クーポン").order(created_at: :desc).page(params[:page]).per(12)
+      @tab = "top"
+    end
   end
 
   def show
@@ -40,7 +62,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to "/", notice: '記事を削除しました。' }
       format.json { head :no_content }
     end
   end
@@ -50,7 +72,7 @@ class TopicsController < ApplicationController
       @shops = Shop.all
       respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Post was successfully updated.' }
+        format.html { redirect_to "/", notice: '記事を更新しました。' }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
@@ -69,7 +91,7 @@ class TopicsController < ApplicationController
     end
         respond_to do |format|
         if @topic.save
-          format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+          format.html { redirect_to "/", notice: '記事を投稿しました。' }
           format.json { render :show, status: :created, location: @topic}
         else
           format.html { render :new }
@@ -86,24 +108,3 @@ class TopicsController < ApplicationController
     end
 
 end
-
-
-
-
-
-
-
-# def new
-#   if user_signed_in? && current_user.admin == true
-#       @topic = Topic.new
-#       @shops = Shop.all.order(id: "ASC")
-#     if current_user.pro_id > 0
-#       @user = current_user
-#       @user_shop = @user.pro_id
-#     end
-#   else
-#     @search = Topic.ransack(params[:q])
-#     @topics = @search.result(distinct: true).order(created_at: :desc).page(params[:page]).per(12)
-#     render action: :index
-#   end
-# end

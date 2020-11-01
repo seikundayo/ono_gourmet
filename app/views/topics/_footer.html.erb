@@ -1,105 +1,186 @@
 <footer class="footer-container">
   <div class="fixed-footer">
 
+<% if "topics" == controller.controller_name %>
     <div class="footer-item">
-      <a href="/">
+      <a href="/" class="topics">
         <i class="fas fa-home"></i>
         <p>ホーム</p>
       </a>
     </div>
-    <% if user_signed_in? %>
+<% else %>
     <div class="footer-item">
-      <a href="like_lists">
+      <a href="/" class="footer_button">
+        <i class="fas fa-home"></i>
+        <p>ホーム</p>
+      </a>
+    </div>
+<% end %>
+
+
+
+<% if "like_lists" == controller.controller_name %>
+  <% if user_signed_in? %>
+    <div class="footer-item">
+      <a href="like_lists" class="topics">
          <i class="fas fa-heart"></i>
          <p>いいね</p>
       </a>
     </div>
     <% elsif admin_signed_in? %>
     <div class="footer-item">
-      <a href="like_lists">
+      <a href="like_lists" class="topics">
          <i class="fas fa-heart"></i>
          <p>いいね</p>
       </a>
     </div>
     <% else %>
     <div class="footer-item">
-      <a type="button" data-toggle="modal" data-target=".exampleModalCenter">
+      <a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="topics">
          <i class="fas fa-heart"></i>
          <p>いいね</p>
       </a>
     </div>
     <%= render 'topics/modal' %>
-  <% end %>
-
-  <% if admin_signed_in? %>
-  <% elsif user_signed_in? %>
+   <% end %>
+<% else %>
+<% if user_signed_in? %>
   <div class="footer-item">
-    <a href="/follow_lists">
-      <i class="fas fa-thumbtack"></i>
-      <p>フォロー</p>
+    <a href="like_lists" class="footer_button">
+       <i class="fas fa-heart"></i>
+       <p>いいね</p>
+    </a>
+  </div>
+  <% elsif admin_signed_in? %>
+  <div class="footer-item">
+    <a href="like_lists" class="footer_button">
+       <i class="fas fa-heart"></i>
+       <p>いいね</p>
     </a>
   </div>
   <% else %>
   <div class="footer-item">
-    <a type="button" data-toggle="modal" data-target=".exampleModalCenter">
-       <i class="fas fa-thumbtack"></i>
-       <p>フォロー</p>
+    <a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="footer_button">
+       <i class="fas fa-heart"></i>
+       <p>いいね</p>
     </a>
   </div>
-      <%= render 'topics/modal' %>
-  <% end %>
+  <%= render 'topics/modal' %>
+ <% end %>
+<% end %>
 
+
+
+<% if "follow_lists" == controller.controller_name %>
+    <% if admin_signed_in? %>
+    <% elsif user_signed_in? %>
     <div class="footer-item">
-      <a href="/shops">
+      <a href="/follow_lists" class="topics">
+        <i class="fas fa-thumbtack"></i>
+        <p>フォロー</p>
+      </a>
+    </div>
+    <% else %>
+    <div class="footer-item">
+      <a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="topics">
+         <i class="fas fa-thumbtack"></i>
+         <p>フォロー</p>
+      </a>
+    </div>
+        <%= render 'topics/modal' %>
+    <% end %>
+<% else %>
+    <% if admin_signed_in? %>
+    <% elsif user_signed_in? %>
+    <div class="footer-item">
+      <a href="/follow_lists" class="footer_button">
+        <i class="fas fa-thumbtack"></i>
+        <p>フォロー</p>
+      </a>
+    </div>
+    <% else %>
+    <div class="footer-item">
+      <a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="footer_button">
+         <i class="fas fa-thumbtack"></i>
+         <p>フォロー</p>
+      </a>
+    </div>
+        <%= render 'topics/modal' %>
+    <% end %>
+<% end %>
+
+
+<% if "shops" == controller.controller_name %>
+    <div class="footer-item">
+      <a href="/shops" class="topics">
         <i class="fas fa-store"></i>
         <p>お店</p>
       </a>
     </div>
-
+<% else %>
     <div class="footer-item">
-      <a href="/">
-        <i class="fas fa-ticket-alt"></i>
-        <p>クーポン</p>
+      <a href="/shops" class="footer_button">
+        <i class="fas fa-store"></i>
+        <p>お店</p>
       </a>
     </div>
+<% end %>
 
 
+<% if "coupons" == controller.controller_name %>
+  <div class="footer-item">
+    <a href="/coupons" class="topics">
+      <i class="fas fa-ticket-alt"></i>
+      <p>クーポン</p>
+    </a>
+  </div>
+<% else %>
+  <div class="footer-item">
+    <a href="/coupons" class="footer_button">
+      <i class="fas fa-ticket-alt"></i>
+      <p>クーポン</p>
+    </a>
+  </div>
+<% end %>
 
+
+<% if "users" == controller.controller_name %>
     <% if admin_signed_in? %>
     <div class="footer-item">
-      <a href="/users">
+      <a href="/users" class="topics">
         <i class="fas fa-user"></i>
         <p>店舗</p>
       </a>
     </div>
     <% elsif user_signed_in? %>
     <div class="footer-item">
-      <a href="/users">
+      <a href="/users" class="topics">
         <i class="fas fa-user"></i>
         <p>ユーザー</p>
       </a>
     </div>
     <% else %>
     <% end %>
+<% else %>
+    <% if admin_signed_in? %>
+    <div class="footer-item">
+      <a href="/users" class="footer_button">
+        <i class="fas fa-user"></i>
+        <p>店舗</p>
+      </a>
+    </div>
+    <% elsif user_signed_in? %>
+    <div class="footer-item">
+      <a href="/users" class="footer_button">
+        <i class="fas fa-user"></i>
+        <p>ユーザー</p>
+      </a>
+    </div>
+    <% else %>
+    <% end %>
+<% end %>
+
 
 
   </div>
 </footer>
-
-
-
-
-
-
-
-
-
-<!-- <footer class="footer-container">
-   <div class="mobile-footer">
-     <div class="footer-item"><a href="/">HO<br>ME</a></div>
-     <div class="footer-item"><a href="/abouts">おのグルメ<br>とは？</a></div>
-     <div class="footer-item"><a href="/administrators">運営者<br>情報</a></div>
-     <div class="footer-item"><a href="/policies">プライ<br>バシー</a></div>
-     <div class="footer-item"><a href="/contacts/new">お問い<br>合わせ</a></div>
-   </div>
- </footer> -->
