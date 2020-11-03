@@ -15,21 +15,14 @@
 
         <a href="/shops/<%= admin.shop.id %>">
         <div class="card">
+          <div class="card_title">
+            <%= image_tag "#{admin.admin_image}",id:"admin_image", align:"left" %>
+            <h3><%= admin.shop.name %></h3>
+          </div>
           <%= image_tag "#{admin.shop.shop_image}",id:"card_image" %>
-          <% if user_signed_in? %>
-            <div id="follow_relationships_<%= admin.id %>">
-              <object><%= render partial: "shops/follow_relationships", locals: { admin: admin } %></object>
-            </div>
-          <% else %>
-            <div class="shop_follow" >
-              <object><a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="unfollow">フォローする</a></object>
-            </div>
-          <%= render 'topics/modal' %>
-          <% end %>
         <div class="card-body">
           <div class="row">
               <ul>
-                <li><h3><%= admin.shop.name %></h3></li>
                 <li><span class="row1"><i class="fas fa-map-marker-alt"></i></span><span class="row2"><%= admin.shop.address %></span></li>
                 <li><span class="row1"><i class="fas fa-phone-alt"></i></span><span class="row2"><%= admin.shop.number %></span></li>
                 <li><span class="row1"><i class="fas fa-clock"></i></span><span class="row2"><%= admin.shop.time %></span></li>

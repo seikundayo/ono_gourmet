@@ -76,6 +76,7 @@ main {
 
 // タブがトップの時
 .topic_content .tab li.top{
+  box-shadow: 0 0 3px gray;
   position: relative;
   display: inline-block;
   background-color: orange;
@@ -95,6 +96,7 @@ main {
 }
 // タブがカフェの時
 .topic_content .tab li.cafe{
+  box-shadow: 0 0 3px gray;
   position: relative;
   display: inline-block;
   background-color: orange;
@@ -116,6 +118,7 @@ main {
 }
 // タブがランチの時
 .topic_content .tab li.lunch{
+  box-shadow: 0 0 3px gray;
   position: relative;
   display: inline-block;
   background-color: orange;
@@ -137,6 +140,7 @@ main {
 }
 // タブがディナーの時
 .topic_content .tab li.dinner{
+  box-shadow: 0 0 3px gray;
   position: relative;
   display: inline-block;
   background-color: orange;
@@ -158,6 +162,7 @@ main {
 }
 // タブがパンの時
 .topic_content .tab li.bread{
+  box-shadow: 0 0 3px gray;
   position: relative;
   display: inline-block;
   background-color: orange;
@@ -179,6 +184,7 @@ main {
 }
 // タブが居酒屋の時
 .topic_content .tab li.pub{
+  box-shadow: 0 0 3px gray;
   position: relative;
   display: inline-block;
   background-color: orange;
@@ -200,6 +206,7 @@ main {
 }
 // タブがテイクアウトの時
 .topic_content .tab li.takeout{
+  box-shadow: 0 0 3px gray;
   position: relative;
   display: inline-block;
   background-color: orange;
@@ -591,11 +598,13 @@ a {
 // トピックのカード
 .topic_content .card{
   position:relative;
+  box-shadow: 0 0 4px gray;
   border:solid 1px silver;
   border-radius: 0 0 0 0;
   margin: 20px auto;
   max-width: 350px;
   max-height: 465px;
+  border-radius: 5px;
 }
 .topic_content .card .card-body{
   min-height: 195px;
@@ -620,7 +629,7 @@ a {
 }
 .topic_content .card-body .shop_title{
   position: relative;
-  font-size: calc(4 * ((100vw - 320px) / 1600) + 12px);
+  font-size: calc(2 * ((100vw - 320px) / 1600) + 12px);
   font-weight: bold;
   word-break: break-all;
   width: 75%;
@@ -1029,14 +1038,34 @@ left: -16px;
 .shop_content .card{
   position: relative;
   background: #fffde8;
-  border: solid 1px black;
+  box-shadow: 0 0 8px gray;
   max-width: 360px;
   min-height: calc(115 * ((100vw - 320px) / 1600) + 440px);
   margin: 20px auto;
-  border-radius: 0 0 0 0;
+  border-radius: 5px;
+}
+.shop_content .card .card_title{
+ height: 48px;
+}
+.shop_content .card .card_title h3{
+  position: absolute;
+  // height: calc(12 * ((100vw - 320px) / 500) + 25px);
+  top: 12px;
+  left: 56px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.shop_content .card #admin_image{
+  position: relative;
+  border-radius: 50%;
+  top: 3px;
+  left: 5px;
+  width: 40px;
+  height: 35px;
 }
 .shop_content .card #card_image{
-  width: 100%;
+  width: 96%;
+  margin: 0 auto;
   height: auto;
 }
 .shop_content .unfollow{
@@ -1063,12 +1092,12 @@ left: -16px;
 .shop_content .followed:hover{
   color: white;
 }
-.shop_content .card h3{
-  height: calc(12 * ((100vw - 320px) / 500) + 25px);
-  word-break: keep-all;
-  text-align: center;
-  font-size: calc(4 * ((100vw - 320px) / 500) + 14px);
-}
+// .shop_content .card h3{
+//   height: calc(12 * ((100vw - 320px) / 500) + 25px);
+//   word-break: keep-all;
+//   text-align: center;
+//   font-size: calc(4 * ((100vw - 320px) / 500) + 14px);
+// }
 .shop_content ul {
   max-height: 260px;
   min-height: 260px;
@@ -1100,16 +1129,17 @@ left: -16px;
   margin-left: 27px;
   margin-top: -20px;
 }
-.shop_content #card_image{
-  width: 358px;
-  height: 200px;
-}
 .shop_content .card-body li{
   word-break: normal;
   margin: 7px 0;
   list-style: none;
   font-size: 15px;
 }
+.shop_content #card_image{
+  width: 358px;
+  height: 200px;
+}
+
 
 
 //掲載店の詳細
@@ -1121,8 +1151,120 @@ left: -16px;
   font-size: calc(3 * ((100vw - 320px) / 500) + 10px);
   word-break: keep-all;
 }
+
 .shop_show h1{
   font-size: calc(5 * ((100vw - 320px) / 500) + 18px);
+}
+.shop_show{
+  border: solid 1px black;
+  border-radius: 5px;
+  width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 8px gray;
+  background: #fffde8;
+}
+.shop_show .card{
+  margin: auto 0;
+}
+.shop_show h3{
+  font-size: calc(3 * ((100vw - 320px) / 500) + 14px);
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.shop_show .show_content{
+  text-align: center;
+}
+.shop_show .show_content #show_admin_image{
+  border-radius: 50%;
+  width: calc(30 * ((100vw - 320px) / 500) + 100px);
+  height: calc(20 * ((100vw - 320px) / 500) + 100px);
+  margin-bottom: 20px;
+}
+.shop_show .show_content .unfollow{
+  padding: 5px 10px;
+  background-color: white;
+  border: solid 1px #00ccff;
+  color: #00ccff;
+}
+.shop_show .show_content .unfollow:hover{
+  color: #00ccff;
+  text-decoration: none;
+}
+.shop_show .show_content .followed{
+  padding: 5px 10px;
+  background-color: #00ccff;
+  border: solid 1px #00ccff;
+  color: white;
+}
+.shop_show .show_content .followed:hover{
+  color: white;
+  text-decoration: none;
+}
+.shop_show .show_content p{
+  margin-top: 20px;
+}
+.shop_show .show_content p#shop_introduce{
+  font-size: 12px;
+  word-break: normal;
+  text-align: left;
+  padding: 0 4px;
+}
+.shop_show .show_content p#shop_post_count{
+  height: 30px;
+  font-size: calc(2 * ((100vw - 320px) / 500) + 15px);
+}
+.shop_show .card_topic{
+  margin: 10px 0;
+}
+.shop_show #card_image{
+  width:173px;
+  height: 173px;
+  box-shadow: 0 0 3px gray;
+}
+// トピックのジャンル
+.shop_show .topic_genre span{
+  position: absolute;
+  top: 9px;
+  left: 14px;
+  font-weight: bold ;
+  color: white;
+  font-size: calc(1 * ((100vw - 320px) / 1600) + 10px);
+}
+.shop_show .topic_genre .cafe{
+  background-color: #f05579;
+  padding: 1px 2px;
+  color: white;
+}
+.shop_show .topic_genre .lunch{
+  background-color: #f7a01e;
+  padding: 1px 2px;
+  color: white;
+}
+.shop_show .topic_genre .dinner{
+  background-color: #0000ff;
+  padding: 1px 2px;
+  color: white;
+}
+.shop_show .topic_genre .bread{
+  background-color: #c1272d;
+  padding: 1px 2px;
+  color: white;
+}
+.shop_show .topic_genre .pub{
+  background-color: #B455A0;
+  padding: 1px 2px;
+  color: white;
+}
+.shop_show .topic_genre .takeout{
+  background-color: #ff4500;
+  padding: 1px 2px;
+  color: white;
+}
+.shop_show .topic_genre .coupon{
+  background-color: #f7a01e;
+  padding: 1px 2px;
+  color: white;
 }
 
 
@@ -1492,6 +1634,18 @@ left: -16px;
     max-height: 75px;
   }
 
+  .shop_content .card .card_title h3{
+    font-size: 12px;
+  }
+
+
+// calc(7 * ((100vw - 320px) / 1600) + 12px);
+  .shop_show #card_image{
+    width: calc(455 * ((100vw - 320px) / 1600) + 52px);
+    height: calc(455 * ((100vw - 320px) / 1600) + 52px);
+    box-shadow: 0 0 3px gray;
+  }
+
 
   .topic_center {
     padding: 2px 5px;
@@ -1543,6 +1697,10 @@ left: -16px;
    padding: 0 15px;
  }
 
+ .shop_show{
+   width: 80%;
+ }
+
 
 }
 
@@ -1553,4 +1711,36 @@ left: -16px;
   .footer-container {
     padding: 0.7rem 0 0.7rem 0;
   }
+
+  // トピックのジャンル
+  .shop_show .topic_genre span{
+    display: none;
+  }
+  .shop_show .topic_genre .cafe{
+    display: none;
+  }
+  .shop_show .topic_genre .lunch{
+    display: none;
+  }
+  .shop_show .topic_genre .dinner{
+    display: none;
+  }
+  .shop_show .topic_genre .bread{
+    display: none;
+  }
+  .shop_show .topic_genre .pub{
+    display: none;
+  }
+  .shop_show .topic_genre .takeout{
+    display: none;
+  }
+  .shop_show .topic_genre .coupon{
+    display: none;
+  }
+
+  // .shop_show #card_image{
+  //   width:70px;
+  //   height: 70px;
+  //   box-shadow: 0 0 3px gray;
+  // }
 }

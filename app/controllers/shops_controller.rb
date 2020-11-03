@@ -8,6 +8,7 @@ class ShopsController < ApplicationController
   def show
     @topics = Topic.where(shop_id: params[:id]).order(created_at: :desc).page(params[:page]).per(12)
     @shops_name = Shop.find(params[:id])
+    @follow_count = FollowRelationship.where(admin_id: @shops_name.id).count
   end
 
   def new

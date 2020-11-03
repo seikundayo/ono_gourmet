@@ -1,78 +1,62 @@
 <div class="topic_center">
   <div class="shop_show">
-    <div class="listing_shop">
-      <h1><%= @shops_name.name %></h1>
-      <p><%= @shops_name.introduce %></p>
-    </div>
-
-    <% if @topics.length > 0 %>
-    <div class="topic_content">
-      <div class="container-fluid">
-        <div class="row">
-          <% @topics.each do |topic| %>
-          <div class="col-md-4">
-
-            <div class="article_editing">
-              <% if user_signed_in? && current_user.admin == true %>
-                <%= link_to '削除', topic, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
-                <%= link_to '編集', edit_topic_path(topic), class: "btn btn-warning" %>
-              <% end %>
-            </div>
-
-            <a href="/topics/<%= topic.id %>">
-            <div class="card">
-            <%= image_tag "#{topic.image}",id:"card_image" %>
-            <p class="topic_genre">
-              <% if topic.genre == "カフェ" %>
-                <span class="cafe"><%= topic.genre %></span>
-              <% elsif topic.genre == "ランチ" %>
-                <span class="lunch"><%= topic.genre %></span>
-                <% elsif topic.genre == "ディナー" %>
-                <span class="dinner"><%= topic.genre %></span>
-              <% elsif topic.genre == "パン" %>
-                <span class="bread"><%= topic.genre %></span>
-              <% elsif topic.genre == "居酒屋" %>
-                <span class="pub"><%= topic.genre %></span>
-              <% elsif topic.genre == "テイクアウト" %>
-                <span class="takeout"><%= topic.genre %></span>
-              <% elsif topic.genre == "クーポン" %>
-                <span class="coupon"><%= topic.genre %></span>
-              <% end %>
-            </p>
-            <div class="card-body">
-              <p class="shop_title"><%= topic.shop.name %></p>
-              <%= image_tag "#{topic.shop.shop_image}",id:"shop_image" %>
-              <p class="topic_title"><%= topic.title.truncate(40) %></p>
-              <!-- <p class="topic_shop_name"><i class="fas fa-store"> <%= topic.shop.name %></i></p> -->
-              <p class="topic_address"><i class="fas fa-map-marker-alt"></i> <%= topic.shop.address %></p>
-            </div>
-              <p class="topic_day"><%= topic.created_at.to_s(:datetime_jp) %></p>
-              <!-- <p class="topic_view"><%= topic.impressionist_count %> <%= topic.impressionist_count <= 1 ? "view" : "views" %></p> -->
-              <% if user_signed_in? || admin_signed_in? %>
-                <div id="likes_<%= topic.id %>" class="like_button" >
-                  <%= render partial: "topics/likes", locals: { topic: topic } %>
-                </div>
-              <% else %>
-              <a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="like_button" >♡</a>
-              <%= render 'topics/modal' %>
-            <% end %>
-            </div>
-            </a>
+        <h3><%= @shops_name.name %></h3>
+        <hr>
+        <div class="show_content">
+          <%= image_tag "#{@shops_name.admin.admin_image}" ,id: "show_admin_image"%>
+        <% if user_signed_in? %>
+          <div id="follow_relationships_<%= @shops_name.admin.id %>">
+            <object><%= render partial: "shops/follow_relationships", locals: { admin: @shops_name.admin } %></object>
           </div>
-          <% end %>
+        <% elsif user_signed_in? == false && admin_signed_in? == false %>
+        <div class="shop_follow" >
+          <object><a type="button" data-toggle="modal" data-target=".exampleModalCenter" class="unfollow modal_content">フォローする</a></object>
+        <%= render 'topics/modal' %>
         </div>
-      </div>
-
-      <div class="paginate-container">
-          <div class="page">
-            <%= paginate @topics %>
+        <% else %>
+        <% end %>
+        <p>フォロワー <%= @follow_count %>人</p>
+        <p id="shop_introduce"><%= @shops_name.introduce %></p>
+        <hr>
+        <p id="shop_post_count">投稿<%= @topics.count %>件</p>
+        <hr>
+        </div>
+        <% if @topics.length > 0 %>
+        <div class="container-fluid">
+          <div class="row">
+            <% @topics.each do |topic| %>
+            <div class="col-4">
+              <a href="/topics/<%= topic.id %>">
+                <div class="card_topic">
+                  <%= image_tag "#{topic.image}",id:"card_image" %>
+                  <p class="topic_genre">
+                    <% if topic.genre == "カフェ" %>
+                      <span class="cafe"><%= topic.genre %></span>
+                    <% elsif topic.genre == "ランチ" %>
+                      <span class="lunch"><%= topic.genre %></span>
+                      <% elsif topic.genre == "ディナー" %>
+                      <span class="dinner"><%= topic.genre %></span>
+                    <% elsif topic.genre == "パン" %>
+                      <span class="bread"><%= topic.genre %></span>
+                    <% elsif topic.genre == "居酒屋" %>
+                      <span class="pub"><%= topic.genre %></span>
+                    <% elsif topic.genre == "テイクアウト" %>
+                      <span class="takeout"><%= topic.genre %></span>
+                    <% elsif topic.genre == "クーポン" %>
+                      <span class="coupon"><%= topic.genre %></span>
+                    <% end %>
+                  </p>
+                </div>
+              </a>
+            </div>
+            <% end %>
           </div>
-      </div>
+        </div>
 
-    </div>
+        <% else %>
+          <br>
+          <p align="center">投稿記事はまだありません。</p>
+        <% end %>
 
-    <% else %>
-      <p align="center">関連する記事がありません。</p>
-    <% end %>
   </div>
 </div>
