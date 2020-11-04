@@ -911,8 +911,11 @@ a {
   width: 100%;
   max-height: 500px;
 }
-
-
+trix-toolbar{
+  postion: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 
 //店長オススメ店一覧
 .manager_topic a{
@@ -1370,63 +1373,120 @@ left: -16px;
   border: solid 1px grey;
 }
 
-//ユーザー画面
+// //ユーザー画面
+// .user_show{
+//   margin-bottom: 20px;
+// }
+// .user_show #user_image{
+//   border: solid 1px black;
+//   border-radius: 10px;
+//   width: calc(70 * ((100vw - 320px) / 500) + 200px);
+//   height: calc(60 * ((100vw - 320px) / 500) + 150px);
+// }
+// .user_show .user_image{
+//   border: solid 1px black;
+//   border-radius: 10px;
+//   width: calc(70 * ((100vw - 320px) / 500) + 200px);
+//   height: calc(60 * ((100vw - 320px) / 500) + 150px);
+// }
+// .user_show .admin_manage{
+//   width: 100px;
+//   height: auto;
+// }
+// .user_show .btn{
+//   color: white;
+// }
 .user_show{
+  border: solid 1px black;
+  border-radius: 5px;
+  width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 8px gray;
+  background: #fffde8;
+}
+.user_show h3{
+  font-size: calc(3 * ((100vw - 320px) / 500) + 14px);
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.user_show .show_content{
+  text-align: center;
+}
+.user_show .show_content #show_user_image{
+  border-radius: 50%;
+  width: calc(30 * ((100vw - 320px) / 500) + 100px);
+  height: calc(20 * ((100vw - 320px) / 500) + 100px);
   margin-bottom: 20px;
 }
-.user_show #user_image{
-  border: solid 1px black;
-  border-radius: 10px;
-  width: calc(70 * ((100vw - 320px) / 500) + 200px);
-  height: calc(60 * ((100vw - 320px) / 500) + 150px);
+.user_show .show_content p{
+  margin-top: 20px;
+  font-size: 12px;
 }
-.user_show .user_image{
-  border: solid 1px black;
-  border-radius: 10px;
-  width: calc(70 * ((100vw - 320px) / 500) + 200px);
-  height: calc(60 * ((100vw - 320px) / 500) + 150px);
-}
-.user_show .admin_manage{
-  width: 100px;
-  height: auto;
-}
-.user_show .btn{
-  color: white;
-}
-
-
-// トピック詳細のお店情報
-.user_show ul {
+.user_show #edit_user{
   margin: 0 auto;
-  list-style: none;
-  background: #fffde8;
-  box-shadow: 0px 0px 0px 5px #fffde8;
-  border: dashed 2px #ffb03f;
-  border-radius: 9px;
-  padding: 10px 8px 10px 8px;
-  margin: 0 auto;
-  // width: 92%;
-  width: calc(160 * ((100vw - 320px) / 500) + 250px);
-  // height: calc(60 * ((100vw - 320px) / 500) + 400px);
-  height: auto;
-}
-.user_show ul li{
-  font-size: 0.9vw;
-  border-bottom: dashed 1px silver;
-  line-height: 1.5;
-  padding: 10px 0;
-  min-height: 40px;
-}
-.user_show span.row2 {
-  font-size: 1vw;
-  display: block;
-}
-.user_show span .button{
-
+  border-radius: 10px;
   width: 30%;
-  font-size: calc(3 * ((100vw - 320px) / 500) + 10px);
-  margin: 10px 2px 0 2px;
+  background-color: skyblue;
+  font-size: 12px;
 }
+.user_show a:hover{
+  text-decoration: none;
+  color: gray;
+}
+.user_show ul {
+  padding: 0 14px;
+}
+.user_show li {
+  padding-top: 4px;
+  list-style: none;
+  text-align: left;
+  margin: 0 auto;
+}
+.user_show ul.btn li{
+  display: inline;
+  border-radius: 10px;
+  padding: 2px 18px;
+  background-color: skyblue;
+  font-size: 14px;
+}
+
+
+
+
+
+// // トピック詳細のお店情報
+// .user_show ul {
+//   margin: 0 auto;
+//   list-style: none;
+//   background: #fffde8;
+//   box-shadow: 0px 0px 0px 5px #fffde8;
+//   border: dashed 2px #ffb03f;
+//   border-radius: 9px;
+//   padding: 10px 8px 10px 8px;
+//   margin: 0 auto;
+//   // width: 92%;
+//   width: calc(160 * ((100vw - 320px) / 500) + 250px);
+//   // height: calc(60 * ((100vw - 320px) / 500) + 400px);
+//   height: auto;
+// }
+// .user_show ul li{
+//   font-size: 0.9vw;
+//   border-bottom: dashed 1px silver;
+//   line-height: 1.5;
+//   padding: 10px 0;
+//   min-height: 40px;
+// }
+// .user_show span.row2 {
+//   font-size: 1vw;
+//   display: block;
+// }
+// .user_show span .button{
+//
+//   width: 30%;
+//   font-size: calc(3 * ((100vw - 320px) / 500) + 10px);
+//   margin: 10px 2px 0 2px;
+// }
 
 
 
@@ -1699,6 +1759,17 @@ left: -16px;
 
  .shop_show{
    width: 80%;
+ }
+
+ .user_show{
+   width: 80%;
+ }
+ .user_show #edit_user{
+   margin: 0 auto;
+   border-radius: 10px;
+   width: 50%;
+   background-color: skyblue;
+   font-size: 12px;
  }
 
 
