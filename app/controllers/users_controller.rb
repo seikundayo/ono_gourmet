@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
     if user_signed_in?
       @user = current_user
+      @follow_count = FollowRelationship.where(admin_id: current_user).count
     elsif admin_signed_in?
       @admin = current_admin
       @user_shop = @admin.shop_id
