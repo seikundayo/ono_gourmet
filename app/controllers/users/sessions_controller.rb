@@ -3,6 +3,24 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  #ログイン後のリダイレクト先
+def after_sign_in_path_for(resource)
+  if (session[:previous_url] == root_path)
+    super
+  else
+    session[:previous_url] || root_path
+  end
+end
+#ログアウト後のリダイレクト先
+def after_sign_out_path_for(resource)
+  if (session[:previous_url] == root_path)
+    super
+  else
+    session[:previous_url] || root_path
+  end
+end
+
+
   # GET /resource/sign_in
   # def new
   #   super

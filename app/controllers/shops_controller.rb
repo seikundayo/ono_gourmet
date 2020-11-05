@@ -1,8 +1,9 @@
 class ShopsController < ApplicationController
   def index
-    # @search = Shop.ransack(params[:q])
-    # @shops = @search.result(distinct: true).order("name").page(params[:page]).per(12)
-    @admins = Admin.all.page(params[:page]).per(12)
+    @search = Shop.ransack(params[:q])
+    @admins = @search.result(distinct: true).order("name").page(params[:page]).per(12)
+
+    # @admins = Admin.all.page(params[:page]).per(12)
   end
 
   def show

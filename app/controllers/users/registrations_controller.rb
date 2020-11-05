@@ -5,13 +5,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def after_sign_up_path_for(resource)
-    users_path
+    if (session[:previous_url] == root_path)
+      super
+    else
+      session[:previous_url] || root_path
+    end
   end
 
   #アカウント編集後のリダイレクト先
   def after_update_path_for(resource)
-    users_path
+    if (session[:previous_url] == root_path)
+      super
+    else
+      session[:previous_url] || root_path
+    end
   end
+
 
   # GET /resource/sign_up
   # def new
