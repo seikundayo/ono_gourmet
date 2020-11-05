@@ -1,33 +1,40 @@
 <div class="topic_center">
   <div class="shop_content">
 
+    <div class="input-group justify-content-center">
+    <%= search_form_for @search, url: shops_path do |f| %>
+      <%= f.search_field :name_cont , type:"text", class:"topic_form",placeholder:" お店検索"%>
+    <% end %>
+    </div>
+
+
 
   <div class="container-fluid">
     <div class="row">
-      <% @admins.each do |admin| %>
+      <% @admins.each do |shop| %>
       <div class="col-md-4">
         <div class="article_editing">
           <% if user_signed_in? && current_user.admin == true %>
-            <%= link_to '削除', admin.shop, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
-            <%= link_to '編集', edit_shop_path(admin.shop), class: "btn btn-warning" %>
+            <%= link_to '削除', shop, method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: "btn btn-danger" %>
+            <%= link_to '編集', edit_shop_path(shop), class: "btn btn-warning" %>
           <% end %>
         </div>
 
-        <a href="/shops/<%= admin.shop.id %>">
+        <a href="/shops/<%= shop.id %>">
         <div class="card">
           <div class="card_title">
-            <%= image_tag "#{admin.admin_image}",id:"admin_image", align:"left" %>
-            <h3><%= admin.shop.name %></h3>
+            <%= image_tag "#{shop.admin.admin_image}",id:"admin_image", align:"left" %>
+            <h3><%= shop.name %></h3>
           </div>
-          <%= image_tag "#{admin.shop.shop_image}",id:"card_image" %>
+          <%= image_tag "#{ shop.shop_image}",id:"card_image" %>
         <div class="card-body">
           <div class="row">
               <ul>
-                <li><span class="row1"><i class="fas fa-map-marker-alt"></i></span><span class="row2"><%= admin.shop.address %></span></li>
-                <li><span class="row1"><i class="fas fa-phone-alt"></i></span><span class="row2"><%= admin.shop.number %></span></li>
-                <li><span class="row1"><i class="fas fa-clock"></i></span><span class="row2"><%= admin.shop.time %></span></li>
-                <li><span class="row1"><i class="fas fa-store-alt-slash"></i></span><span class="row2"><%= admin.shop.rest %></span></li>
-                <li><span class="row1"><i class="fas fa-sign-out-alt"></i></span><span class="row2"><%= admin.shop.takeout %></span></li>
+                <li><span class="row1"><i class="fas fa-map-marker-alt"></i></span><span class="row2"><%= shop.address %></span></li>
+                <li><span class="row1"><i class="fas fa-phone-alt"></i></span><span class="row2"><%= shop.number %></span></li>
+                <li><span class="row1"><i class="fas fa-clock"></i></span><span class="row2"><%= shop.time %></span></li>
+                <li><span class="row1"><i class="fas fa-store-alt-slash"></i></span><span class="row2"><%= shop.rest %></span></li>
+                <li><span class="row1"><i class="fas fa-sign-out-alt"></i></span><span class="row2"><%= shop.takeout %></span></li>
               </ul>
           </div>
         </div>

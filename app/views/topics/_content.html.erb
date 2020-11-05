@@ -1,7 +1,35 @@
 <div class="topic_content">
+  <% if request.path == ("/") %>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-interval="7000">
+        <%= image_tag 'greeting.jpg' , class: "greet"%>
+      </div>
+      <div class="carousel-item">
+        <a href="/contacts/new">
+        <%= image_tag 'recommendation.jpg' , class: "greet"%>
+        </a>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <% end %>
+
+
   <div class="tab">
     <ul>
-      <li class=<%= @tab %>><%= link_to "一覧", topics_path %></li>
+      <li class=<%= @tab %>><%= link_to "一覧", root_path %></li>
       <li class=<%= @tab_cafe %>><%= link_to "カフェ", topics_path(genre: "カフェ") %></li>
       <li class=<%= @tab_lunch %>><%= link_to "ランチ", topics_path(genre: "ランチ") %></li>
       <li class=<%= @tab_dinner %>><%= link_to "ディナー", topics_path(genre: "ディナー") %></li>

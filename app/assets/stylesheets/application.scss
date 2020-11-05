@@ -44,7 +44,7 @@ main {
   overflow-y: visible;
   white-space: nowrap;
   margin: 0 5px;
-  height: 90px;
+  height: 87px;
 }
 .topic_content .tab ul{
   width: 100%;
@@ -230,8 +230,82 @@ main {
 
 
 
+.bg_onetime_popup {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
 
+.bg_onetime_popup.js_active {
+    opacity: 1;
+    visibility: visible;
+}
 
+.bg_onetime_popup.js_active img{
+  left: auto;
+  display: block;
+  margin: 0 auto 0 auto;
+  width: 80%;
+  height: 80%;
+}
+
+.topic_center .greet{
+  margin: 0 auto 0 auto;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+// .onetime_popup {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translateX(-50%) translateY(-50%);
+//     width: 50%;
+//     min-width: 500px;
+//     background-color: #fff;
+//     cursor: pointer;
+// }
+
+// .onetime_popup_title {
+//     position: relative;
+//     padding: 30px 90px;
+//     margin: 0px;
+//     background-color: #3388dd;
+//     color: #fff;
+//     font-size: 32px;
+//     text-align: center;
+//     line-height: 1.5;
+// }
+// .onetime_popup_title::before,
+// .onetime_popup_title::after {
+//     position: absolute;
+//     top: 50%;
+//     right: 30px;
+//     transform: translateY(-50%);
+//     width: 30px;
+//     height: 4px;
+//     background-color: #fff;
+//     content: "";
+// }
+// .onetime_popup_title::before {
+//     transform: rotate(45deg);
+// }
+// .onetime_popup_title::after {
+//     transform: rotate(-45deg);
+// }
+//
+// .onetime_popup_content {
+//     padding: 60px 30px;
+//     text-align: center;
+// }
 
 
 
@@ -515,7 +589,7 @@ a {
 // コンテンツの幅指定
 .topic_center{
   max-width: 1100px;
-  margin: 30px auto calc(100 * ((100vw - 320px) / 1600) + 45px) auto;
+  margin: 10px auto calc(100 * ((100vw - 320px) / 1600) + 45px) auto;
 }
 
 
@@ -583,11 +657,15 @@ a {
 .topic_form{
   margin: 10px 0;
   padding: 5px 0;
-  width: 30vw;
+  width:400px;
 }
 // トピックの検索機能のボタン
 .input-group .btn {
   margin-bottom: 3px;
+}
+.shop_content .topic_form{
+  border-radius: 7px;
+  border: solid 3px orange;
 }
 
 // トピックのaタグ
@@ -601,7 +679,7 @@ a {
   box-shadow: 0 0 4px gray;
   border:solid 1px silver;
   border-radius: 0 0 0 0;
-  margin: 20px auto;
+  margin: 10px auto;
   max-width: 350px;
   max-height: 465px;
   border-radius: 5px;
@@ -755,6 +833,12 @@ a {
 .topic_show {
   word-break:break-all;
   font-size: calc(6 * ((100vw - 320px) / 1600) + 13px);
+}
+.topic_show .day li{
+  list-style: none;
+  display: inline;
+  padding: 0 10px;
+  font-size: calc(8 * ((100vw - 320px) / 1600) + 10px);
 }
 //　トピック詳細のSNS拡散ボタン（親）
 .topic_show .sns_button{
@@ -1698,6 +1782,11 @@ left: -16px;
     font-size: 12px;
   }
 
+  // トピックの検索機能のフォーム
+  .topic_form{
+    width: 200px;
+  }
+
 
 // calc(7 * ((100vw - 320px) / 1600) + 12px);
   .shop_show #card_image{
@@ -1807,6 +1896,11 @@ left: -16px;
   }
   .shop_show .topic_genre .coupon{
     display: none;
+  }
+
+  // トピックの検索機能のフォーム
+  .topic_form{
+    width: 180px;
   }
 
   // .shop_show #card_image{

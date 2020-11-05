@@ -1,7 +1,7 @@
 <div class="topic_center">
  <div class="topic_content">
   <% if @like_lists.length > 0 %>
-  <p align="center">現在<%= @like_lists.length %>件いいねしています。</p>
+  <p align="center"><%= @like_lists.length %>記事にいいねしています。</p>
     <div class="container-fluid">
       <div class="row">
         <% @like_lists.each do |list| %>

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_instance_admin
   before_action :set_instance_follow_user
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_location
 
 protected
 
@@ -11,6 +12,15 @@ def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :user_image, :birthday, :sex, :shop_id, :admin_name, :admin_image])
   # account_updateのときに、nameをストロングパラメータに追加する
   devise_parameter_sanitizer.permit(:account_update, keys: [:username, :user_image, :birthday, :sex, :shop_id, :admin_name, :admin_image])
+end
+
+def store_location
+  if (request.fullpath != "/users/sign_in" &&
+      request.fullpath != "/users/sign_up" &&
+      request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
+      !request.xhr?) # don't store ajax calls
+    session[:previous_url] = request.fullpath
+  end
 end
 
   def set_instance_user

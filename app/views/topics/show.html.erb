@@ -3,7 +3,10 @@
     <div class="container-fluid">
     <div class="row">
       <div class="col-md-9">
-        <p><%= @topic.created_at.to_s(:datetime_jp) %></p>
+        <div class="day">
+        <li><i class="far fa-clock"></i> <%= @topic.created_at.to_s(:datetime_jp) %></li>
+        <li><i class="fas fa-redo-alt"></i> <%= @topic.updated_at.to_s(:datetime_jp) %></li>
+        </div>
         <h2><%= @topic.title %></h2>
         <p><%= @topic.content %></p>
         <h2>お店情報</h2>
@@ -47,7 +50,7 @@
               <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
               <p class="topic_title"><%= topic.title %></p>
             </div>
-              
+
             </div>
             </a>
             <hr color="gray">
