@@ -76,3 +76,78 @@ var spNavInOut = {
 $(function(){
   setTimeout("$('.alert').fadeOut('slow')", 2000);
 });
+
+
+
+
+
+    document.addEventListener("turbolinks:load", function() {
+            let matches = document.querySelectorAll('.topic_show h1, .topic_show h2.shop_title');
+            let contentsList = document.getElementById('toc');
+            matches.forEach(function (value, i) {
+                if(value.id === '') {
+                  let div = document.createElement('div');
+                  let ul = document.createElement('ul');
+                  let li = document.createElement('li');
+                  let a = document.createElement('a');
+                  value.id = i;
+                  a.innerHTML = value.textContent;
+                  a.href = `#${value.id}`
+                  li.appendChild(a)
+                  ul.appendChild(li);
+                  div.appendChild(ul);
+                  contentsList.appendChild(div);
+                }
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+        // document.addEventListener("turbolinks:load", function() {
+        //     // document.addEventListener('DOMContentLoaded', function () {
+        //         // let contentsList = document.getElementById('toc');
+        //         // let div = document.createElement('div');
+        //         let matches = document.querySelectorAll('.topic_show h1, .topic_show h2.shop_title');
+        //         let contentsList = document.getElementById('toc');
+        //
+        //         matches.forEach(function (value, i) {
+        //
+        //             if(value.id === '') {
+        //               let div = document.createElement('div');
+        //                 value.id = i;
+        //
+        //                 // if(value.tagName === 'H1' || value.tagName === 'H2') {
+        //                     let ul = document.createElement('ul');
+        //                     let li = document.createElement('li');
+        //                     let a = document.createElement('a');
+        //                     a.innerHTML =  value.textContent;
+        //                     a.href = `#${value.id}`
+        //                     li.appendChild(a)
+        //                     ul.appendChild(li);
+        //                     div.appendChild(ul);
+        //                     contentsList.appendChild(div);
+        //                 // }
+        //
+        //                 //
+        //                 // if(value.tagName === 'H2') {
+        //                 //     let ul = document.createElement('ul');
+        //                 //     let li = document.createElement('li');
+        //                 //     let a = document.createElement('a');
+        //                 //     a.innerHTML = value.textContent;
+        //                 //     a.href = `#${value.id}`
+        //                 //     li.appendChild(a)
+        //                 //     ul.appendChild(li);
+        //                 //     div.appendChild(ul);
+        //                 //     contentsList.appendChild(div);
+        //                 // }
+        //
+        //             }
+        //         });
+        //     });

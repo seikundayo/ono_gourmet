@@ -1,12 +1,17 @@
 <div class="topic_content">
   <% if request.path == ("/") %>
+  <div class="slide_content">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active" data-interval="7000">
+        <%= image_tag 'top_image.png' , class: "greet"%>
+      </div>
+      <div class="carousel-item">
         <%= image_tag 'greeting.jpg' , class: "greet"%>
       </div>
       <div class="carousel-item">
@@ -24,7 +29,10 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  </div>
   <% end %>
+
+
 
 
   <div class="tab">

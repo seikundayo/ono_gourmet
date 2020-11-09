@@ -1,4 +1,4 @@
-<div class="topic_center">
+<div class="topic_center" >
   <div class="topic_show">
     <div class="container-fluid">
     <div class="row">
@@ -8,9 +8,18 @@
         <li><i class="fas fa-redo-alt"></i> <%= @topic.updated_at.to_s(:datetime_jp) %></li>
         </div>
         <h2><%= @topic.title %></h2>
+
+        <div id="toc">
+          <p align="center"><i class="fas fa-list"> 目次</i></p>
+        </div>
+
+
         <p><%= @topic.content %></p>
-        <h2>お店情報</h2>
+
+
+        <h2 class="shop_title">お店情報</h2>
         <div class="row">
+          <div class="shop_infomation">
             <ul>
               <li><%= image_tag "#{@topic.shop.shop_image}", id:"show_shop_image" %></li>
               <li><span class="row1"><i class="fas fa-store"> 店名</i></span><span class="row2"><%= @topic.shop.name %></span></li>
@@ -22,6 +31,7 @@
               <li><span class="row1"><i class="fas fa-sign-out-alt"> テイクアウト</i></span><span class="row2"><%= @topic.shop.takeout %></span></li>
               <iframe src="<%= @topic.shop.map %>" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </ul>
+          </div>
         </div>
         <div class="sns_button">
           <%= link_to "https://twitter.com/share?url=#{request.url}/&hashtags=おのグルメ,兵庫グルメ,関西グルメ,関西", target: "_blank", class: "button", id: "facebook" do %>
@@ -35,6 +45,9 @@
           <% end %>
         </div>
 
+
+
+
       </div>
 
 
@@ -43,17 +56,12 @@
         <h4><i class="fas fa-crown"></i>人気記事ランキンング</h4>
           <% @topics.each.with_index(1) do |topic, i| %>
           <h3  style="text-align:center";><%= i %></h3>
-            <a href="/topics/<%= topic.id %>">
-            <div class="card">
-            <%= image_tag "#{topic.image}",id:"card_image" %>
-            <div class="card-body">
-              <p class="topic_genre"><i class="fas fa-hashtag"> <%= topic.genre %></i></p>
-              <p class="topic_title"><%= topic.title %></p>
+          <a href="/topics/<%= topic.id %>">
+            <div class="card_topic">
+              <%= image_tag "#{topic.image}",id:"card_image" %>
             </div>
+          </a>
 
-            </div>
-            </a>
-            <hr color="gray">
           <% end %>
       </div>
 

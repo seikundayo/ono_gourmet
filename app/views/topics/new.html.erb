@@ -5,61 +5,55 @@
   <%= render 'layouts/error_messages', model: form.object %>
 
     <div class="field">
-      <%= form.label "タイトル" ,class: "text-center"%>
+      <%= form.label "タイトル" ,class: "text-center"%> <span class="badge badge-warning">必須(50文字以下)</span>
       <br>
-      <%= form.text_field :title, class: "form-control" %>
-      <br>
+      <%= form.text_area :title, class: "form-control" %>
+
     </div>
 
     <div class="field">
-      <%= form.label "ジャンル" %>
+      <%= form.label "ジャンル" %> <span class="badge badge-warning">必須</span>
       <br>
-      <%= form.select :genre, [["カフェ", "カフェ"], ["ランチ", "ランチ"], ["ディナー", "ディナー"], ["パン", "パン"], ["居酒屋", "居酒屋"], ["テイクアウト", "テイクアウト"],["クーポン", "クーポン"]], include_blank: "選択して下さい" %>
+      <%= form.select :genre, [["カフェ", "カフェ"], ["ランチ", "ランチ"], ["ディナー", "ディナー"], ["パン", "パン"], ["居酒屋", "居酒屋"], ["テイクアウト", "テイクアウト"]], include_blank: "選択して下さい" %>
       <br>
-      <br>
+
     </div>
 
     <div class="field">
-      <%= form.label "トップ画像" %>
+      <%= form.label "トップ画像" %> <span class="badge badge-warning">必須(横340px縦200pxで表示されます)</span>
       <br>
       <%= form.file_field :image %>
-      <p>横：200px,縦：350pxで表示させるように設定しています。</p>
-      <br>
+      <!-- <p>横：200px,縦：350pxで表示させるように設定しています。</p> -->
+
+
     </div>
 
     <div class="field">
-      <%= form.label "内容" %>
+      <%= form.label "内容" %> <span class="badge badge-warning">必須</span>
       <br>
       <%= form.rich_text_area :content %>
-      <br>
+
     </div>
 
     <% if admin_signed_in? %>
-      <div class="field">
-        <%= form.hidden_field :shop_id, :value => @user_shop %>
-        <br>
-      </div>
+      <%= form.hidden_field :shop_id, :value => @user_shop %>
     <% else %>
     <div class="field">
       <%= form.label "店舗番号" %>
       <br>
       <%= form.number_field :shop_id %>
-      <br>
     </div>
     <% end %>
 
 
 
     <div class="actions">
-      <br>
       <%= form.submit "投稿" , class: "btn btn-lg btn-primary btn-block"%>
-      <br>
     </div>
 
     <% if user_signed_in? && current_user.admin = true %>
       <br>
       <h4 style="text-align:center;">店舗番号一覧</h4>
-
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -77,11 +71,7 @@
         </tbody>
       </table>
     <% else %>
-
     <% end %>
-
-
-
 
   <% end %>
   </div>

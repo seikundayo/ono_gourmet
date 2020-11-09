@@ -30,7 +30,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @topics = Topic.all.order(impressions_count: 'DESC').limit(5)
+    topics = Topic.all.order(impressions_count: 'DESC')
+    @topics = topics.where.not(genre: "クーポン").limit(5)
     impressionist(@topic, nil, unique: [:impressionable_id, :ip_address])
   end
 
