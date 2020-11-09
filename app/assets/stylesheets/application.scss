@@ -494,9 +494,7 @@ main {
 	margin: 0;
 	box-sizing: border-box;
 }
-ol, ul {
-	list-style: none;
-}
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -589,18 +587,9 @@ a {
 // コンテンツの幅指定
 .topic_center{
   max-width: 1100px;
-  margin: 10px auto calc(100 * ((100vw - 320px) / 1600) + 45px) auto;
+  margin: calc(20 * ((100vw - 320px) / 1600) + 0px) auto calc(100 * ((100vw - 320px) / 1600) + 20px) auto;
 }
 
-
-// // ヘッダーの画像の大きさ
-// #header_image{
-//   height: auto;
-//   max-height: 570px;
-//   width: 100%;
-//   margin-bottom: 25px;
-// }
-// headerのナビゲーションバーの設定
 .header{
   width: 100%;
   height: auto;
@@ -885,8 +874,8 @@ a {
   color: white;
   background: #ff8c19;
   line-height: 1.4;
-  margin-bottom: 30px;
-  padding: 10px 0 10px calc(40 * ((100vw - 320px) / 1600) + 38px);
+  margin-bottom: 15px;
+  padding: 10px 0 5px calc(40 * ((100vw - 320px) / 1600) + 38px);
 }
 .topic_show h2:before {
   font-family: "Font Awesome 5 Free";
@@ -896,7 +885,7 @@ a {
   left : 0.5em;
 }
 // トピック詳細のお店情報
-.topic_show ul {
+.topic_show .shop_infomation ul {
   margin: 0 auto;
   list-style: none;
   background: #fffde8;
@@ -908,7 +897,7 @@ a {
   width: 92%;
   height: auto;
 }
-.topic_show ul li{
+.topic_show .shop_infomation ul li{
   font-size: 0.9vw;
   border-bottom: dashed 1px silver;
   line-height: 1.5;
@@ -921,6 +910,28 @@ a {
   margin-left: 140px;
 }
 
+//トピック詳細の目次
+.topic_show #toc{
+  background-color: #fffcf4;
+  border: solid 2px orange;
+  padding: 10px 0;
+}
+.topic_show #toc p{
+margin-bottom: 0;
+}
+.topic_show #toc ul{
+  margin: 0 0 0 25px;
+}
+.topic_show #toc ul li{
+  text-decoration: underline;
+  margin: 5px 0;
+  font-size: calc(4 * ((100vw - 320px) / 1600) + 12px);
+  color: black;
+}
+.topic_show #toc ul li a:hover{
+  text-decoration: none;
+  color: #ca6500;
+}
 
 
 // トピック詳細　人気記事ランキング
@@ -928,31 +939,17 @@ a {
 .topic_show .col-md-3 a:hover{
   text-decoration: none;
   color: black;
-  position: relative;
-  top: -3px;
-  left: 0px;
 }
 .topic_show h4{
   text-align: center;
   font-weight: bold;
-  margin: 60px auto 20px auto;
+  margin: 30px auto -20px auto;
   font-size: calc(7 * ((100vw - 320px) / 1600) + 12px);
 }
-.topic_show .card #card_image{
-  border-radius: 3px 3px 0 0;
-  max-width: calc(100 * ((100vw - 320px) / 1600) + 130px);
-  max-height: calc(80 * ((100vw - 320px) / 1600) + 50px);
-}
-//トピック人気ランキング　カード
-.topic_show .card{
-  max-width: calc(100 * ((100vw - 320px) / 1600) + 130px);
-  max-height: calc(100 * ((100vw - 320px) / 1600) + 190px);
-  margin: 20px auto;
-  border: solid 1px gray;
-}
+
 // トピックの順位
 .topic_show h3{
-  margin: 0 auto;
+  margin: 40px auto 10px auto;
   border-radius: 45%;
   max-width: 15%;
   font-size: 12px;
@@ -960,14 +957,12 @@ a {
   padding: 10px 0;
   color: white;
 }
+.topic_show a{
+  text-align: center;
+}
 // トピックのAタグ
 .topic_show a:hover{
   color: blue;
-}
-// トピックのジャンル
-.topic_show .topic_genre{
-  font-size: 10px;
-  margin: -10px 0 10px -10px;
 }
 // トピックの人気記事タイトル
 .topic_show .topic_title{
@@ -976,30 +971,149 @@ a {
   font-weight: bold;
 }
 // トピックの表示回数
-.topic_show .topic_view{
-  text-align: right;
-  margin: -35px 20px 10px 0;
-  display: inline;
-  font-size: 0.5vw;
-}
+// .topic_show .topic_view{
+//   text-align: right;
+//   margin: -35px 20px 10px 0;
+//   display: inline;
+//   font-size: 0.5vw;
+// }
+
 //トピック画像
 .topic_show #card_image{
-  max-width: 100%;
-  height: auto;
+  border: solid 1px gray;
+  width: calc(70 * ((100vw - 320px) / 1600) + 160px);
+  height: calc(30 * ((100vw - 320px) / 1600) + 130px);
 }
-.topic_show hr{
-  text-align: center;
-  margin: 30px auto;
-}
+
+// .topic_show hr{
+//   text-align: center;
+//   margin: 30px auto;
+// }
+
+
+
 .trix-content img{
   width: 100%;
-  max-height: 500px;
+  height: calc(170 * ((100vw - 320px) / 1600) + 350px);
+}
+.trix-content a{
+  color: blue;
 }
 trix-toolbar{
+  z-index: 99;
   postion: -webkit-sticky;
   position: sticky;
   top: 0;
 }
+.trix-content figcaption{
+  margin-top: 10px;
+}
+.trix-content .attachment--preview .attachment__caption {
+  color: black;
+}
+.trix-content ul{
+  background: #fffcf4;
+  border-radius :0px;
+  box-shadow :0px 0px 2px silver;/*5px=影の広がり具合*/
+  width: 100%;
+  border: solid 1px black;
+  padding: 4px 30px;
+  list-style: initial;
+}
+.trix-content ul li{
+  font-size: calc(6 * ((100vw - 320px) / 1600) + 12px);
+  min-height: 0;
+  border-bottom: dashed 0;
+  line-height: 1.5;
+  margin-left: 0;
+  padding: 4px 0;
+}
+.trix-content ol{
+  background: #fffcf4;
+  border-radius :0px;
+  box-shadow :0px 0px 5px silver;/*5px=影の広がり具合*/
+  width: 100%;
+  border: solid 1px black;
+  padding: 4px 30px;
+  list-style: decimal;
+}
+.trix-content ol li{
+  font-size: calc(6 * ((100vw - 320px) / 1600) + 12px);
+  min-height: 0;
+  border-bottom: dashed 0;
+  line-height: 1.5;
+  margin-left: 0;
+  padding: 4px 0;
+}
+
+
+trix-toolbar .trix-button--icon {
+  width: 70px;
+  height: 40px;
+  // max-width: calc(3.0em + 3.5vw);
+  }
+@media screen and (min-device-width: 768px)and(max-device-width: 1100px){
+trix-toolbar .trix-button--icon {
+  width: 280px;
+  height: 40px;
+  max-width: calc(3.0em + 3.5vw);
+  }
+}
+@media screen and (max-device-width: 767px){
+trix-toolbar .trix-button--icon {
+  width: 300px;
+  height: 20px;
+  max-width: calc(3.0em + 3.5vw);
+  }
+}
+
+trix-toolbar .trix-button {
+  background-color: white;
+}
+
+ /*[data-trix-button-group="text-tools"],*/
+/*.trix-button--icon-bold,*/
+// .trix-button--icon-italic,
+// .trix-button--icon-strike,
+// .trix-button--icon-link,
+
+
+
+
+
+
+
+
+
+// .trix-content {
+//   line-height: 2em;
+//   blockquote {
+//     border-bottom: 1.5px solid #ddd;
+//     font-size: 1.6em;
+//     line-height: 1.2;
+//     padding-bottom: .2em;
+//     margin: 0;
+//   }
+//   pre {
+//     background-color: #364549;
+//     color: #e3e3e3;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //店長オススメ店一覧
 .manager_topic a{
@@ -1358,13 +1472,13 @@ left: -16px;
 
 //投稿画面
 .post h2{
-  font-size: 2vw;
+  font-size: calc(4 * ((100vw - 320px) / 500) + 17px);
 }
 .post select{
   font-size: 0.8vw;
 }
 .post .field label{
-  font-size: 1vw;
+  font-size: calc(2 * ((100vw - 320px) / 500) + 14px);
 }
 .post .field input{
   font-size: 0.8vw;
@@ -1377,6 +1491,12 @@ left: -16px;
 }
 .post table{
   font-size: 0.5vw;
+}
+.post .field{
+  margin: 35px 0;
+}
+.post .field span{
+  font-size: calc(2 * ((100vw - 320px) / 500) + 10px);
 }
 
 
@@ -1655,6 +1775,10 @@ left: -16px;
   color: #c44806;
 }
 
+// .field p{
+//   font-size: 0.8vw;
+// }
+
 
 
 
@@ -1751,7 +1875,9 @@ left: -16px;
 @media screen and (min-width: 600px) and (max-width: 1110px) {
   // スマホ用ヘッダー
   // 通常のheaderをオフにする
-
+  .topic_center {
+    padding: 2px 7px;
+  }
 
     //PROUSER画面
      .pro_user{
@@ -1773,6 +1899,14 @@ left: -16px;
 
 
 @media screen and (max-width: 600px){
+
+  .trix-content img{
+    height: calc(50 * ((100vw - 320px) / 1600) + 250px);
+  }
+  // .trix-content img{
+  //   height: calc(400 * ((100vw - 320px) / 1600) + 190px);
+  // }
+
   .shop_content .card .card_header{
     min-height: 35px;
     max-height: 75px;
@@ -1797,7 +1931,10 @@ left: -16px;
 
 
   .topic_center {
-    padding: 2px 5px;
+    padding: 2px 2px;
+  }
+  .topic_center .shop_show{
+    margin: 15px auto;
   }
 //トピック詳細の地図の大きさ
   .topic_show iframe{
@@ -1861,10 +1998,18 @@ left: -16px;
    font-size: 12px;
  }
 
+ .post .field{
+   margin: 20px 0;
+ }
+
 
 }
 
 @media screen and (max-width: 400px) {
+  .trix-content img{
+    height: calc(100 * ((100vw - 320px) / 1600) + 190px);
+  }
+
   .footer-container .footer-item p{
     display: none;
   }
